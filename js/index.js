@@ -2,7 +2,6 @@
  * FIBER OPTIC HUB — DYNAMIC SYSTEM
  * - Mobile Menu Navigation
  * - Dynamic Search Index Fetching
- * - Client-Side Category Filtering
  * - Optical Loss Budget Calculator
 ===================================================== */
 
@@ -90,31 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // --------------------------------------------------
-    // 3. CATEGORY FILTERING SYSTEM
-    // --------------------------------------------------
-    const pillBtns = document.querySelectorAll(".pill-btn");
-    const articleCards = document.querySelectorAll("#latestArticles .article");
-
-    pillBtns.forEach(btn => {
-        btn.addEventListener("click", function () {
-            pillBtns.forEach(b => b.classList.remove("active"));
-            this.classList.add("active");
-
-            const selectedCategory = this.getAttribute("data-category");
-
-            articleCards.forEach(card => {
-                const cardCategory = card.getAttribute("data-category");
-                if (selectedCategory === "all" || cardCategory === selectedCategory) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
-        });
-    });
-
-    // --------------------------------------------------
-    // 4. OPTICAL LOSS BUDGET CALCULATOR
+    // 3. OPTICAL LOSS BUDGET CALCULATOR
     // --------------------------------------------------
     const lossForm = document.getElementById("lossCalcForm");
     const calcResult = document.getElementById("calcResult");
