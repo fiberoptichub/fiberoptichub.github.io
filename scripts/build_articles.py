@@ -37,22 +37,22 @@ def update_header_and_footer(filepath, is_article=True):
 
     # 2. Header ထည့်သွင်းခြင်း
     header_html = f'''
-    <header>
-        <div class="logo">🌐 Fiber <span>Optic Hub</span></div>
-        <nav class="main-nav">
+    <header class="site-header">
+        <div class="logo"><span aria-hidden="true">🌐</span> Fiber <span>Optic Hub</span></div>
+        <nav class="main-nav" aria-label="Main Navigation">
             <a href="{prefix}index.html">Home</a>
             <a href="{prefix}index.html#topics">Learn</a>
             <a href="{prefix}index.html#articles">Articles</a>
             <a href="{prefix}index.html#about">About</a>
         </nav>
-        <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+        <button class="menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
     </header>
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="{prefix}index.html" onclick="closeMenu()">🏠 Home</a>
-        <a href="{prefix}index.html#topics" onclick="closeMenu()">📚 Learn</a>
-        <a href="{prefix}index.html#articles" onclick="closeMenu()">📰 Articles</a>
-        <a href="{prefix}index.html#about" onclick="closeMenu()">ℹ️ About</a>
-    </div>
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile Navigation" aria-hidden="true">
+        <a href="{prefix}index.html"><span aria-hidden="true">🏠</span> Home</a>
+        <a href="{prefix}index.html#topics"><span aria-hidden="true">📚</span> Learn</a>
+        <a href="{prefix}index.html#articles"><span aria-hidden="true">📰</span> Articles</a>
+        <a href="{prefix}index.html#about"><span aria-hidden="true">ℹ️</span> About</a>
+    </nav>
     '''
 
     # Header အဟောင်းနှင့် Mobile Menu အဟောင်း ဖယ်ရှားခြင်း
@@ -60,7 +60,7 @@ def update_header_and_footer(filepath, is_article=True):
     if existing_header:
         existing_header.decompose()
     
-    existing_mobile_menu = soup.find(id='mobileMenu')
+    existing_mobile_menu = soup.find(id='mobileNav') or soup.find(id='mobileMenu')
     if existing_mobile_menu:
         existing_mobile_menu.decompose()
 
@@ -78,7 +78,7 @@ def update_header_and_footer(filepath, is_article=True):
 
     footer_html = '''
     <footer>
-        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;"><span aria-hidden="true">🌐</span> Fiber <span>Optic Hub</span></div>
         <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
         <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
     </footer>
@@ -87,7 +87,7 @@ def update_header_and_footer(filepath, is_article=True):
 
     # 4. Script JS ထည့်သွင်းခြင်း
     if not soup.find('script', {'src': f'{prefix}js/index.js'}):
-        script_html = f'<script src="{prefix}js/index.js"></script>'
+        script_html = f'<script src="{prefix}js/index.js" defer></script>'
         body.append(BeautifulSoup(script_html, 'html.parser'))
 
     return soup
@@ -193,4 +193,3 @@ def build_articles():
 
 if __name__ == '__main__':
     build_articles()
-hub
