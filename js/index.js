@@ -208,12 +208,15 @@ function renderSearchResults(results, query, dropdown, isSubFolder) {
     const urlPrefix = isSubFolder ? "../" : "";
 
     results.forEach(item => {
+        // description သို့မဟုတ် desc နှစ်မျိုးလုံး အလုပ်လုပ်အောင် စစ်ပေးထားခြင်း
+        const articleDesc = item.description || item.desc || "";
+
         html += `
             <a href="${urlPrefix}${item.url}" class="search-result-card" style="display: block; padding: 12px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05);">
                 <div class="search-result-content">
                     <h3 style="margin: 0; font-size: 1rem; color: #fff;">${item.title}</h3>
                     <div class="search-result-meta" style="font-size: 0.8rem; color: #29b6f6; margin: 4px 0;">🏷️ ${item.category} • 📊 ${item.level}</div>
-                    <p style="margin: 0; font-size: 0.85rem; color: #b8c7d9;">${item.desc}</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #b8c7d9;">${articleDesc}</p>
                 </div>
             </a>
         `;
