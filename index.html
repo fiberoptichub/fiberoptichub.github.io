@@ -51,7 +51,7 @@
 
         <nav class="main-nav" aria-label="Main Navigation">
             <a href="#top">Home</a>
-            <a href="#categories">Categories</a>
+            <a href="#topics">Learn</a>
             <a href="#articles">Articles</a>
             <a href="#tools">Tools</a>
             <a href="#about">About</a>
@@ -65,7 +65,7 @@
     <!-- MOBILE MENU -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation" aria-hidden="true">
         <a href="#top"><span aria-hidden="true">🏠</span> Home</a>
-        <a href="#categories"><span aria-hidden="true">📚</span> Categories</a>
+        <a href="#topics"><span aria-hidden="true">📚</span> Learn</a>
         <a href="#articles"><span aria-hidden="true">📰</span> Articles</a>
         <a href="#tools"><span aria-hidden="true">🔧</span> Tools</a>
         <a href="#about"><span aria-hidden="true">ℹ️</span> About</a>
@@ -86,24 +86,58 @@
                     <div id="searchResults" class="search-results-dropdown" role="listbox"></div>
                 </div>
 
-                <a href="#categories" class="btn">START LEARNING →</a>
+                <a href="#topics" class="btn">START LEARNING →</a>
             </div>
         </section>
 
-        <!-- CATEGORIES SECTION -->
-        <section class="section" id="categories">
+        <!-- TOPICS SECTION (ORIGINAL CARDS LAYOUT) -->
+        <section class="section" id="topics">
             <div class="section-heading">
-                <span class="section-label">CATEGORIES</span>
-                <h2>Browse by Categories</h2>
-                <p>Category အလိုက် သီးခြား ခွဲခြားလေ့လာနိုင်ပါသည်။</p>
+                <span class="section-label">LEARN</span>
+                <h2>Popular Topics</h2>
+                <p>Fiber Optic နည်းပညာကို Category အလိုက် လေ့လာနိုင်ပါတယ်။</p>
             </div>
 
-            <div class="category-pills">
-                <button class="pill-btn active" data-category="all">All Articles</button>
-                <button class="pill-btn" data-category="basics">Basics</button>
-                <button class="pill-btn" data-category="ftth">FTTH / PON</button>
-                <button class="pill-btn" data-category="testing">Testing & OTDR</button>
-                <button class="pill-btn" data-category="splicing">Splicing</button>
+            <div class="topics">
+                <!-- CATEGORY 01 -->
+                <div class="card searchable">
+                    <div class="card-icon" aria-hidden="true">📚</div>
+                    <h3>Fiber Optic Basics</h3>
+                    <p>Fiber Optic ရဲ့ အခြေခံသဘောတရားများ၊ Core၊ Cladding၊ Coating၊ Fiber Types နဲ့ အခြားအခြေခံ နည်းပညာများကို လေ့လာနိုင်ပါတယ်။</p>
+                    <a href="categories/fiber-optic-basics.html" class="read-more">Start Learning →</a>
+                </div>
+
+                <!-- CATEGORY 02 -->
+                <div class="card searchable">
+                    <div class="card-icon" aria-hidden="true">📡</div>
+                    <h3>FTTH</h3>
+                    <p>OLT၊ ONU၊ Splitter၊ ODF နဲ့ FTTH Network ရဲ့ အခြေခံဖွဲ့စည်းပုံနဲ့ လုပ်ဆောင်ပုံတွေကို လေ့လာနိုင်ပါတယ်။</p>
+                    <a href="categories/ftth.html" class="read-more">Start Learning →</a>
+                </div>
+
+                <!-- CATEGORY 03 -->
+                <div class="card searchable">
+                    <div class="card-icon" aria-hidden="true">🔬</div>
+                    <h3>OTDR & OPM</h3>
+                    <p>OTDR၊ Fresnel Reflection၊ Dead Zone၊ Optical Power Testing နဲ့ Fiber Testing ဆိုင်ရာ အကြောင်းအရာများကို လေ့လာနိုင်ပါတယ်။</p>
+                    <a href="categories/otdr-and-opm.html" class="read-more">Start Learning →</a>
+                </div>
+
+                <!-- CATEGORY 04 -->
+                <div class="card searchable">
+                    <div class="card-icon" aria-hidden="true">🔧</div>
+                    <h3>Splicing</h3>
+                    <p>Fiber Optic Cable တွေကို Fusion Splicing အသုံးပြုပြီး Fiber နှစ်ချောင်းကို ဘယ်လိုဆက်သွယ်သလဲဆိုတာ လေ့လာနိုင်ပါတယ်။</p>
+                    <a href="categories/splicing.html" class="read-more">Start Learning →</a>
+                </div>
+
+                <!-- CATEGORY 05 -->
+                <div class="card searchable">
+                    <div class="card-icon" aria-hidden="true">📚</div>
+                    <h3>All Articles</h3>
+                    <p>Fiber Optic နည်းပညာဆိုင်ရာ ဆောင်းပါးအားလုံးကို Category အလိုက် တစ်နေရာတည်းမှာ စုစည်းဖတ်ရှုနိုင်ပါတယ်။</p>
+                    <a href="categories/all-articles.html" class="read-more">View All Articles →</a>
+                </div>
             </div>
         </section>
 
@@ -117,7 +151,7 @@
 
             <div class="articles" id="latestArticles">
                 <!-- LATEST-ARTICLES-START -->
-                <div class="article searchable latest-article" data-category="ftth" data-date="2026-08-31T00:00:00+07:00">
+                <div class="article searchable latest-article" data-date="2026-08-31T00:00:00+07:00">
                     <span class="article-number">01</span>
                     <h3>OLT (Optical Line Terminal) ဆိုတာဘာလဲ?</h3>
                     <p class="article-meta">FTTH • Beginner <br> 📅 August 31, 2026</p>
@@ -125,7 +159,7 @@
                     <a href="articles/olt.html" class="read-more">Read Article →</a>
                 </div>
 
-                <div class="article searchable latest-article" data-category="basics" data-date="2026-08-30T15:30:00+07:00">
+                <div class="article searchable latest-article" data-date="2026-08-30T15:30:00+07:00">
                     <span class="article-number">02</span>
                     <h3>Fiber Optic Loss</h3>
                     <p class="article-meta">Fiber Optic Basics • Beginner <br> 📅 August 30, 2026</p>
@@ -133,7 +167,7 @@
                     <a href="articles/fiber-loss.html" class="read-more">Read Article →</a>
                 </div>
 
-                <div class="article searchable latest-article" data-category="basics" data-date="2026-08-30T10:00:00+07:00">
+                <div class="article searchable latest-article" data-date="2026-08-30T10:00:00+07:00">
                     <span class="article-number">03</span>
                     <h3>Mode Field Diameter (MFD)</h3>
                     <p class="article-meta">Fiber Optic Basics • Intermediate <br> 📅 August 30, 2026</p>
