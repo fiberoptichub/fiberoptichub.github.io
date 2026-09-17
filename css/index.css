@@ -671,3 +671,8 @@ footer, footer.site-footer {
     
     .category-nav-container { flex-wrap: wrap; gap: 10px; }
 }
+
+
+.search-box {
+    position: relative; /* Search Dropdown နေရာမလွဲစေရန် */
+}
