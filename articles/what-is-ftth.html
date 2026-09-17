@@ -17,6 +17,7 @@
 
 
 
+
 &lt; lang="my"&gt;
 
 <head>
@@ -66,22 +67,22 @@
 <div class="reading-progress-container">
 <div class="reading-progress-bar" id="progressBar"></div>
 </div>
-<header>
-<div class="logo">🌐 Fiber <span>Optic Hub</span></div>
-<nav class="main-nav">
+<header class="site-header">
+<div class="logo"><span aria-hidden="true">🌐</span> Fiber <span>Optic Hub</span></div>
+<nav aria-label="Main Navigation" class="main-nav">
 <a href="../index.html">Home</a>
 <a href="../index.html#topics">Learn</a>
 <a href="../index.html#articles">Articles</a>
 <a href="../index.html#about">About</a>
 </nav>
-<button aria-expanded="false" aria-label="Open menu" class="menu" onclick="toggleMenu()" type="button">☰</button>
+<button aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu" class="menu" id="menuBtn" type="button">☰</button>
 </header>
-<div class="mobile-menu" id="mobileMenu">
-<a href="../index.html" onclick="closeMenu()">🏠 Home</a>
-<a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
-<a href="../index.html#articles" onclick="closeMenu()">📰 Articles</a>
-<a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
-</div>
+<nav aria-hidden="true" aria-label="Mobile Navigation" class="mobile-nav" id="mobileNav">
+<a href="../index.html"><span aria-hidden="true">🏠</span> Home</a>
+<a href="../index.html#topics"><span aria-hidden="true">📚</span> Learn</a>
+<a href="../index.html#articles"><span aria-hidden="true">📰</span> Articles</a>
+<a href="../index.html#about"><span aria-hidden="true">ℹ️</span> About</a>
+</nav>
 
 
 
@@ -798,7 +799,7 @@
 
 
 <footer>
-<div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+<div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;"><span aria-hidden="true">🌐</span> Fiber <span>Optic Hub</span></div>
 <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
 <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
 </footer>
