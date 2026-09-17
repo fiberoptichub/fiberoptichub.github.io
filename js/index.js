@@ -3,6 +3,7 @@
  * - Mobile Menu Navigation
  * - Dynamic Search Index Fetching
  * - Optical Loss Budget Calculator
+ * - Automatic Pagination System
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -119,6 +120,76 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
         });
+    }
+
+    // --------------------------------------------------
+    // 4. AUTOMATIC PAGINATION SYSTEM
+    // --------------------------------------------------
+    const articlesPerPage = 6; // စာမျက်နှာတစ်ခုတွင် ပြသလိုသော Article အရေအတွက်
+    const articleContainer = document.getElementById("auto-article-list");
+    const paginationContainer = document.getElementById("articlePagination");
+
+    if (articleContainer && paginationContainer) {
+        const articles = Array.from(articleContainer.querySelectorAll(".searchable, .related-card, .article-card"));
+        const totalPages = Math.ceil(articles.length / articlesPerPage);
+
+        // Article အရေအတွက် ၆ ခုထက် နည်းပါက Pagination မပြပါ
+        if (totalPages <= 1) {
+            paginationContainer.style.display = "none";
+        } else {
+            function showPage(page) {
+                const start = (page - 1) * articlesPerPage;
+                const end = start + articlesPerPage;
+
+                articles.forEach((article, index) => {
+                    if (index >= start && index < end) {
+                        article.style.display = "block";
+                    } else {
+                        article.style.display = "none";
+                    }
+                });
+
+                renderPaginationControls(page);
+            }
+
+            function renderPaginationControls(currentPage) {
+                let navHtml = "";
+
+                // Previous Button
+                if (currentPage > 1) {
+                    navHtml += `<button onclick="changePage(${currentPage - 1})" class="page-btn">← Prev</button>`;
+                } else {
+                    navHtml += `<button class="page-btn disabled" disabled>← Prev</button>`;
+                }
+
+                // Page Numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === currentPage) {
+                        navHtml += `<button class="page-btn active">${i}</button>`;
+                    } else {
+                        navHtml += `<button onclick="changePage(${i})" class="page-btn">${i}</button>`;
+                    }
+                }
+
+                // Next Button
+                if (currentPage < totalPages) {
+                    navHtml += `<button onclick="changePage(${currentPage + 1})" class="page-btn">Next →</button>`;
+                } else {
+                    navHtml += `<button class="page-btn disabled" disabled>Next →</button>`;
+                }
+
+                paginationContainer.innerHTML = navHtml;
+            }
+
+            // Global function ဖြင့် စာမျက်နှာ ကူးပြောင်းရန်
+            window.changePage = function (page) {
+                showPage(page);
+                window.scrollTo({ top: articleContainer.offsetTop - 100, behavior: "smooth" });
+            };
+
+            // Initial Load
+            showPage(1);
+        }
     }
 });
 
