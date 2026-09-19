@@ -1,5 +1,14 @@
 [
     {
+        "title": "Connectors",
+        "url": "articles/connectors.html",
+        "date": "2026-09-03",
+        "category": "Fiber Optic Basics",
+        "level": "Beginner",
+        "summary": "Fiber Optic Connectors အဓိက အမျိုးအစားများနှင့် Specifications များ",
+        "readingTime": "1 min read"
+    },
+    {
         "title": "Mode Field Diameter",
         "url": "articles/mode-field-diameter.html",
         "date": "2026-08-27",
