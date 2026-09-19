@@ -44,7 +44,6 @@ jobs:
 
       # =========================
       # BUILD ARTICLES
-pip install markdown python-frontmatter beautifulsoup4 lxml pyyaml      # =========================
 
       - name: Build Articles
         run: |
