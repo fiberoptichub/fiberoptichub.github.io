@@ -36,14 +36,15 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: |
+        run: |0
+
           python -m pip install --upgrade pip
-          pip install beautifulsoup4 lxml pyyaml
+          pip install markdown python-frontmatter beautifulsoup4 lxml pyyaml
 
 
       # =========================
       # BUILD ARTICLES
-      # =========================
+pip install markdown python-frontmatter beautifulsoup4 lxml pyyaml      # =========================
 
       - name: Build Articles
         run: |
