@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- METADATA AUTOMATION -->
+    <meta content="OTDR Basics" name="article-title"/>
+    <meta content="2026-08-26" name="article-date"/>
+    <meta content="OTDR and OPM" name="article-category"/>
+    <meta content="Beginner" name="article-level"/>
+    <meta content="OTDR ၏ အခြေခံအယူအဆ၊ အလုပ်လုပ်ပုံ၊ OTDR Trace ကိုဖတ်ရှုနည်းနှင့် Fiber Link အတွင်းရှိ Events များကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။" name="article-description"/>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <!-- PAGE TITLE & STYLESHEET -->
+    <title>OTDR Basics | Fiber Optic Hub</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+<body id="top">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
+        <!-- HEADER NAVIGATION -->
+    <header class="site-header">
+        <a href="../index.html" class="logo">🌐 Fiber <span>Optic Hub</span></a>
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#topics">Learn</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <button type="button" class="menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html" onclick="closeMenu()">🏠 Home</a>
+        <a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
+        <a href="../index.html#articles" onclick="closeMenu()">📰 Articles</a>
+        <a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
+
+
+    <!-- MAIN ARTICLE CONTAINER -->
+    <main class="article-page">
+        <!-- BACK BUTTON -->
+        <a class="back-btn" href="../index.html">← Back to Home</a>
+
+        <!-- TITLE & METADATA -->
+        <h1 class="article-page-title">OTDR Basics</h1>
+        <p class="article-meta">OTDR and OPM • Beginner • ⏱️ 5 min read<br/>Published: 2026-08-26</p>
+
+        <!-- PURE ARTICLE CONTENT INJECTION -->
+        <article class="article-content">
+            <h1>OTDR Basics</h1>
+<p><strong>OTDR (Optical Time-Domain Reflectometer)</strong> သည် Fiber Optic Cable အတွင်းရှိ Fiber Link ၏ အခြေအနေကို စစ်ဆေးတိုင်းတာရန် အသုံးပြုသည့် Test Equipment တစ်ခုဖြစ်သည်။</p>
+<p>OTDR ဖြင့် Fiber Link တစ်ခု၏ <strong>အရှည်၊ Optical Loss၊ Reflectance</strong> နှင့် Fiber အတွင်းရှိ Event များ၏ တည်နေရာကို ခန့်မှန်းတိုင်းတာနိုင်သည်။ ထို့အပြင် Fiber Break၊ Connector၊ Splice နှင့် အခြား Loss ဖြစ်စေသောနေရာများကိုလည်း <strong>OTDR Trace</strong> ပေါ်တွင် ခွဲခြားလေ့လာနိုင်သည်။</p>
+<h2>OTDR ဘယ်လိုအလုပ်လုပ်သလဲ</h2>
+<p>OTDR သည် Fiber အတွင်းသို့ Short Optical Pulse တစ်ခုကို ပေးပို့ပြီး Fiber တစ်လျှောက်မှ ပြန်လည်ရရှိလာသော Optical Signal ကို တိုင်းတာသည်။</p>
+<p>Fiber အတွင်းသို့ Optical Pulse ဝင်ရောက်သွားသောအခါ အလင်း၏ အစိတ်အပိုင်းအချို့သည် Fiber တစ်လျှောက်တွင် အနည်းငယ်စီ ပြန်လည်ဖြန့်ကျက်လာသည်။ ထို Backscattered Light ကို OTDR က လက်ခံပြီး Signal ပြန်လာသည့် <strong>Time</strong> ကို အသုံးပြု၍ Fiber အတွင်းရှိ Event များ၏ အကွာအဝေးကို တွက်ချက်သည်။</p>
+<p>အခြေခံလုပ်ဆောင်ပုံမှာ -</p>
+<ol>
+<li>OTDR သည် Optical Pulse ကို Fiber ထဲသို့ ပေးပို့သည်။</li>
+<li>Pulse သည် Fiber တစ်လျှောက် သွားလာသည်။</li>
+<li>Fiber မှ Backscattered Light နှင့် Reflective Signal များ ပြန်လည်ရရှိသည်။</li>
+<li>OTDR သည် ပြန်လာသည့် Signal ၏ Time နှင့် Power ကို တိုင်းတာသည်။</li>
+<li>တိုင်းတာထားသော Data များကို <strong>OTDR Trace</strong> အဖြစ် ပြသသည်။</li>
+<li>Trace ကို အသုံးပြု၍ Fiber Link အတွင်းရှိ Events များကို ခွဲခြားလေ့လာနိုင်သည်။</li>
+</ol>
+<h2>OTDR Trace ဆိုတာဘာလဲ</h2>
+<p><strong>OTDR Trace</strong> သည် OTDR မှ တိုင်းတာရရှိသော Fiber Link Data ကို Graph အဖြစ် ဖော်ပြထားခြင်းဖြစ်သည်။</p>
+<p>ပုံမှန်အားဖြင့် Horizontal Axis တွင် Fiber ၏ <strong>Distance</strong> ကို ပြသပြီး Vertical Axis တွင် Optical Power သို့မဟုတ် Signal Level ကို ပြသသည်။</p>
+<p>Fiber တစ်လျှောက်တွင် Loss သို့မဟုတ် Reflection ဖြစ်စေသော Event တစ်ခု ရှိပါက Trace ၏ ပုံသဏ္ဍာန် ပြောင်းလဲသွားနိုင်သည်။</p>
+<p><img alt="OTDR Trace" src="../images/otdr/otdr-trace.jpg" /></p>
+<p><em>Fiber Link ကို OTDR ဖြင့်တိုင်းတာရရှိသော OTDR Trace</em></p>
+<p>OTDR Trace ကိုဖတ်ရာတွင် အဓိကအားဖြင့် -</p>
+<ul>
+<li>Fiber Link ၏ အစနှင့် အဆုံး</li>
+<li>Connector များ</li>
+<li>Fusion Splice များ</li>
+<li>Mechanical Splice များ</li>
+<li>Reflective Event များ</li>
+<li>Non-Reflective Loss Event များ</li>
+<li>Fiber Break သို့မဟုတ် End of Fiber</li>
+</ul>
+<p>တို့ကို ရှာဖွေလေ့လာနိုင်သည်။</p>
+<h2>OTDR Event ဆိုတာဘာလဲ</h2>
+<p><strong>OTDR Event</strong> ဆိုသည်မှာ Fiber Link တစ်လျှောက်တွင် Optical Signal ၏ Power သို့မဟုတ် Reflection ကို သိသာစွာ ပြောင်းလဲစေသော နေရာတစ်ခုကို ဆိုလိုသည်။</p>
+<p>ဥပမာအားဖြင့် Connector တစ်ခု၊ Splice တစ်ခု သို့မဟုတ် Fiber Break တစ်ခုသည် OTDR Trace ပေါ်တွင် Event တစ်ခုအဖြစ် ပေါ်လာနိုင်သည်။</p>
+<p><img alt="OTDR Events" src="../images/otdr/otdr-events.jpg" /></p>
+<p><em>OTDR Trace ပေါ်တွင် တွေ့ရနိုင်သော Fiber Events များ</em></p>
+<p>OTDR တွင် တွေ့ရနိုင်သော Event များကို အခြေခံအားဖြင့် Reflective Event နှင့် Non-Reflective Event ဟူ၍ ခွဲခြားနားလည်နိုင်သည်။</p>
+<h3>Reflective Event</h3>
+<p><strong>Reflective Event</strong> သည် Optical Signal ၏ အစိတ်အပိုင်းတစ်ခုသည် OTDR ဘက်သို့ ပြန်လည်ရောင်ပြန်လာစေသော Event ဖြစ်သည်။</p>
+<p>Connector၊ Mechanical Splice နှင့် Fiber End ကဲ့သို့သော နေရာများတွင် Reflection ဖြစ်နိုင်သည်။</p>
+<h3>Non-Reflective Event</h3>
+<p><strong>Non-Reflective Event</strong> သည် သိသာသော Reflection မရှိဘဲ Optical Power ကို လျော့ကျစေသော Event ဖြစ်သည်။</p>
+<p>အရည်အသွေးမကောင်းသော Fusion Splice သို့မဟုတ် Fiber အတွင်းရှိ အချို့ Loss ဖြစ်စေသောနေရာများသည် Non-Reflective Event အဖြစ် Trace ပေါ်တွင် တွေ့နိုင်သည်။</p>
+<h2>OTDR ဖြင့် ဘာတွေကို တိုင်းတာနိုင်သလဲ</h2>
+<p>OTDR ၏ အဓိကအသုံးပြုမှုမှာ Fiber Link ၏ အခြေအနေကို အကွာအဝေးနှင့် ဆက်စပ်၍ စစ်ဆေးခြင်းဖြစ်သည်။</p>
+<p>ပုံမှန်အားဖြင့် အောက်ပါအချက်များကို လေ့လာနိုင်သည် -</p>
+<ul>
+<li>Fiber Link Length</li>
+<li>Event Location</li>
+<li>Splice Loss</li>
+<li>Connector Loss</li>
+<li>Optical Return Loss သို့မဟုတ် Reflectance ဆိုင်ရာ Measurement များ</li>
+<li>Fiber End Location</li>
+<li>Fiber Break Location</li>
+<li>Overall Link Loss</li>
+</ul>
+<p>OTDR Model နှင့် Test Configuration အလိုက် ရရှိနိုင်သော Measurement Function များ ကွာခြားနိုင်သည်။</p>
+<h2>OTDR Test လုပ်ရာတွင် အရေးကြီးသော Settings များ</h2>
+<p>OTDR ဖြင့် Test ပြုလုပ်ရာတွင် Measurement Result ၏ အရည်အသွေးသည် Test Setting များနှင့်လည်း ဆက်စပ်သည်။</p>
+<p><img alt="OTDR Settings" src="../images/otdr/otdr-settings.jpg" />
+<em>OTDR မတိုင်းတာမီ ချိန်ညှိရမည့် Test Setting များ</em></p>
+<p>အဓိက Setting များမှာ -</p>
+<h3>Wavelength</h3>
+<p>Fiber ကို မည်သည့် <strong>Wavelength</strong> ဖြင့် Test ပြုလုပ်မည်ကို သတ်မှတ်ရသည်။ အသုံးပြုမည့် Fiber System နှင့် Test ရည်ရွယ်ချက်အပေါ်မူတည်၍ Wavelength ရွေးချယ်မှု ကွာခြားနိုင်သည်။</p>
+<h3>Range</h3>
+<p><strong>Range</strong> သည် OTDR က Fiber အတွင်း မည်မျှအကွာအဝေးအထိ တိုင်းတာမည်ကို သတ်မှတ်ခြင်းဖြစ်သည်။</p>
+<p>Test ပြုလုပ်မည့် Fiber Length ထက် အလွန်တိုသော Range ကို ရွေးချယ်ပါက Fiber Link တစ်ခုလုံးကို မှန်ကန်စွာ မမြင်နိုင်နိုင်ပါ။</p>
+<h3>Pulse Width</h3>
+<p><strong>Pulse Width</strong> သည် OTDR မှ Fiber ထဲသို့ ပေးပို့သည့် Optical Pulse ၏ အကျယ်ဖြစ်သည်။</p>
+<p>Pulse Width ပိုကြီးလာသည်နှင့်အမျှ Long Distance ကို စမ်းသပ်ရာတွင် အထောက်အကူဖြစ်နိုင်သော်လည်း အနီးကပ်ရှိ Event များကို ခွဲခြားနိုင်စွမ်း လျော့ကျနိုင်သည်။</p>
+<p>Pulse Width ပိုသေးပါက အနီးကပ် Event များကို ပိုမိုခွဲခြားနိုင်သော်လည်း Long Distance Measurement အတွက် သင့်လျော်မှု ကွာခြားနိုင်သည်။</p>
+<h3>Averaging Time</h3>
+<p><strong>Averaging Time</strong> သည် OTDR က Measurement များကို စုစည်းပျမ်းမျှယူသည့် အချိန်ဖြစ်သည်။</p>
+<p>Averaging Time ပိုများလာပါက Random Noise လျော့နည်းပြီး Trace ပိုမိုတည်ငြိမ်လာနိုင်သည်။ သို့သော် Test ပြုလုပ်ရန် အချိန်ပိုကြာမည်ဖြစ်သည်။</p>
+<h2>Dead Zone ဆိုတာဘာလဲ</h2>
+<p>OTDR တွင် <strong>Dead Zone</strong> ဆိုသည်မှာ Reflective Event တစ်ခု ဖြစ်ပေါ်ပြီးနောက် OTDR က နောက်ထပ် Event တစ်ခုကို တိကျစွာ ခွဲခြားတိုင်းတာရန် အခက်အခဲရှိနိုင်သော အကွာအဝေးတစ်ခု ဖြစ်သည်။</p>
+<p>Dead Zone သည် အထူးသဖြင့် Connector များ သို့မဟုတ် အနီးကပ်ရှိ Event များကို စစ်ဆေးရာတွင် အရေးကြီးသည်။</p>
+<p>OTDR တွင် အဓိကအားဖြင့် <strong>Event Dead Zone</strong> နှင့် <strong>Attenuation Dead Zone</strong> ဟူ၍ သတ်မှတ်ချက်အလိုက် ခွဲခြားဖော်ပြထားနိုင်သည်။</p>
+<p>ထို့ကြောင့် Fiber Link ၏ အစပိုင်းတွင်ရှိသော Connector သို့မဟုတ် Splice များကို စစ်ဆေးရာတွင် <strong>Launch Fiber</strong> ကို အသုံးပြုခြင်းသည် အရေးကြီးသည်။</p>
+<h2>Launch Fiber နှင့် Receive Fiber</h2>
+<p>OTDR ကို Fiber Link သို့ တိုက်ရိုက်ချိတ်ဆက်၍ Test ပြုလုပ်ပါက OTDR ၏ Dead Zone ကြောင့် ပထမ Connector ၏ Loss နှင့် Reflectance ကို တိကျစွာ အကဲဖြတ်ရန် ခက်ခဲနိုင်သည်။</p>
+<p>ထိုအတွက် <strong>Launch Fiber</strong> ကို OTDR နှင့် Test လုပ်မည့် Fiber Link ကြားတွင် ချိတ်ဆက်အသုံးပြုနိုင်သည်။</p>
+<p>Fiber Link ၏ အဆုံး Connector ကိုပါ သေချာစွာ စစ်ဆေးလိုပါက <strong>Receive Fiber</strong> ကို Fiber Link ၏ အဆုံးတွင် ထပ်မံချိတ်ဆက်အသုံးပြုနိုင်သည်။</p>
+<p>အခြေခံချိတ်ဆက်ပုံမှာ -</p>
+<p><strong>OTDR → Launch Fiber → Fiber Link Under Test → Receive Fiber</strong></p>
+<p>ဖြစ်သည်။</p>
+<h2>OTDR Test ပြုလုပ်ရာတွင် သတိပြုရန်အချက်များ</h2>
+<p>OTDR Measurement မပြုလုပ်မီ Fiber Link နှင့် Test Equipment ကို သေချာစွာ စစ်ဆေးရသည်။</p>
+<p>အထူးသဖြင့် -</p>
+<ul>
+<li>Fiber Connector များကို သန့်ရှင်းစွာထားရမည်။</li>
+<li>သင့်လျော်သော Wavelength ကို ရွေးချယ်ရမည်။</li>
+<li>Fiber Link ၏ အရှည်နှင့် ကိုက်ညီသော Range ကို ရွေးချယ်ရမည်။</li>
+<li>လိုအပ်ပါက Launch Fiber နှင့် Receive Fiber အသုံးပြုရမည်။</li>
+<li>Pulse Width နှင့် Averaging Time ကို Test ရည်ရွယ်ချက်နှင့် ကိုက်ညီအောင် သတ်မှတ်ရမည်။</li>
+<li>OTDR Trace ပေါ်ရှိ Event များကို Distance နှင့် Loss တန်ဖိုးများနှင့်အတူ စစ်ဆေးရမည်။</li>
+</ul>
+<h2>OTDR ၏ Practical အသုံးပြုမှု</h2>
+<p>Fiber Optic Installation နှင့် Maintenance လုပ်ငန်းများတွင် OTDR ကို Fiber Link ၏ အခြေအနေကို စစ်ဆေးရန် အသုံးပြုနိုင်သည်။</p>
+<p>ဥပမာအားဖြင့် Fiber Link တစ်ခုတွင် Unexpected Loss ဖြစ်နေပါက OTDR Trace ကို ကြည့်ရှု၍ Loss ဖြစ်နေသော Event ၏ တည်နေရာကို ရှာဖွေနိုင်သည်။</p>
+<p>Fiber Break ဖြစ်ပေါ်နေပါကလည်း OTDR Trace တွင် Fiber End သို့မဟုတ် Break Location ကို ခွဲခြားသတ်မှတ်နိုင်ပြီး Technician အနေဖြင့် ပြဿနာရှိနိုင်သည့် နေရာကို ပိုမိုလျင်မြန်စွာ ရှာဖွေနိုင်သည်။</p>
+<p>သို့သော် OTDR တစ်ခုတည်း၏ Measurement ကိုသာ အခြေခံ၍ Fiber Link တစ်ခုလုံး၏ Performance ကို ဆုံးဖြတ်ခြင်းမပြုသင့်ပါ။ Test Method၊ Connector Condition၊ Launch/Receive Fiber နှင့် OTDR Setting များသည် Result အပေါ် သက်ရောက်မှုရှိနိုင်သည်။</p>
+<h2>အနှစ်ချုပ်</h2>
+<p><strong>OTDR (Optical Time-Domain Reflectometer)</strong> သည် Fiber Optic Link အတွင်းရှိ Loss နှင့် Reflection ဖြစ်စေသော Event များကို အကွာအဝေးနှင့် ဆက်စပ်၍ စစ်ဆေးရန် အသုံးပြုသည့် Test Equipment ဖြစ်သည်။</p>
+<p>OTDR သည် Optical Pulse ကို Fiber ထဲသို့ ပေးပို့ပြီး ပြန်လည်ရရှိလာသော Backscattered နှင့် Reflected Signal များကို တိုင်းတာကာ <strong>OTDR Trace</strong> အဖြစ် ဖော်ပြပေးသည်။ Trace ကို အသုံးပြု၍ Connector, Splice, Fiber Break နှင့် အခြား Event များ၏ တည်နေရာနှင့် Loss ဆိုင်ရာ အချက်အလက်များကို လေ့လာနိုင်သည်။</p>
+<p>OTDR ကို မှန်ကန်စွာ အသုံးပြုနိုင်ရန် <strong>Wavelength, Range, Pulse Width, Averaging Time, Dead Zone</strong> နှင့် Launch/Receive Fiber အသုံးပြုမှုတို့ကို နားလည်ထားရန် အရေးကြီးသည်။</p>
+        </article>
+    </main>
+
+    <!-- RELATED ARTICLES SECTION (Card အပြင်ဘက် သီးသန့် ကာဗာဖြင့်) -->
+    <div class="article-related" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #fff;">ဆက်လက်လေ့လာရန်</h3>
+        <div id="relatedArticlesContainer" class="articles-grid"></div>
+    </div>
+
+    <!-- ARTICLE NAVIGATION BUTTONS -->
+    <div class="article-nav" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1rem;">
+        <a class="nav-btn" href="mode-field-diameter.html">← Previous Article</a>
+        <a class="nav-btn" href="singlemode-vs-multimode.html">Next Article →</a>
+    </div>
+
+    <!-- SOCIAL SHARE SECTION -->
+    <div class="social-share-container">
+        <span>📌 ဤဆောင်းပါးကို သူငယ်ချင်းများထံ မျှဝေရန်:</span>
+        <div class="share-buttons-group">
+            <a class="share-btn fb" href="#" id="shareFacebook" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a class="share-btn tg" href="#" id="shareTelegram" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.622-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.46-1.903-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.153.228.166.331.011.093.024.304.007.469z"></path>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- COMMENTS SECTION -->
+    <section class="section" id="comments">
+        <div class="section-heading">
+            <span class="section-label">COMMUNITY</span>
+            <h2>Comments & Discussions</h2>
+            <p>ဆောင်းပါးနှင့် ပတ်သက်သည့် မေးခွန်းများနှင့် မှတ်ချက်များကို အောက်တွင် မေးမြန်းနိုင်ပါသည်။</p>
+        </div>
+        <div id="commentsContainer" style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Utterances Comment Script ကို ဤနေရာတွင် တိုက်ရိုက်ထည့်ပါ -->
+            <script src="https://utteranc.es/client.js"
+                    repo="fiberoptichub/fiberoptichub.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT & FOOTER -->
+    <script src="../js/index.js"></script>
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+  
+  <!-- Back to Top Button -->
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    ⬆
+</button>
+
+</body>
+</html>

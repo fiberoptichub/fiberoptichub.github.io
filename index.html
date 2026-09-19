@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fiber Optic Hub is a knowledge sharing platform for learning Fiber Optic, FTTH, OTDR, Troubleshooting and Network Technology.">
+    <meta name="keywords" content="Fiber Optic, FTTH, OTDR, Fusion Splicing, Optical Fiber, Network Technology">
+    <meta name="author" content="Fiber Optic Hub">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://htaylinnaung.github.io/fiberoptichub/">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fiber Optic Hub">
+    <meta property="og:description" content="Fiber Optic, FTTH, OTDR, Troubleshooting and Network Technology.">
+    <meta property="og:image" content="https://htaylinnaung.github.io/fiberoptichub/images/og-image.png">
+    <meta property="og:url" content="https://htaylinnaung.github.io/fiberoptichub/">
+    <meta property="og:site_name" content="Fiber Optic Hub">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fiber Optic Hub">
+    <meta name="twitter:description" content="Fiber Optic, FTTH, OTDR, Troubleshooting and Network Technology.">
+    <meta name="twitter:image" content="https://htaylinnaung.github.io/fiberoptichub/images/og-image.png">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Fiber Optic Hub - Learn Fiber Optic & FTTH Technology</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <style>
+        /* Layout Structure Styling */
+        body {
+            background-color: #0b132b;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Hero Banner at the Top (Full Width) */
+        .hero-banner {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.85) 100%), url('images/Hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 3.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 2rem;
+            box-sizing: border-box;
+        }
+
+        .hero-banner h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .hero-banner h1 span {
+            color: #38bdf8;
+        }
+        .hero-banner p {
+            color: #94a3b8;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Container for Columns (Sidebar & Content) */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            display: flex;
+            gap: 2rem;
+            padding: 0 1rem;
+            box-sizing: border-box;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Left Sidebar */
+        .left-sidebar {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        /* Right Content Area */
+        .right-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Articles Container */
+        #paginatedArticlesContainer {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.25rem !important;
+            width: 100% !important;
+        }
+
+        #paginatedArticlesContainer > div,
+        .article-card {
+            width: 100% !important;
+            background: #1e293b !important;
+            padding: 1.25rem !important;
+            border-radius: 10px !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Full-width Footer Styling */
+        footer {
+            width: 100% !important;
+            background: #07111f;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        /* Navigation Links */
+        .main-nav a,
+        .mobile-nav a {
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .mobile-nav a:hover {
+            color: #38bdf8 !important;
+        }
+
+        /* Mobile Menu ပုံစံ */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background-color: #1e293b;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .mobile-nav a {
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Collapsible Widget Styles (Sidebar အတွက်) */
+        .collapsible-widget .widget-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            margin: 0;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .collapsible-widget .widget-header .arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .collapsible-widget .widget-content {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+
+        /* စဖွင့်ချင်း ပိတ်ထားမည့် အနေအထား (collapsed) */
+        .collapsible-widget.collapsed .widget-content {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .collapsible-widget.collapsed .widget-header .arrow {
+            transform: rotate(-90deg);
+        }
+
+        /* Responsive for Mobile */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column !important;
+                padding: 0 0.75rem;
+            }
+            .left-sidebar {
+                position: relative !important;
+                top: 0 !important;
+                width: 100% !important;
+            }
+            .site-header {
+                position: relative;
+            }
+        }
+
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-glow: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        /* Scrollbar လှလှလေးဖြစ်အောင် */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <!-- SITE HEADER -->
+    <header class="site-header" style="position: relative; display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #07111f; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="logo" style="display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.1rem;">
+            <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
+        </div>
+
+        <nav class="main-nav" aria-label="Main Navigation" style="display: flex; gap: 1.5rem;">
+            <a href="#top">Home</a>
+            <a href="#topics">Learn</a>
+            <a href="#articles">Articles</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="menu" id="menuBtn" type="button" aria-label="Open menu" onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+            ☰
+        </button>
+
+        <!-- MOBILE MENU -->
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+            <a href="#top" onclick="toggleMobileMenu()"><span aria-hidden="true">🏠</span> Home</a>
+            <a href="#topics" onclick="toggleMobileMenu()"><span aria-hidden="true">📚</span> Learn</a>
+            <a href="#articles" onclick="toggleMobileMenu()"><span aria-hidden="true">📰</span> Articles</a>
+            <a href="#about" onclick="toggleMobileMenu()"><span aria-hidden="true">ℹ️</span> About</a>
+        </nav>
+    </header>
+
+    <!-- 1. HERO BANNER AT THE TOP -->
+    <section class="hero-banner">
+        <h1>FIBER OPTIC <span>HUB</span></h1>
+        <p>Fiber Optic နည်းပညာဆောင်းပါးများကို လေ့လာနိုင်ပါသည်။</p>
+    </section>
+
+    <!-- 2. MAIN CONTAINER WITH COLUMNS (Sidebar & Articles) -->
+    <div class="main-wrapper">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="left-sidebar">
+            
+            <!-- SEARCH BOX WIDGET -->
+            <div class="sidebar-widget" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #fff;">🔍 Search Knowledge</h3>
+                <div class="search-box" style="position: relative;">
+                    <input type="text" id="searchInput" placeholder="Search topics..." autocomplete="off" aria-label="Search" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; box-sizing: border-box;">
+                    <div id="searchResults" class="search-results-dropdown" role="listbox"></div>
+                </div>
+            </div>
+
+<!-- =====================================================
+     SITE INFORMATION WIDGET
+     ===================================================== -->
+
+<div class="sidebar-widget site-info-widget">
+
+    <button
+        class="site-info-toggle"
+        type="button"
+        aria-expanded="true"
+    >
+
+        <div class="site-info-header">
+            <span class="site-info-icon">📊</span>
+            <h3>Site Information</h3>
+        </div>
+
+        <span class="site-info-arrow">▼</span>
+
+    </button>
+
+
+    <div class="site-info-content">
+
+        <div class="site-info-list">
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>📚</span>
+                    <span>Articles</span>
+                </div>
+                <strong id="infoArticles">0</strong>
+            </div>
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>🗂️</span>
+                    <span>Categories</span>
+                </div>
+                <strong id="infoCategories">0</strong>
+            </div>
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>🌱</span>
+                    <span>Beginner</span>
+                </div>
+                <strong id="infoBeginner">0</strong>
+            </div>
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>🔧</span>
+                    <span>Intermediate</span>
+                </div>
+                <strong id="infoIntermediate">0</strong>
+            </div>
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>🎓</span>
+                    <span>Advanced</span>
+                </div>
+                <strong id="infoAdvanced">0</strong>
+            </div>
+
+            <div class="site-info-item">
+                <div class="site-info-label">
+                    <span>📅</span>
+                    <span>Latest Article</span>
+                </div>
+                <strong id="infoLatestArticle">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+          
+            <!-- CATEGORIES WIDGET (Collapsible ပုံစံပြောင်းထားသည် - collapsed ထည့်ပါက ပိတ်ထားမည်) -->
+            <div class="sidebar-widget collapsible-widget" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
+                <h3 class="widget-header" onclick="toggleWidget(this)" style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 0;">
+                    <span>📚 Categories</span>
+                    <span class="arrow">▼</span>
+                </h3>
+                <div class="widget-content" style="margin-top: 0.75rem;">
+                    <ul class="sidebar-categories" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <li><a href="categories/fiber-optic-basics.html" class="category-item" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;">📖 Fiber Optic Basics</a></li>
+                        <li><a href="categories/splicing.html" class="category-item" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;">🔧 Splicing</a></li>
+                        <li><a href="categories/otdr-and-opm.html" class="category-item" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;">🔬 OTDR and OPM</a></li>
+                        <li><a href="categories/ftth.html" class="category-item" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;">📡 FTTH</a></li>
+                        <li><a href="categories/all-articles.html" class="category-item active" style="color: #38bdf8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px; font-weight: bold;">✨ All</a></li>
+                    </ul>
+                </div>
+            </div>
+          
+            <!-- CALCULATOR WIDGET (Collapsible ပုံစံ - စဖွင့်ချင်း ပိတ်ထားရန် collapsed ထည့်ထားသည်) -->
+            <div class="sidebar-widget collapsible-widget collapsed" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                <h3 class="widget-header" onclick="toggleWidget(this)" style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 0;">
+                    <span>📐 Loss Calculator</span>
+                    <span class="arrow">▼</span>
+                </h3>
+                <div class="widget-content" style="margin-top: 0.75rem;">
+                    <form id="lossCalcForm" class="calculator-form" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <input type="number" id="fiberLength" placeholder="Distance (km)" step="0.1" required style="padding: 0.5rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff;">
+                        <input type="number" id="spliceCount" placeholder="Splice Count" required style="padding: 0.5rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff;">
+                        <button type="submit" class="btn" style="padding: 0.5rem; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Calculate</button>
+                    </form>
+                    <div class="calc-result" id="calcResult" style="margin-top: 10px; font-size: 0.9rem; color: #38bdf8;"></div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- RIGHT COLUMN (ARTICLES SECTION) -->
+        <main class="right-content" id="articles">
+            <div class="section-heading" style="margin-bottom: 1.25rem;">
+                <span class="section-label" style="color: #38bdf8; font-size: 0.85rem; font-weight: bold;">ARCHIVES</span>
+                <h2 id="sectionTitle" style="font-size: 1.5rem; color: #fff; margin-top: 4px;">All Articles (Newest First)</h2>
+            </div>
+
+            <!-- Articles Container -->
+            <div id="paginatedArticlesContainer">
+                <!-- Articles will be loaded here dynamically from JavaScript -->
+            </div>
+
+            <!-- PAGINATION CONTROLS -->
+            <div class="pagination-controls" id="paginationControls" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem;">
+                <!-- Pagination buttons generated via JavaScript -->
+            </div>
+        </main>
+
+    </div>
+
+    <!-- 3. FOOTER -->
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px; justify-content: center; display: flex; align-items: center; gap: 6px;">
+            <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
+        </div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/index.js" defer></script>
+    <script>
+        // Mobile Menu Toggle Function
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            if (mobileNav) {
+                if (mobileNav.style.display === 'flex') {
+                    mobileNav.style.display = 'none';
+                } else {
+                    mobileNav.style.display = 'flex';
+                }
+            }
+        }
+
+        // Widget Collapse/Expand Toggle Function
+        function toggleWidget(headerElement) {
+            let widget = headerElement.closest('.collapsible-widget');
+            widget.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+
+</html>
