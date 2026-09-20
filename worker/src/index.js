@@ -438,7 +438,7 @@ Verify technical accuracy before returning.
   ================================================= */
 
   const model =
-    "gemini-2.5-flash";
+    "gemini-3.6-flash";
 
 
   const apiURL =
