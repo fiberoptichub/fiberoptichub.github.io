@@ -231,6 +231,41 @@ def markdown_to_html(text):
 # Get Metadata
 # =========================================================
 
+# =========================================================
+# Get OG Image
+# Uses the first image in the article as the Open Graph image.
+# Falls back to the default OG image when no article image exists.
+# =========================================================
+
+def get_og_image(text):
+
+    normalized_text = normalize_images(text)
+
+    match = re.search(
+        r"!\[[^\]]*\]\(([^)\s]+)",
+        normalized_text
+    )
+
+    if not match:
+        return f"{SITE_URL}/images/og-image.jpg"
+
+    image_path = match.group(1).strip()
+
+    if image_path.startswith(("http://", "https://")):
+        return image_path
+
+    while image_path.startswith("../"):
+        image_path = image_path[3:]
+
+    if image_path.startswith("./"):
+        image_path = image_path[2:]
+
+    if image_path.startswith("/"):
+        image_path = image_path[1:]
+
+    return f"{SITE_URL}/{image_path}"
+
+
 def get_metadata(post):
 
     title = (
@@ -395,6 +430,8 @@ def build_articles_pipeline():
                 description
             ) = get_metadata(post)
 
+            og_image = get_og_image(post.content)
+
             read_time = calculate_reading_time(
                 post.content
             )
@@ -433,6 +470,8 @@ def build_articles_pipeline():
                 "{{ARTICLE_LEVEL}}": level,
 
                 "{{ARTICLE_DESCRIPTION}}": description,
+                "{{ARTICLE_OG_IMAGE}}": og_image,
+
 
                 "{{READ_TIME}}": read_time,
 
