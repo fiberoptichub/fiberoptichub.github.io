@@ -991,46 +991,44 @@ async function publishArticle(
 
 
   /* =================================================
-     HTML
+     MARKDOWN
   ================================================= */
 
-  const html =
-    buildArticleHTML(
-
+  const markdown =
+    buildArticleMarkdown(
       article,
-
       imageURL
-
     );
 
-
-  const htmlBase64 =
+  const markdownBase64 =
     toBase64UTF8(
-      html
+      markdown
     );
 
+  const markdownPath =
+    "markdown_articles/" +
+    slug +
+    ".md";
 
   /* =================================================
-     SAVE ARTICLE
+     SAVE MARKDOWN ARTICLE
   ================================================= */
 
   try {
 
     await githubPutFile(
 
-      articlePath,
+      markdownPath,
 
-      htmlBase64,
+      markdownBase64,
 
-      "Publish article: " +
+      "Publish Markdown article: " +
       title,
 
       env,
 
       false
-
     );
-
 
     /* =================================================
        FACEBOOK POST TEXT
@@ -1284,8 +1282,225 @@ async function githubPutFile(
 
 
 /* =====================================================
+   BUILD ARTICLE MARKDOWN
+===================================================== */
+
+function buildArticleMarkdown(
+  article,
+  imageURL
+) {
+
+  const title =
+    String(
+      article.title || ""
+    ).trim();
+
+  const category =
+    String(
+      article.category ||
+      "Fiber Optic Basics"
+    ).trim();
+
+  const level =
+    String(
+      article.level ||
+      "Beginner"
+    ).trim();
+
+  const description =
+    String(
+      article.description || ""
+    )
+      .replace(/\r?\n/g, " ")
+      .trim();
+
+  const date =
+    String(
+      article.date ||
+      new Date().toISOString()
+    ).slice(0, 10);
+
+  const yamlEscape = value =>
+    String(
+      value || ""
+    )
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"')
+      .replace(/\r?\n/g, " ");
+
+  const lines = [
+    "---",
+    `title: "${yamlEscape(title)}"`,
+    `date: "${yamlEscape(date)}"`,
+    `category: "${yamlEscape(category)}"`,
+    `level: "${yamlEscape(level)}"`,
+    `description: "${yamlEscape(description)}"`,
+    "---",
+    "",
+    `# ${title}`,
+    ""
+  ];
+
+  if (imageURL) {
+
+    const imagePath =
+      imageURL.replace(
+        WEBSITE_URL + "/",
+        "../"
+      );
+
+    lines.push(
+      `![${title}](${imagePath})`,
+      ""
+    );
+  }
+
+  if (
+    article.introduction
+  ) {
+
+    lines.push(
+      String(
+        article.introduction
+      ).trim(),
+      ""
+    );
+  }
+
+  if (
+    Array.isArray(
+      article.sections
+    )
+  ) {
+
+    article.sections.forEach(
+      section => {
+
+        const heading =
+          String(
+            section?.heading || ""
+          ).trim();
+
+        if (heading) {
+
+          lines.push(
+            `## ${heading}`,
+            ""
+          );
+        }
+
+        if (
+          Array.isArray(
+            section?.paragraphs
+          )
+        ) {
+
+          section.paragraphs.forEach(
+            paragraph => {
+
+              const text =
+                String(
+                  paragraph || ""
+                ).trim();
+
+              if (text) {
+
+                lines.push(
+                  text,
+                  ""
+                );
+              }
+            }
+          );
+        }
+
+        if (
+          Array.isArray(
+            section?.bullets
+          )
+        ) {
+
+          section.bullets.forEach(
+            bullet => {
+
+              const text =
+                String(
+                  bullet || ""
+                ).trim();
+
+              if (text) {
+
+                lines.push(
+                  `- ${text}`
+                );
+              }
+            }
+          );
+
+          if (
+            section.bullets.length
+          ) {
+
+            lines.push("");
+          }
+        }
+      }
+    );
+  }
+
+  if (
+    Array.isArray(
+      article.key_points
+    ) &&
+    article.key_points.length
+  ) {
+
+    lines.push(
+      "## Key Points",
+      ""
+    );
+
+    article.key_points.forEach(
+      point => {
+
+        const text =
+          String(
+            point || ""
+          ).trim();
+
+        if (text) {
+
+          lines.push(
+            `- ${text}`
+          );
+        }
+      }
+    );
+
+    lines.push("");
+  }
+
+  if (
+    article.conclusion
+  ) {
+
+    lines.push(
+      "## Conclusion",
+      "",
+      String(
+        article.conclusion
+      ).trim(),
+      ""
+    );
+  }
+
+  return lines.join("\n").trim() + "\n";
+}
+
+/* =====================================================
    BUILD ARTICLE HTML
 ===================================================== */
+
 
 function buildArticleHTML(
   article,
