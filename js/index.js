@@ -204,42 +204,64 @@ function updateCategoryCounts() {
 
 
 
-function setupSearch() {  
-    const searchInput = document.getElementById('searchInput');  
-    const searchResults = document.getElementById('searchResults');  
-    if (!searchInput || !searchResults) return;  
+function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
 
-    searchInput.addEventListener('input', (e) => {  
-        const query = e.target.value.toLowerCase().trim();  
-        searchResults.innerHTML = '';  
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        searchResults.innerHTML = '';
 
-        if (query.length === 0) {  
-            searchResults.style.display = 'none';  
-            return;  
-        }  
+        if (query.length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
 
-        const matched = allArticles.filter(art =>   
-            (art.title && art.title.toLowerCase().includes(query)) ||   
-            (art.summary && art.summary.toLowerCase().includes(query))  
-        );  
+        const matched = allArticles.filter(art => {
+            const title = (art.title || '').toLowerCase();
+            const summary = (art.summary || '').toLowerCase();
+            const category = (art.category || '').toLowerCase();
+            const level = (art.level || '').toLowerCase();
 
-        if (matched.length > 0) {  
-            searchResults.style.display = 'block';  
-            searchResults.style.cssText = 'position: absolute; top: 100%; left: 0; right: 0; background: #1e293b; border: 1px solid #475569; border-radius: 6px; margin-top: 5px; max-height: 200px; overflow-y: auto; z-index: 100; padding: 0.5rem;';  
-              
-            matched.forEach(art => {  
-                const item = document.createElement('a');  
-                item.href = art.url;  
-                item.textContent = art.title;  
-                item.style.cssText = 'display: block; padding: 0.4rem; color: #38bdf8; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #334155;';  
-                searchResults.appendChild(item);  
-            });  
-        } else {  
-            searchResults.style.display = 'block';  
-            searchResults.style.cssText = 'position: absolute; top: 100%; left: 0; right: 0; background: #1e293b; border: 1px solid #475569; border-radius: 6px; margin-top: 5px; padding: 0.5rem; color: #94a3b8; font-size: 0.9rem;';  
-            searchResults.textContent = 'No results found';  
-        }  
-    });  
+            return (
+                title.includes(query) ||
+                summary.includes(query) ||
+                category.includes(query) ||
+                level.includes(query)
+            );
+        });
+
+        searchResults.style.display = 'block';
+        searchResults.style.cssText =
+            'position: absolute; top: 100%; left: 0; right: 0; background: #1e293b; border: 1px solid #475569; border-radius: 6px; margin-top: 5px; max-height: 300px; overflow-y: auto; z-index: 100; padding: 0.5rem;';
+
+        if (matched.length === 0) {
+            searchResults.textContent = 'No results found';
+            searchResults.style.color = '#94a3b8';
+            searchResults.style.fontSize = '0.9rem';
+            return;
+        }
+
+        matched.forEach(art => {
+            const item = document.createElement('a');
+            item.href = art.url;
+            item.style.cssText =
+                'display: block; padding: 0.5rem; color: #38bdf8; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #334155;';
+
+            const title = document.createElement('div');
+            title.textContent = art.title || '';
+
+            const meta = document.createElement('div');
+            meta.textContent =
+                [art.category, art.level].filter(Boolean).join(' · ');
+            meta.style.cssText =
+                'color: #94a3b8; font-size: 0.75rem; margin-top: 2px;';
+
+            item.appendChild(title);
+            item.appendChild(meta);
+            searchResults.appendChild(item);
+        });
+    });
 }
 
 });
@@ -547,47 +569,7 @@ document.addEventListener('click', function(e) {
 
 }
 
-document.getElementById('searchInput').addEventListener('input', async function() {
-let query = this.value.toLowerCase().trim();
-let resultContainer = document.getElementById('searchResults');
 
-// စာသားမပါရင် ရလဒ်ကို ရှင်းမည်  
-if (query === '') {  
-    resultContainer.innerHTML = '';  
-    return;  
-}  
-
-try {  
-    // Python ထုတ်ပေးထားသော JSON ဖိုင်ကို လှမ်းဖတ်မည်   
-    let response = await fetch('/data/articles.json');  
-    let articles = await response.json();  
-
-    // ခေါင်းစဉ် (title) သို့မဟုတ် အနှစ်ချုပ် (summary) ထဲတွင် ရှာမည်  
-    let filtered = articles.filter(article =>   
-        article.title.toLowerCase().includes(query) ||   
-        (article.summary && article.summary.toLowerCase().includes(query))  
-    );  
-
-    resultContainer.innerHTML = '';  
-
-    if (filtered.length === 0) {  
-        resultContainer.innerHTML = `<div class="no-result">ဘာမှ မတွေ့ပါ</div>`;  
-        return;  
-    }  
-
-    // တွေ့ရှိသော ရလဒ်များကို ဖွဲ့စည်းပြသမည်  
-    filtered.forEach(article => {  
-        let item = document.createElement('div');  
-        item.className = 'search-item';  
-        item.innerHTML = `<a href="/${article.url}">${article.title}</a>`;  
-        resultContainer.appendChild(item);  
-    });  
-
-} catch (error) {  
-    console.error("Search error:", error);  
-}
-
-});
 
 // Search box ရဲ့ အပြင်ဘက်ကို နှိပ်လိုက်ရင် ရလဒ် ပျောက်သွားစေရန်
 document.addEventListener('click', function(e) {
