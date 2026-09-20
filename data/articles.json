@@ -1,5 +1,15 @@
 [
     {
+        "title": "What is Wi-Fi?",
+        "url": "articles/what-is-wifi.html",
+        "date": "2026-09-21",
+        "category": "Wi-Fi",
+        "level": "Beginner",
+        "summary": "Wi-Fi ဆိုတာဘာလဲ၊ Wireless Network မှတစ်ဆင့် Devices များကို Network နှင့် မည်သို့ချိတ်ဆက်ပေးသလဲနှင့် ၎င်း၏ အခြေခံလုပ်ဆောင်ပုံကို လေ့လာရန်။",
+        "description": "Wi-Fi ဆိုတာဘာလဲ၊ Wireless Network မှတစ်ဆင့် Devices များကို Network နှင့် မည်သို့ချိတ်ဆက်ပေးသလဲနှင့် ၎င်း၏ အခြေခံလုပ်ဆောင်ပုံကို လေ့လာရန်။",
+        "readingTime": "4 min read"
+    },
+    {
         "title": "Core, Cladding and Coating",
         "url": "articles/core-cladding-coating.html",
         "date": "2026-08-30",
@@ -40,16 +50,6 @@
         "readingTime": "4 min read"
     },
     {
-        "title": "Single Mode Vs Multimode",
-        "url": "articles/singlemode-vs-multimode.html",
-        "date": "2026-08-25",
-        "category": "Fiber Optic Basics",
-        "level": "Beginner",
-        "summary": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
-        "description": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
-        "readingTime": "5 min read"
-    },
-    {
         "title": "FTTx",
         "url": "articles/fttx.html",
         "date": "2026-08-25",
@@ -60,13 +60,13 @@
         "readingTime": "4 min read"
     },
     {
-        "title": "Fiber Splicing",
-        "url": "articles/fiber-splicing.html",
-        "date": "2026-08-24",
-        "category": "Splicing",
+        "title": "Single Mode Vs Multimode",
+        "url": "articles/singlemode-vs-multimode.html",
+        "date": "2026-08-25",
+        "category": "Fiber Optic Basics",
         "level": "Beginner",
-        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
-        "description": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
+        "summary": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
+        "description": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
         "readingTime": "5 min read"
     },
     {
@@ -77,6 +77,16 @@
         "level": "Beginner",
         "summary": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
         "description": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
+        "readingTime": "5 min read"
+    },
+    {
+        "title": "Fiber Splicing",
+        "url": "articles/fiber-splicing.html",
+        "date": "2026-08-24",
+        "category": "Splicing",
+        "level": "Beginner",
+        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
+        "description": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
         "readingTime": "5 min read"
     }
 ]
