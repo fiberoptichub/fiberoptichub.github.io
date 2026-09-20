@@ -321,12 +321,25 @@ def build_articles_pipeline():
     # Find Markdown files
     # -----------------------------------------------------
 
-    md_files = sorted(
-        [
-            f
-            for f in os.listdir(MARKDOWN_DIR)
-            if f.lower().endswith(".md")
-        ]
+    md_files = [
+        f
+        for f in os.listdir(MARKDOWN_DIR)
+        if f.lower().endswith(".md")
+    ]
+
+    def get_file_date(filename):
+        post = frontmatter.load(
+            os.path.join(MARKDOWN_DIR, filename)
+        )
+        return str(
+            post.get("date")
+            or post.get("DATE")
+            or ""
+        )
+
+    md_files.sort(
+        key=get_file_date,
+        reverse=True
     )
 
     total_files = len(md_files)
@@ -411,6 +424,7 @@ def build_articles_pipeline():
             replacements = {
 
                 "{{ARTICLE_TITLE}}": title,
+                "{{ARTICLE_SLUG}}": os.path.splitext(filename)[0],
 
                 "{{ARTICLE_DATE}}": date,
 

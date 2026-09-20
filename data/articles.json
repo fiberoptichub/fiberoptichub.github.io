@@ -18,15 +18,6 @@
         "readingTime": "3 min read"
     },
     {
-        "title": "FTTH",
-        "url": "articles/ftth.html",
-        "date": "2026-08-26",
-        "category": "FTTH",
-        "level": "Beginner",
-        "summary": "FTTH ၏ အခြေခံအယူအဆ၊ Network ဖွဲ့စည်းပုံ၊ အလုပ်လုပ်ပုံနှင့် Fiber Optic မှတစ်ဆင့် အိမ်သုံး Internet ဝန်ဆောင်မှု ပေးပို့ပုံကို Beginner များ နားလည်လွယ်စေရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
-        "readingTime": "4 min read"
-    },
-    {
         "title": "OTDR Basics",
         "url": "articles/otdr.html",
         "date": "2026-08-26",
@@ -34,6 +25,15 @@
         "level": "Beginner",
         "summary": "OTDR ၏ အခြေခံအယူအဆ၊ အလုပ်လုပ်ပုံ၊ OTDR Trace ကိုဖတ်ရှုနည်းနှင့် Fiber Link အတွင်းရှိ Events များကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။",
         "readingTime": "5 min read"
+    },
+    {
+        "title": "FTTH",
+        "url": "articles/ftth.html",
+        "date": "2026-08-26",
+        "category": "FTTH",
+        "level": "Beginner",
+        "summary": "FTTH ၏ အခြေခံအယူအဆ၊ Network ဖွဲ့စည်းပုံ၊ အလုပ်လုပ်ပုံနှင့် Fiber Optic မှတစ်ဆင့် အိမ်သုံး Internet ဝန်ဆောင်မှု ပေးပို့ပုံကို Beginner များ နားလည်လွယ်စေရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "readingTime": "4 min read"
     },
     {
         "title": "FTTx",
@@ -54,21 +54,21 @@
         "readingTime": "5 min read"
     },
     {
-        "title": "Fiber Splicing",
-        "url": "articles/fiber-splicing.html",
-        "date": "2026-08-24",
-        "category": "Splicing",
-        "level": "Beginner",
-        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
-        "readingTime": "5 min read"
-    },
-    {
         "title": "What is Fiber Optic?",
         "url": "articles/what-is-fiber-optic.html",
         "date": "2026-08-24",
         "category": "Fiber Optic Basics",
         "level": "Beginner",
         "summary": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
+        "readingTime": "5 min read"
+    },
+    {
+        "title": "Fiber Splicing",
+        "url": "articles/fiber-splicing.html",
+        "date": "2026-08-24",
+        "category": "Splicing",
+        "level": "Beginner",
+        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
         "readingTime": "5 min read"
     }
 ]
