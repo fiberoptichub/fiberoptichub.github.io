@@ -59,6 +59,7 @@ function loadArticlesJSON(index = 0) {
                 summary: "ဖိုင်ဘာကြိုးဆက်ခြင်း (Splicing) ပြုလုပ်ရာတွင် သိထားရမည့် အချက်များနှင့် ကျင့်စဉ်များ။"  
             }  
         ];  
+        updateCategoryCounts();
         renderArticles();  
         setupCategoryFilter();  
         return;  
@@ -71,6 +72,7 @@ function loadArticlesJSON(index = 0) {
         })  
         .then(data => {  
             allArticles = data;  
+            updateCategoryCounts();
             renderArticles();  
             setupCategoryFilter();  
             setupSearch();  
@@ -139,6 +141,39 @@ function renderPagination(totalItems) {
     }  
 }  
 
+function updateCategoryCounts() {
+    const categoryLinks = document.querySelectorAll('.sidebar-categories a');
+
+    categoryLinks.forEach(link => {
+        link.style.display = 'flex';
+        link.style.justifyContent = 'space-between';
+        link.style.alignItems = 'center';
+    });
+
+    categoryLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+
+        if (href.includes('all-articles')) {
+            const count = allArticles.length;
+            link.querySelector(".category-count").textContent = count;
+            return;
+        }
+
+        const categoryName = link.dataset.category || "";
+
+
+
+
+        const count = allArticles.filter(article =>
+            article.category &&
+            article.category.toLowerCase() === categoryName.toLowerCase()
+        ).length;
+
+        const emoji = link.textContent.match(/[📖🔧🔬📡]/)?.[0] || '';
+        link.querySelector(".category-count").textContent = count;
+    });
+}
+
         function setupCategoryFilter() {  
     const categoryLinks = document.querySelectorAll('.sidebar-categories a, .categories a');  
     const sectionTitle = document.getElementById('sectionTitle');  
@@ -151,7 +186,7 @@ function renderPagination(totalItems) {
 
             // HTML ထဲက Link text ယူမည့်အစား Link ရဲ့ href သို့မဟုတ် သတ်မှတ်ထားသော နာမည်ကို တိုက်ရိုက်သုံးခြင်း  
             const href = link.getAttribute('href');  
-            let titleText = link.textContent.replace(/[📖🔧🔬📡✨]/g, '').trim(); // Emoji များကို လုံးဝဖယ်ရှားခြင်း  
+            let titleText = link.dataset.category || link.textContent.trim();
 
             if (href.includes('all-articles')) {  
                 currentCategory = 'All';  
