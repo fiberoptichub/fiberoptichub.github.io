@@ -40,16 +40,6 @@
         "readingTime": "4 min read"
     },
     {
-        "title": "FTTx",
-        "url": "articles/fttx.html",
-        "date": "2026-08-25",
-        "category": "FTTH",
-        "level": "Beginner",
-        "summary": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
-        "description": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
-        "readingTime": "4 min read"
-    },
-    {
         "title": "Single Mode Vs Multimode",
         "url": "articles/singlemode-vs-multimode.html",
         "date": "2026-08-25",
@@ -60,14 +50,14 @@
         "readingTime": "5 min read"
     },
     {
-        "title": "What is Fiber Optic?",
-        "url": "articles/what-is-fiber-optic.html",
-        "date": "2026-08-24",
-        "category": "Fiber Optic Basics",
+        "title": "FTTx",
+        "url": "articles/fttx.html",
+        "date": "2026-08-25",
+        "category": "FTTH",
         "level": "Beginner",
-        "summary": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
-        "description": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
-        "readingTime": "5 min read"
+        "summary": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "description": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "readingTime": "4 min read"
     },
     {
         "title": "Fiber Splicing",
@@ -77,6 +67,16 @@
         "level": "Beginner",
         "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
         "description": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
+        "readingTime": "5 min read"
+    },
+    {
+        "title": "What is Fiber Optic?",
+        "url": "articles/what-is-fiber-optic.html",
+        "date": "2026-08-24",
+        "category": "Fiber Optic Basics",
+        "level": "Beginner",
+        "summary": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
+        "description": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
         "readingTime": "5 min read"
     }
 ]
