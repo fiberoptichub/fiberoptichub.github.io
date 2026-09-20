@@ -493,6 +493,7 @@ def build_articles_pipeline():
                 "level": level,
 
                 "summary": description,
+                "description": description,
 
                 "readingTime": read_time
 

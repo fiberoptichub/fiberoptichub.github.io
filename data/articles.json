@@ -6,6 +6,7 @@
         "category": "Fiber Optic Basics",
         "level": "Beginner",
         "summary": "Optical Fiber ၏ အဓိကအစိတ်အပိုင်းများဖြစ်သော Core, Cladding နှင့် Coating တို့၏ ဖွဲ့စည်းပုံ၊ လုပ်ဆောင်ပုံနှင့် တစ်ခုနှင့်တစ်ခု ဆက်စပ်လုပ်ဆောင်ပုံကို အခြေခံမှစ၍ ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "description": "Optical Fiber ၏ အဓိကအစိတ်အပိုင်းများဖြစ်သော Core, Cladding နှင့် Coating တို့၏ ဖွဲ့စည်းပုံ၊ လုပ်ဆောင်ပုံနှင့် တစ်ခုနှင့်တစ်ခု ဆက်စပ်လုပ်ဆောင်ပုံကို အခြေခံမှစ၍ ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
         "readingTime": "4 min read"
     },
     {
@@ -15,6 +16,7 @@
         "category": "Fiber Optic Basics",
         "level": "Beginner",
         "summary": "Mode Field Diameter (MFD) ၏ အဓိပ္ပာယ်၊ Single-Mode Fiber အတွင်းရှိ Optical Mode နှင့် ၎င်း၏ အရွယ်အစားကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။",
+        "description": "Mode Field Diameter (MFD) ၏ အဓိပ္ပာယ်၊ Single-Mode Fiber အတွင်းရှိ Optical Mode နှင့် ၎င်း၏ အရွယ်အစားကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။",
         "readingTime": "3 min read"
     },
     {
@@ -24,6 +26,7 @@
         "category": "OTDR and OPM",
         "level": "Beginner",
         "summary": "OTDR ၏ အခြေခံအယူအဆ၊ အလုပ်လုပ်ပုံ၊ OTDR Trace ကိုဖတ်ရှုနည်းနှင့် Fiber Link အတွင်းရှိ Events များကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။",
+        "description": "OTDR ၏ အခြေခံအယူအဆ၊ အလုပ်လုပ်ပုံ၊ OTDR Trace ကိုဖတ်ရှုနည်းနှင့် Fiber Link အတွင်းရှိ Events များကို နားလည်နိုင်ရန် ရှင်းလင်းဖော်ပြထားသော Beginner အဆင့် ဆောင်းပါး။",
         "readingTime": "5 min read"
     },
     {
@@ -33,6 +36,17 @@
         "category": "FTTH",
         "level": "Beginner",
         "summary": "FTTH ၏ အခြေခံအယူအဆ၊ Network ဖွဲ့စည်းပုံ၊ အလုပ်လုပ်ပုံနှင့် Fiber Optic မှတစ်ဆင့် အိမ်သုံး Internet ဝန်ဆောင်မှု ပေးပို့ပုံကို Beginner များ နားလည်လွယ်စေရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "description": "FTTH ၏ အခြေခံအယူအဆ၊ Network ဖွဲ့စည်းပုံ၊ အလုပ်လုပ်ပုံနှင့် Fiber Optic မှတစ်ဆင့် အိမ်သုံး Internet ဝန်ဆောင်မှု ပေးပို့ပုံကို Beginner များ နားလည်လွယ်စေရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "readingTime": "4 min read"
+    },
+    {
+        "title": "FTTx",
+        "url": "articles/fttx.html",
+        "date": "2026-08-25",
+        "category": "FTTH",
+        "level": "Beginner",
+        "summary": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
+        "description": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
         "readingTime": "4 min read"
     },
     {
@@ -42,24 +56,7 @@
         "category": "Fiber Optic Basics",
         "level": "Beginner",
         "summary": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
-        "readingTime": "5 min read"
-    },
-    {
-        "title": "FTTx",
-        "url": "articles/fttx.html",
-        "date": "2026-08-25",
-        "category": "FTTH",
-        "level": "Beginner",
-        "summary": "FTTx သည် Fiber Optic Network ကို အသုံးပြု၍ Service Provider Network မှ User အထိ Broadband Access ပေးသည့် နည်းလမ်းများနှင့် FTTH, FTTB, FTTC, FTTN တို့၏ ကွာခြားချက်များကို လေ့လာနိုင်ရန် ရှင်းလင်းဖော်ပြထားသော ဆောင်းပါး။",
-        "readingTime": "4 min read"
-    },
-    {
-        "title": "Fiber Splicing",
-        "url": "articles/fiber-splicing.html",
-        "date": "2026-08-24",
-        "category": "Splicing",
-        "level": "Beginner",
-        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
+        "description": "Single Mode နှင့် Multimode Fiber တို့၏ ဖွဲ့စည်းပုံ၊ အလင်းသွားလာပုံ၊ Transmission Distance၊ Bandwidth၊ အသုံးပြုသည့်နေရာများနှင့် အဓိကကွာခြားချက်များကို နားလည်လွယ်စွာ နှိုင်းယှဉ်ရှင်းပြထားသည်။",
         "readingTime": "5 min read"
     },
     {
@@ -69,6 +66,17 @@
         "category": "Fiber Optic Basics",
         "level": "Beginner",
         "summary": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
+        "description": "Fiber Optic ဆိုသည်မှာ အလင်းအချက်ပြများကို အသုံးပြု၍ Data များကို အကွာအဝေးရှည်လျားစွာ မြန်နှုန်းမြင့်စွာ ပို့ဆောင်ပေးသော ဆက်သွယ်ရေးနည်းပညာဖြစ်သည်။",
+        "readingTime": "5 min read"
+    },
+    {
+        "title": "Fiber Splicing",
+        "url": "articles/fiber-splicing.html",
+        "date": "2026-08-24",
+        "category": "Splicing",
+        "level": "Beginner",
+        "summary": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
+        "description": "Fiber Splicing ဆိုသည်မှာ Optical Fiber နှစ်ချောင်း၏ Core များကို တိကျစွာ ချိန်ညှိပြီး အမြဲတမ်း သို့မဟုတ် ယာယီချိတ်ဆက်ပေးသည့် လုပ်ငန်းစဉ်ဖြစ်ပြီး Splicing အမျိုးအစားများ၊ အခြေခံလုပ်ဆောင်ပုံနှင့် အသုံးပြုသည့်နေရာများကို ရှင်းလင်းထားသည်။",
         "readingTime": "5 min read"
     }
 ]
