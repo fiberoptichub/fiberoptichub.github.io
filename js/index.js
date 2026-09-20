@@ -327,10 +327,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             /* ---------------------------------------------
-               Newest First
+               Same Category First, Then Newest
                --------------------------------------------- */
 
+            const currentArticle = articles.find(article => {
+                if (!article.url) return false;
+
+                const articlePath =
+                    article.url
+                        .replace(/^\/+/, "")
+                        .replace(/\/+$/, "");
+
+                return currentPath.endsWith(articlePath);
+            });
+
+            const currentCategory =
+                currentArticle?.category || "";
+
             relatedArticles.sort((a, b) => {
+
+                const aSameCategory =
+                    currentCategory &&
+                    a.category &&
+                    a.category.toLowerCase() ===
+                    currentCategory.toLowerCase();
+
+                const bSameCategory =
+                    currentCategory &&
+                    b.category &&
+                    b.category.toLowerCase() ===
+                    currentCategory.toLowerCase();
+
+                if (aSameCategory !== bSameCategory) {
+                    return bSameCategory - aSameCategory;
+                }
 
                 return (
                     new Date(b.date || "1970-01-01") -
