@@ -2161,41 +2161,43 @@ function formatDate(
 function createSlug(
   text
 ) {
-
-  const slug =
+  const input =
     String(
       text || ""
     )
-
       .toLowerCase()
+      .trim();
 
-      .trim()
+  const slug =
+    input
+      .replace(/[^\\x00-\\x7F]/g, " ")
+      .replace(/[^a-z0-9\\s-]/g, "")
+      .replace(/\\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
 
-      .replace(
-        /[^a-z0-9\s-]/g,
-        ""
-      )
+  let hash = 0;
 
-      .replace(
-        /\s+/g,
-        "-"
-      )
+  for (const char of input) {
+    hash =
+      ((hash << 5) -
+        hash +
+        char.codePointAt(0)) |
+      0;
+  }
 
-      .replace(
-        /-+/g,
-        "-"
-      )
+  const hashPart =
+    Math.abs(hash).toString(36);
 
-      .replace(
-        /^-+|-+$/g,
-        "");
+  if (!slug) {
+    return "fiber-optic-article-" + hashPart;
+  }
 
+  if (/[^ -]/.test(input)) {
+    return slug + "-" + hashPart;
+  }
 
-  return (
-    slug ||
-    "fiber-optic-article"
-  );
-
+  return slug;
 }
 
 
