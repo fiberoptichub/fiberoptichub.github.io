@@ -1082,25 +1082,25 @@ header nav a:hover,
    ================================ */
 
 header.site-header {
-    height: 160px !important;
-    min-height: 160px !important;
+    height: 60px !important;
+    min-height: 60px !important;
 
     background:
         linear-gradient(
             rgba(7, 17, 31, 0.30),
             rgba(7, 17, 31, 0.65)
         ),
-        url("../images/foh-logo.jpg") center center / cover no-repeat !important;
+        url("../images/foh-logo.png") center center / 100% auto no-repeat !important;
 
-    padding: 18px 20px !important;
-    align-items: flex-start !important;
+    padding: 0 20px !important;
+    align-items: center !important;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
     header.site-header {
-        height: 125px !important;
-        min-height: 125px !important;
+        height: 45px !important;
+        min-height: 45px !important;
     }
 
     .mobile-menu {
