@@ -1,7 +1,7 @@
 ---
 title: "What is Wi-Fi?"
 date: "2026-09-21"
-category: "Wi-Fi"
+category: "Networking"
 level: "Beginner"
 description: "Wi-Fi ဆိုတာဘာလဲ၊ Wireless Network မှတစ်ဆင့် Devices များကို Network နှင့် မည်သို့ချိတ်ဆက်ပေးသလဲနှင့် ၎င်း၏ အခြေခံလုပ်ဆောင်ပုံကို လေ့လာရန်။"
 ---
