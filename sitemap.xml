@@ -31,19 +31,19 @@
     </url>
 
     <url>
-        <loc>https://fiberoptichub.github.io/articles/fttx.html</loc>
-    </url>
-
-    <url>
         <loc>https://fiberoptichub.github.io/articles/singlemode-vs-multimode.html</loc>
     </url>
 
     <url>
-        <loc>https://fiberoptichub.github.io/articles/what-is-fiber-optic.html</loc>
+        <loc>https://fiberoptichub.github.io/articles/fttx.html</loc>
     </url>
 
     <url>
         <loc>https://fiberoptichub.github.io/articles/fiber-splicing.html</loc>
+    </url>
+
+    <url>
+        <loc>https://fiberoptichub.github.io/articles/what-is-fiber-optic.html</loc>
     </url>
 
 </urlset>
