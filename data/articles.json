@@ -1,5 +1,15 @@
 [
     {
+        "title": "Fiber Optic Cables",
+        "url": "articles/fiber-optic-cables.html",
+        "date": "2026-09-27",
+        "category": "Fiber Optic Basics",
+        "level": "Beginner",
+        "summary": "Fiber Optic Cable ဆိုတာဘာလဲ၊ အတွင်းဖွဲ့စည်းပုံ၊ Cable အမျိုးအစားများ၊ အသုံးပြုပုံနဲ့ သင့်တော်တဲ့ Cable ကိုရွေးချယ်ရာမှာ သိထားသင့်တဲ့အချက်များကို လေ့လာကြည့်ရအောင်။",
+        "description": "Fiber Optic Cable ဆိုတာဘာလဲ၊ အတွင်းဖွဲ့စည်းပုံ၊ Cable အမျိုးအစားများ၊ အသုံးပြုပုံနဲ့ သင့်တော်တဲ့ Cable ကိုရွေးချယ်ရာမှာ သိထားသင့်တဲ့အချက်များကို လေ့လာကြည့်ရအောင်။",
+        "readingTime": "5 min read"
+    },
+    {
         "title": "Fiber Optic Connectors",
         "url": "articles/connectors.html",
         "date": "2026-09-25",
