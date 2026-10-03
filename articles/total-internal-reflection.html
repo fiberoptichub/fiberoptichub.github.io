@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- METADATA AUTOMATION -->
+    <meta content="Total Internal Reflection (TIR)" name="article-title"/>
+    <meta content="2026-10-03" name="article-date"/>
+    <meta content="Fiber Optics" name="article-category"/>
+    <meta content="Beginner" name="article-level"/>
+    <meta content="Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။" name="article-description"/>
+    <meta content="Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။" name="description"/>
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Total Internal Reflection (TIR) | Fiber Optic Hub"/>
+    <meta property="og:description" content="Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။"/>
+    <meta property="og:url" content="https://fiberoptichub.github.io/articles/total-internal-reflection.html"/>
+    <link rel="canonical" href="https://fiberoptichub.github.io/articles/total-internal-reflection.html"/>
+    <meta property="og:image" content="https://fiberoptichub.github.io/images/total-internal-reflection/tir-diagram.webp"/>
+    <meta property="og:site_name" content="Fiber Optic Hub"/>
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Total Internal Reflection (TIR) | Fiber Optic Hub"/>
+    <meta name="twitter:description" content="Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။"/>
+    <meta name="twitter:image" content="https://fiberoptichub.github.io/images/total-internal-reflection/tir-diagram.webp"/>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <!-- PAGE TITLE & STYLESHEET -->
+    <title>Total Internal Reflection (TIR) | Fiber Optic Hub</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+
+    <!-- MATHJAX 3 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+</head>
+<body id="top">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
+        <!-- HEADER NAVIGATION -->
+    <header class="site-header">
+        <a href="../index.html" class="logo">🌐 Fiber <span>Optic Hub</span></a>
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#topics">Learn</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <button type="button" class="menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html" onclick="closeMenu()">🏠 Home</a>
+        <a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
+        <a href="../index.html#articles" onclick="closeMenu()">📰 Articles</a>
+        <a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
+
+
+    <!-- MAIN ARTICLE CONTAINER -->
+    <main class="article-page">
+        <!-- BACK BUTTON -->
+        <a class="back-btn" href="../index.html">← Back to Home</a>
+
+        <!-- TITLE & METADATA -->
+        <h1 class="article-page-title">Total Internal Reflection (TIR)</h1>
+        <p class="article-meta">Fiber Optics • Beginner • ⏱️ 4 min read<br/>Published: 2026-10-03</p>
+
+        <!-- PURE ARTICLE CONTENT INJECTION -->
+        <article class="article-content">
+            <h1>Total Internal Reflection (TIR)</h1>
+<p><strong>Total Internal Reflection (TIR)</strong> သည် Optical Fiber ၏ အလုပ်လုပ်ပုံကို နားလည်ရန် အရေးကြီးသော အခြေခံ Optical Principle တစ်ခုဖြစ်သည်။</p>
+<p>Optical Fiber သည် Electrical Signal အစား <strong>Light</strong> ကို အသုံးပြု၍ Data များကို ပို့ဆောင်ပေးသည်။ ထိုအလင်းသည် Fiber အတွင်းတွင် မိမိလိုချင်သည့် လမ်းကြောင်းအတိုင်း ဆက်လက်သွားနိုင်ရန်အတွက် <strong>Total Internal Reflection</strong> ၏ အခြေခံသဘောတရားသည် အရေးပါသည်။</p>
+<h2>Total Internal Reflection ဆိုတာ ဘာလဲ</h2>
+<p>အလင်းရောင်သည် <strong>Refractive Index</strong> မတူညီသော Material နှစ်ခုကြားသို့ ဖြတ်သန်းသည့်အခါ အလင်း၏ လမ်းကြောင်းသည် ပြောင်းလဲနိုင်သည်။ ထိုဖြစ်စဉ်ကို <strong>Refraction</strong> ဟုခေါ်သည်။</p>
+<p>သို့သော် အလင်းသည် <strong>ပိုမိုမြင့်မားသော Refractive Index ရှိသည့် Medium</strong> မှ <strong>နိမ့်သော Refractive Index ရှိသည့် Medium</strong> သို့ သွားသောအခါ၊ အလင်းကျရောက်သည့်ထောင့် (Angle of Incidence) သည် သတ်မှတ်ထားသော <strong>Critical Angle</strong> ထက် ကြီးလာပါက အလင်းသည် ဒုတိယ Medium ထဲသို့ မဝင်တော့ဘဲ ပထမ Medium အတွင်းသို့ ပြန်လည်ရောင်ပြန်သည်။</p>
+<p>ဤဖြစ်စဉ်ကို <strong>Total Internal Reflection (TIR)</strong> ဟုခေါ်သည်။</p>
+<p><img alt="Total Internal Reflection Diagram" src="../images/total-internal-reflection/tir-diagram.webp" /></p>
+<p><em>အလင်းသည် Critical Angle ထက် ကျော်လွန်သောအခါ Total Internal Reflection ဖြစ်ပေါ်ပုံ</em></p>
+<h2>TIR ဖြစ်ရန် လိုအပ်သော အခြေအနေများ</h2>
+<p>Total Internal Reflection ဖြစ်ရန် အဓိကအခြေအနေ နှစ်ခုရှိသည်။</p>
+<ul>
+<li>အလင်းသည် <strong>ပိုမိုမြင့်မားသော Refractive Index (n)</strong> ရှိသည့် Medium မှ နိမ့်သော Refractive Index ရှိသည့် Medium သို့ သွားရမည်။</li>
+<li>Angle of Incidence သည် <strong>Critical Angle</strong> ထက် ကြီးရမည်။</li>
+</ul>
+<p>Critical Angle တွင် အလင်းသည် နယ်နိမိတ်တစ်လျှောက်သို့ သွားသကဲ့သို့ ဖြစ်ပြီး Critical Angle ထက် ပိုမိုကြီးလာသောအခါ TIR ဖြစ်ပေါ်သည်။</p>
+<h2>Refractive Index ဆိုတာ ဘာလဲ</h2>
+<p><strong>Refractive Index (n)</strong> သည် Material တစ်ခုအတွင်း အလင်း၏ အမြန်နှုန်းသည် Vacuum ထဲရှိ အလင်း၏ အမြန်နှုန်းနှင့် နှိုင်းယှဉ်ပါက မည်မျှလျော့ကျသွားသည်ကို ဖော်ပြပေးသော အတိုင်းအတာတစ်ခုဖြစ်သည်။</p>
+<p>အကြမ်းဖျင်းအားဖြင့် -</p>
+<ul>
+<li>Refractive Index မြင့် → အလင်းသည် Material အတွင်း ပိုမိုနှေးကွေးစွာ သွားသည်။</li>
+<li>Refractive Index နိမ့် → အလင်းသည် Material အတွင်း ပိုမိုမြန်ဆန်စွာ သွားသည်။</li>
+</ul>
+<p>Refractive Index ကို ပုံမှန်အားဖြင့် <strong>n</strong> ဖြင့် ဖော်ပြသည်။</p>
+<h2>Critical Angle</h2>
+<p><strong>Critical Angle</strong> သည် Total Internal Reflection စတင်ဖြစ်ပေါ်နိုင်သည့် အရေးကြီးသော ထောင့်တစ်ခုဖြစ်သည်။</p>
+<p>Medium နှစ်ခု၏ Refractive Index များကို \(n_1\) နှင့် \(n_2\) ဟု သတ်မှတ်ပြီး \(n_1 > n_2\) ဖြစ်ပါက Critical Angle ကို -</p>
+<p>\[
+\sin(\theta_c) = \frac{n_2}{n_1}
+\]</p>
+<p>ဖြင့် ဖော်ပြနိုင်သည်။</p>
+<p>ဤနေရာတွင် -</p>
+<ul>
+<li>\(\theta_c\) = Critical Angle</li>
+<li>\(n_1\) = အလင်းစတင်သွားသည့် Medium ၏ Refractive Index</li>
+<li>\(n_2\) = ဒုတိယ Medium ၏ Refractive Index</li>
+</ul>
+<p>Angle of Incidence သည် Critical Angle ထက် ကြီးလာသောအခါ Total Internal Reflection ဖြစ်နိုင်သည်။</p>
+<h2>Optical Fiber အတွင်း TIR ဘယ်လိုအလုပ်လုပ်သလဲ</h2>
+<p>Optical Fiber ၏ အဓိကအပိုင်းများထဲတွင် <strong>Core</strong> နှင့် <strong>Cladding</strong> သည် TIR နှင့် တိုက်ရိုက်ဆက်နွယ်နေသည်။</p>
+<p><strong>Core</strong> သည် Light Signal များ အဓိကဖြတ်သန်းသွားသည့် အလယ်ပိုင်းဖြစ်သည်။</p>
+<p><strong>Cladding</strong> သည် Core ကို ပတ်လည်ဝန်းရံထားပြီး Core ထက် <strong>Refractive Index နိမ့်သော Material</strong> ဖြင့် ပြုလုပ်ထားသည်။</p>
+<p>ထို့ကြောင့် Fiber အတွင်းသို့ သင့်လျော်သော ထောင့်ဖြင့် ဝင်ရောက်လာသော Light သည် Core နှင့် Cladding ကြား နယ်နိမိတ်တွင် TIR ဖြစ်ပေါ်နိုင်ပြီး Fiber ၏ အရှည်တစ်လျှောက် ဆက်လက်လမ်းကြောင်းသွားသည်။</p>
+<p><img alt="TIR in Optical Fiber" src="../images/total-internal-reflection/tir-in-optical-fiber.webp" /></p>
+<p><em>Optical Fiber ၏ Core နှင့် Cladding ကြားတွင် Light ကို လမ်းကြောင်းပေးသည့် TIR ဖြစ်စဉ်</em></p>
+<h2>Core နှင့် Cladding ၏ အခန်းကဏ္ဍ</h2>
+<p>Optical Fiber တစ်ခုကို ရိုးရှင်းစွာ နားလည်မည်ဆိုပါက -</p>
+<p><strong>Core → Light သွားသည့်နေရာ</strong></p>
+<p><strong>Cladding → Core ကို ပတ်လည်ဝန်းရံထားသည့် Light Guiding Structure၏ အစိတ်အပိုင်း</strong></p>
+<p>Core ၏ Refractive Index သည် Cladding ထက် မြင့်မားခြင်းသည် Conventional Step-Index Fiber များတွင် TIR-based guiding ဖြစ်ပေါ်ရန် အခြေခံလိုအပ်ချက်တစ်ခုဖြစ်သည်။</p>
+<p>သို့သော် Modern Optical Fiber များ၏ Light Guiding ကို TIR တစ်ခုတည်းဖြင့်သာ အပြည့်အစုံရှင်းပြခြင်းသည် မလုံလောက်ပါ။ အထူးသဖြင့် <strong>Waveguide Theory</strong> နှင့် <strong>Mode</strong> များကို ထည့်သွင်းစဉ်းစားရသည်။</p>
+<h2>Optical Fiber တွင် TIR ဘာကြောင့် အရေးကြီးသလဲ</h2>
+<p>Fiber Optic Communication တွင် Data များကို Light Signal အဖြစ် ပြောင်းလဲပြီး Fiber မှတစ်ဆင့် ပို့ဆောင်သည်။</p>
+<p>Light ကို Fiber ၏ Core အတွင်း ထိန်းသိမ်းလမ်းကြောင်းပေးနိုင်ခြင်းကြောင့် -</p>
+<ul>
+<li>အဝေးအကွာအဝေးများအထိ Data ပို့နိုင်သည်။</li>
+<li>High-speed Communication အတွက် အသုံးပြုနိုင်သည်။</li>
+<li>Electromagnetic Interference (EMI) ကို Copper Cable များကဲ့သို့ မခံစားရပါ။</li>
+<li>Telecommunications နှင့် Internet Network များတွင် အသုံးပြုနိုင်သည်။</li>
+<li>FTTH (Fiber to the Home) ကဲ့သို့သော Broadband Access Network များတွင် အရေးပါသည်။</li>
+</ul>
+<h2>TIR နှင့် Fiber Optic Communication</h2>
+<p>Fiber Optic Communication ၏ အခြေခံလုပ်ငန်းစဉ်ကို ရိုးရှင်းစွာ ကြည့်မည်ဆိုပါက -</p>
+<p><strong>Electrical Data → Light Source → Optical Fiber → Light Detection → Electrical Data</strong></p>
+<p>Transmitter ဘက်တွင် Electrical Data ကို Optical Signal အဖြစ် ပြောင်းလဲပြီး Fiber အတွင်းသို့ ထည့်သွင်းသည်။</p>
+<p>Fiber အတွင်းတွင် Light သည် Fiber ၏ Optical Properties နှင့် Waveguide Structure ကြောင့် လမ်းကြောင်းသွားပြီး Receiver ဘက်သို့ ရောက်ရှိသည်။</p>
+<p>Receiver တွင် Optical Signal ကို ပြန်လည် Detect လုပ်ပြီး Data အဖြစ် အသုံးပြုနိုင်သည်။</p>
+<h2>TIR ကို နားလည်ရန် ရိုးရှင်းသော ဥပမာ</h2>
+<p>ရေထဲမှ အလင်းသည် လေထဲသို့ ထွက်လာသည့်အခါ အလင်း၏ ထောင့်နှင့် Material ၏ Refractive Index များအပေါ်မူတည်ပြီး အလင်းသည် Refraction ဖြစ်နိုင်သည်။</p>
+<p>သို့သော် အလင်း၏ Angle of Incidence သည် Critical Angle ထက် ကျော်လွန်လာပါက အလင်းသည် လေထဲသို့ ထွက်မသွားဘဲ ရေထဲသို့ ပြန်လည်ရောင်ပြန်နိုင်သည်။</p>
+<p>ဤအခြေခံသဘောတရားကို Optical Fiber ၏ Core နှင့် Cladding ဖွဲ့စည်းပုံကို နားလည်ရာတွင် အသုံးချနိုင်သည်။</p>
+<h2>TIR နှင့် Reflection ကွာခြားချက်</h2>
+<p><strong>Reflection</strong> သည် အလင်းသည် Surface တစ်ခုကို ထိတွေ့ပြီး ပြန်လည်ရောင်ပြန်ခြင်း၏ ယေဘုယျဖြစ်စဉ်ဖြစ်သည်။</p>
+<p><strong>Total Internal Reflection</strong> သည် သတ်မှတ်ထားသော အခြေအနေများအောက်တွင် ဖြစ်ပေါ်သည့် အထူး Reflection ဖြစ်စဉ်တစ်ခုဖြစ်သည်။</p>
+<p>အဓိကကွာခြားချက်မှာ TIR ဖြစ်ရန် -</p>
+<ul>
+<li>Light သည် Higher Refractive Index Medium မှ Lower Refractive Index Medium သို့ သွားရမည်။</li>
+<li>Angle of Incidence သည် Critical Angle ထက် ကြီးရမည်။</li>
+</ul>
+<h2>TIR ၏ Limitations</h2>
+<p>TIR ကို နားလည်ထားခြင်းသည် Fiber Optics အတွက် အရေးကြီးသော်လည်း လက်တွေ့ Optical Fiber System တွင် Signal အားလျော့ခြင်းနှင့် Dispersion ကဲ့သို့သော အခြား Optical Effects များလည်း ရှိသည်။</p>
+<p>ဥပမာ -</p>
+<ul>
+<li><strong>Attenuation</strong> ကြောင့် Signal Power လျော့ကျနိုင်သည်။</li>
+<li><strong>Dispersion</strong> ကြောင့် Pulse များ ပြန့်ကျဲပြီး High-Speed Transmission ကို သက်ရောက်နိုင်သည်။</li>
+<li>Fiber Bending များပြားပါက Optical Loss ဖြစ်နိုင်သည်။</li>
+</ul>
+<p>ထို့ကြောင့် Fiber Optic Communication ၏ Performance ကို TIR တစ်ခုတည်းဖြင့် ဆုံးဖြတ်၍ မရပါ။</p>
+<h2>အနှစ်ချုပ်</h2>
+<p><strong>Total Internal Reflection (TIR)</strong> သည် Higher Refractive Index Medium မှ Lower Refractive Index Medium သို့ သွားသော Light သည် Critical Angle ထက် ပိုမိုကြီးသော Angle of Incidence ဖြင့် နယ်နိမိတ်ကို ထိတွေ့သောအခါ အတွင်းဘက်သို့ ပြန်လည်ရောင်ပြန်သည့် ဖြစ်စဉ်ဖြစ်သည်။</p>
+<p>Optical Fiber တွင် <strong>Core ၏ Refractive Index သည် Cladding ထက် မြင့်မားခြင်း</strong> နှင့် သင့်လျော်သော Light Launching Conditions တို့ကြောင့် Light ကို Fiber အတွင်း လမ်းကြောင်းပေးနိုင်သည်။</p>
+<p>TIR ကို နားလည်ထားခြင်းသည် နောက်ပိုင်းတွင် <strong>Numerical Aperture, Acceptance Angle, Modes, Attenuation, Dispersion</strong> နှင့် အခြား Optical Fiber Concepts များကို ဆက်လက်လေ့လာရာတွင် အခြေခံကောင်းတစ်ခု ဖြစ်စေသည်။</p>
+<h2>Further Learning</h2>
+<p>Total Internal Reflection ကို ပိုမိုမြင်သာစွာ နားလည်ရန် အောက်ပါ Video ကိုလည်း လေ့လာနိုင်ပါတယ်။</p>
+<div class="youtube-embed">
+    <iframe
+        src="https://www.youtube-nocookie.com/embed/dY2ZMAjYPjI"
+        title="YouTube video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
+        </article>
+    </main>
+
+    <!-- RELATED ARTICLES SECTION (Card အပြင်ဘက် သီးသန့် ကာဗာဖြင့်) -->
+    <div class="article-related" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #fff;">ဆက်လက်လေ့လာရန်</h3>
+        <div id="relatedArticlesContainer" class="articles-grid"></div>
+    </div>
+
+    <!-- ARTICLE NAVIGATION BUTTONS -->
+    <div class="article-nav" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1rem;">
+        <a class="nav-btn" href="#">← Previous Article</a>
+        <a class="nav-btn" href="fiber-optic-cables.html">Next Article →</a>
+    </div>
+
+    <!-- SOCIAL SHARE SECTION -->
+    <div class="social-share-container">
+        <span>📌 ဤဆောင်းပါးကို သူငယ်ချင်းများထံ မျှဝေရန်:</span>
+        <div class="share-buttons-group">
+            <a class="share-btn fb" href="#" id="shareFacebook" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a class="share-btn tg" href="#" id="shareTelegram" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.622-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.46-1.903-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.153.228.166.331.011.093.024.304.007.469z"></path>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- COMMENTS SECTION -->
+    <section class="section" id="comments">
+        <div class="section-heading">
+            <span class="section-label">COMMUNITY</span>
+            <h2>Comments & Discussions</h2>
+            <p>ဆောင်းပါးနှင့် ပတ်သက်သည့် မေးခွန်းများနှင့် မှတ်ချက်များကို အောက်တွင် မေးမြန်းနိုင်ပါသည်။</p>
+        </div>
+        <div id="commentsContainer" style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Utterances Comment Script ကို ဤနေရာတွင် တိုက်ရိုက်ထည့်ပါ -->
+            <script src="https://utteranc.es/client.js"
+                    repo="fiberoptichub/fiberoptichub.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT & FOOTER -->
+    <script src="../js/index.js"></script>
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+  
+  <!-- Back to Top Button -->
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    ⬆
+</button>
+
+</body>
+</html>

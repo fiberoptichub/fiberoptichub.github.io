@@ -195,6 +195,58 @@ def normalize_pipe_tables(text):
 # Normalize Markdown Content
 # =========================================================
 
+# =========================================================
+# Protect LaTeX Math from Markdown Conversion
+#
+# Python-Markdown may interpret characters such as:
+#   < > \
+# inside mathematical expressions.
+#
+# MathJax expressions are temporarily replaced with unique
+# placeholders before Markdown conversion and restored after.
+#
+# Supported:
+#   $...$       inline math
+#   \( ... \)   inline math
+#   $$...$$     display math
+#   \[ ... \]   display math
+# =========================================================
+
+MATH_PATTERN = re.compile(
+    r'(?s)'
+    r'(\\\[.*?\\\])|'
+    r'(\\\(.*?\\\))|'
+    r'(\$\$.*?\$\$)|'
+    r'(?<!\$)\$(?!\$)(.+?)(?<!\$)\$(?!\$)'
+)
+
+
+def protect_math(text):
+    math_store = []
+
+    def replace_math(match):
+        index = len(math_store)
+        math_store.append(match.group(0))
+
+        return f"YADU_MATH_PLACEHOLDER_{index}_YADU"
+
+    protected_text = MATH_PATTERN.sub(replace_math, text)
+
+    return protected_text, math_store
+
+
+def restore_math(html, math_store):
+    for index, math_expression in enumerate(math_store):
+        placeholder = f"YADU_MATH_PLACEHOLDER_{index}_YADU"
+
+        html = html.replace(
+            placeholder,
+            math_expression
+        )
+
+    return html
+
+
 def normalize_markdown(text):
 
     # 1. Fix custom image syntax
@@ -210,7 +262,41 @@ def normalize_markdown(text):
 # Convert Markdown -> HTML
 # =========================================================
 
+def convert_youtube_links(text):
+    """
+    Convert standalone YouTube URLs into responsive embed HTML.
+    """
+
+    youtube_pattern = re.compile(
+        r'(?m)^[ \t]*'
+        r'(https?://(?:www\.)?youtube\.com/watch\?v=([A-Za-z0-9_-]{11})(?:[^\s]*)|'
+        r'https?://youtu\.be/([A-Za-z0-9_-]{11})(?:[^\s]*))'
+        r'[ \t]*$'
+    )
+
+    def replace(match):
+        video_id = match.group(2) or match.group(3)
+
+        return f"""
+<div class="youtube-embed">
+    <iframe
+        src="https://www.youtube-nocookie.com/embed/{video_id}"
+        title="YouTube video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</div>
+"""
+
+    return youtube_pattern.sub(replace, text)
+
+
 def markdown_to_html(text):
+    text = convert_youtube_links(text)
+
+    # Protect MathJax/LaTeX before Markdown conversion.
+    text, math_store = protect_math(text)
 
     text = normalize_markdown(text)
 
@@ -223,6 +309,9 @@ def markdown_to_html(text):
             "sane_lists"
         ]
     )
+
+    # Restore MathJax/LaTeX after Markdown conversion.
+    body_html = restore_math(body_html, math_store)
 
     return body_html
 

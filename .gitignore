@@ -1,0 +1,7 @@
+
+# Local backup files
+*.backup
+*.youtube-backup
+*.before-*
+__pycache__/
+*.pyc

@@ -1,5 +1,15 @@
 [
     {
+        "title": "Total Internal Reflection (TIR)",
+        "url": "articles/total-internal-reflection.html",
+        "date": "2026-10-03",
+        "category": "Fiber Optics",
+        "level": "Beginner",
+        "summary": "Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။",
+        "description": "Total Internal Reflection (TIR) ဆိုသည်မှာ အလင်းရောင်သည် သိပ်သည်းဆမတူသော ကြားခံနှစ်ခု၏ နယ်နိမိတ်တွင် သတ်မှတ်ထားသော အခြေအနေများအောက်၌ အပြင်သို့ မထွက်ဘဲ ပြန်လည်ရောင်ပြန်ခြင်းဖြစ်ပြီး Optical Fiber အတွင်း Light ကို လမ်းကြောင်းပေးသည့် အခြေခံအယူအဆတစ်ခု ဖြစ်သည်။",
+        "readingTime": "4 min read"
+    },
+    {
         "title": "Fiber Optic Cables",
         "url": "articles/fiber-optic-cables.html",
         "date": "2026-09-27",

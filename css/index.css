@@ -1107,3 +1107,42 @@ header.site-header {
         top: 125px !important;
     }
 }
+
+/* =========================================================
+   YOUTUBE VIDEO EMBED
+   Responsive Article Video Component
+========================================================= */
+
+.youtube-embed {
+    width: 100%;
+    max-width: 900px;
+    margin: 28px auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.youtube-embed iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .youtube-embed {
+        margin: 24px 0;
+        padding: 4px;
+        border-radius: 10px;
+    }
+
+    .youtube-embed iframe {
+        border-radius: 7px;
+    }
+}
+
