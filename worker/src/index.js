@@ -164,6 +164,10 @@ export default {
 
     }
 
+    if (action === "facebook") {
+      return publishFacebookArticle(data, env);
+    }
+
 
     /* =================================================
        UNKNOWN ACTION
@@ -900,105 +904,181 @@ async function publishArticle(
     slug +
     ".html";
 
+  // Safety: do not overwrite an existing Markdown article.
+  const preflightMarkdownPath =
+    "markdown_articles/" + slug + ".md";
+
+  let existingMarkdownResponse;
+
+  try {
+    existingMarkdownResponse = await fetch(
+      "https://api.github.com/repos/" +
+        GITHUB_OWNER + "/" + GITHUB_REPO +
+        "/contents/" + preflightMarkdownPath,
+      {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + env.GITHUB_TOKEN,
+          "Accept": "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28"
+        }
+      }
+    );
+  } catch (error) {
+    return jsonResponse({
+      success: false,
+      message: "Could not check whether the article already exists."
+    }, 502);
+  }
+
+  if (existingMarkdownResponse.ok) {
+    return jsonResponse({
+      success: false,
+      message:
+        "An article with this slug already exists. " +
+        "Choose a different title or review the existing file."
+    }, 409);
+  }
+
+  if (existingMarkdownResponse.status !== 404) {
+    return jsonResponse({
+      success: false,
+      message: "GitHub could not verify the article path.",
+      status: existingMarkdownResponse.status
+    }, 502);
+  }
+
 
   /* =================================================
      IMAGE
   ================================================= */
 
-  let imageURL =
-    "";
+  const imageURLs = [];
+  const imageItems = Array.isArray(article.images)
+    ? article.images
+    : [];
 
-
-  let imagePath =
-    "";
-
-
-  const image =
-    article.image;
-
-
-  if (
-    image &&
-    typeof image ===
-      "string" &&
-    image.startsWith(
-      "data:image/"
-    )
-  ) {
-
-    try {
-
-      const imageInfo =
-        parseDataImage(
-          image
-        );
-
-
-      const extension =
-        getImageExtension(
-          imageInfo.mime
-        );
-
-
-      imagePath =
-        "images/articles/" +
-        slug +
-        "." +
-        extension;
-
-
-      imageURL =
-        WEBSITE_URL +
-        "/" +
-        imagePath;
-
-
-      await githubPutFile(
-
-        imagePath,
-
-        imageInfo.base64,
-
-        "Add article image: " +
-        title,
-
-        env,
-
-        true
-
-      );
-
-    } catch (error) {
-
-      return jsonResponse(
-
-        {
-          success: false,
-          message:
-            "Image upload failed.",
-          error:
-            error?.message ||
-            String(error)
-        },
-
-        500
-
-      );
-
-    }
-
+  // Support requests from the older Publisher too.
+  if (!imageItems.length && article.image) {
+    imageItems.push(article.image);
   }
 
+  const usedNames = new Set();
+
+  for (let index = 0; index < imageItems.length; index++) {
+    const item = imageItems[index];
+    const imageData = typeof item === "string" ? item : item?.data;
+
+    if (typeof imageData !== "string" ||
+        !imageData.startsWith("data:image/")) {
+      continue;
+    }
+
+    try {
+      const imageInfo = parseDataImage(imageData);
+      const mimeExtension = getImageExtension(imageInfo.mime);
+      const suppliedName = typeof item === "object" && item
+        ? String(item.name || "")
+        : "";
+
+      // Use only the filename, never a user-supplied directory.
+      const leafName = suppliedName.split(/[\\/]/).pop() || "";
+      const extMatch = leafName.match(/\.([a-zA-Z0-9]{2,5})$/);
+      const suppliedExtension = extMatch
+        ? extMatch[1].toLowerCase()
+        : "";
+
+      let baseName = extMatch
+        ? leafName.slice(0, -extMatch[0].length)
+        : leafName;
+
+      baseName = baseName
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9_-]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^[-_]+|[-_]+$/g, "")
+        .slice(0, 100);
+
+      if (!baseName) baseName = "image-" + (index + 1);
+
+      const extensionMatchesMime =
+        imageInfo.mime === "image/jpeg" ||
+        imageInfo.mime === "image/jpg"
+          ? ["jpg", "jpeg"].includes(suppliedExtension)
+          : suppliedExtension === mimeExtension;
+
+      const safeExtension = extensionMatchesMime
+        ? suppliedExtension
+        : mimeExtension;
+
+      const folder = "images/" + slug;
+      let suffix = 1;
+      let candidateName;
+      let candidatePath;
+
+      // Check GitHub before each upload to avoid overwriting old images.
+      while (true) {
+        const suffixText = suffix === 1 ? "" : "-" + suffix;
+        candidateName = baseName + suffixText + "." + safeExtension;
+        candidatePath = folder + "/" + candidateName;
+
+        if (usedNames.has(candidatePath)) {
+          suffix++;
+          continue;
+        }
+
+        const checkURL =
+          "https://api.github.com/repos/" +
+          GITHUB_OWNER + "/" + GITHUB_REPO +
+          "/contents/" + candidatePath +
+          "?ref=" + encodeURIComponent(GITHUB_BRANCH);
+
+        const checkResponse = await fetch(checkURL, {
+          method: "GET",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + env.GITHUB_TOKEN,
+            "X-GitHub-Api-Version": "2022-11-28"
+          }
+        });
+
+        if (checkResponse.status === 404) break;
+
+        if (!checkResponse.ok) {
+          throw new Error(
+            "GitHub image check failed: " + await checkResponse.text()
+          );
+        }
+
+        suffix++;
+      }
+
+      usedNames.add(candidatePath);
+
+      await githubPutFile(
+        candidatePath,
+        imageInfo.base64,
+        "Add article image: " + title + " - " + candidateName,
+        env,
+        true
+      );
+
+      imageURLs.push(WEBSITE_URL + "/" + candidatePath);
+    } catch (error) {
+      return jsonResponse({
+        success: false,
+        message: "Image upload failed.",
+        error: error?.message || String(error)
+      }, 500);
+    }
+  }
 
   /* =================================================
      MARKDOWN
   ================================================= */
 
-  const markdown =
-    buildArticleMarkdown(
-      article,
-      imageURL
-    );
+  const markdown = buildArticleMarkdown(article, imageURLs);
 
   const markdownBase64 =
     toBase64UTF8(
@@ -1030,106 +1110,21 @@ async function publishArticle(
       false
     );
 
-    /* =================================================
-       FACEBOOK POST TEXT
-    ================================================= */
 
     const articleURL =
       WEBSITE_URL + "/articles/" + slug + ".html";
 
-    const facebookPost =
-      buildFacebookPost(article, articleURL);
+    return jsonResponse({
+      success: true,
+      message: "Article saved to GitHub. Facebook was not posted.",
+      facebookPublished: false,
+      title: title,
+      slug: slug,
+      articlePath: articlePath,
+      articleURL: articleURL,
+      facebookPost: buildFacebookPost(article, articleURL)
+    }, 200);
 
-    /* =================================================
-       PUBLISH TO FACEBOOK PAGE
-    ================================================= */
-
-    let facebookPublished = false;
-    let facebookPostId = null;
-    let facebookError = null;
-
-    if (!env.FB_PAGE_ACCESS_TOKEN) {
-      facebookError = "FB_PAGE_ACCESS_TOKEN is not configured.";
-    } else {
-      try {
-        const fbResponse = await fetch(
-          "https://graph.facebook.com/v26.0/1154215104451751/feed",
-          {
-            method: "POST",
-            headers: {
-              "Authorization": "Bearer " + env.FB_PAGE_ACCESS_TOKEN,
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams({
-              message: facebookPost
-            })
-          }
-        );
-
-        const fbResult = await fbResponse.json().catch(() => ({}));
-
-        if (fbResponse.ok && fbResult.id) {
-          facebookPublished = true;
-          facebookPostId = fbResult.id;
-        } else {
-          facebookError =
-            fbResult?.error?.message ||
-            "Facebook rejected the post request.";
-        }
-      } catch (fbException) {
-        facebookError = "Could not connect to Facebook.";
-      }
-    }
-
-
-    /* =================================================
-       RESPONSE
-    ================================================= */
-
-    return jsonResponse(
-
-      {
-
-        success:
-          true,
-
-        message:
-          facebookPublished
-            ? "Article saved and Facebook post published."
-            : "Article saved to GitHub, but Facebook posting failed.",
-
-        facebookPublished:
-          facebookPublished,
-
-        facebookPostId:
-          facebookPostId,
-
-        facebookError:
-          facebookError,
-
-        title:
-          title,
-
-        slug:
-          slug,
-
-        articlePath:
-          articlePath,
-
-        articleURL:
-          WEBSITE_URL +
-          "/articles/" +
-          slug +
-          ".html",
-
-        facebookPost:
-          facebookPost
-
-      },
-
-      200
-
-    );
 
 
   } catch (error) {
@@ -1156,6 +1151,120 @@ async function publishArticle(
 
   }
 
+}
+
+
+
+/* =====================================================
+   PUBLISH FACEBOOK ARTICLE — SEPARATE ACTION
+===================================================== */
+
+async function publishFacebookArticle(data, env) {
+  if (!env.FB_PAGE_ACCESS_TOKEN) {
+    return jsonResponse({
+      success: false,
+      message: "FB_PAGE_ACCESS_TOKEN is not configured."
+    }, 500);
+  }
+
+  const article = data.article;
+
+  if (!article || typeof article !== "object") {
+    return jsonResponse({
+      success: false,
+      message: "Article data is required."
+    }, 400);
+  }
+
+  const title = String(article.title || "").trim();
+
+  if (!title) {
+    return jsonResponse({
+      success: false,
+      message: "Article title is required."
+    }, 400);
+  }
+
+  const slug = createSlug(title);
+  const markdownPath = "markdown_articles/" + slug + ".md";
+  const articleURL = WEBSITE_URL + "/articles/" + slug + ".html";
+
+  try {
+    const savedResponse = await fetch(
+      "https://api.github.com/repos/" +
+        GITHUB_OWNER + "/" + GITHUB_REPO +
+        "/contents/" + markdownPath,
+      {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + env.GITHUB_TOKEN,
+          "Accept": "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28"
+        }
+      }
+    );
+
+    if (savedResponse.status === 404) {
+      return jsonResponse({
+        success: false,
+        message: "Save the article to GitHub before publishing to Facebook."
+      }, 409);
+    }
+
+    if (!savedResponse.ok) {
+      return jsonResponse({
+        success: false,
+        message: "Could not verify the saved article on GitHub."
+      }, 502);
+    }
+
+    const facebookPost = buildFacebookPost(article, articleURL);
+
+    const fbResponse = await fetch(
+      "https://graph.facebook.com/v26.0/1154215104451751/feed",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + env.FB_PAGE_ACCESS_TOKEN,
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+          message: facebookPost
+        })
+      }
+    );
+
+    const fbResult = await fbResponse.json().catch(() => ({}));
+
+    if (!fbResponse.ok || !fbResult.id) {
+      return jsonResponse({
+        success: false,
+        message:
+          fbResult?.error?.message ||
+          "Facebook rejected the post request.",
+        facebookPublished: false
+      }, 502);
+    }
+
+    return jsonResponse({
+      success: true,
+      message: "Facebook post published successfully.",
+      facebookPublished: true,
+      facebookPostId: fbResult.id,
+      title: title,
+      slug: slug,
+      articleURL: articleURL,
+      facebookPost: facebookPost
+    }, 200);
+
+  } catch (error) {
+    return jsonResponse({
+      success: false,
+      message:
+        "Facebook publishing could not be confirmed. " +
+        "Check the Page before attempting another post."
+    }, 502);
+  }
 }
 
 
@@ -1334,10 +1443,7 @@ async function githubPutFile(
    BUILD ARTICLE MARKDOWN
 ===================================================== */
 
-function buildArticleMarkdown(
-  article,
-  imageURL
-) {
+function buildArticleMarkdown(article, imageURLs) {
 
   const title =
     String(
@@ -1390,22 +1496,27 @@ function buildArticleMarkdown(
     ""
   ];
 
-  if (imageURL) {
 
-    const imagePath =
-      imageURL.replace(
-        WEBSITE_URL + "/",
-        "../"
-      );
+  const markdownImageURLs = Array.isArray(imageURLs)
+    ? imageURLs
+    : (imageURLs ? [imageURLs] : []);
 
+  markdownImageURLs.forEach((url, index) => {
+    if (typeof url !== "string" ||
+        !url.startsWith(WEBSITE_URL + "/")) {
+      return;
+    }
+
+    const imagePath = url.replace(WEBSITE_URL + "/", "../");
     lines.push(
-      `![${title}](${imagePath})`,
+      `![${title} — image ${index + 1}](${imagePath})`,
       ""
     );
-  }
+  });
 
   if (
     article.introduction
+
   ) {
 
     lines.push(
@@ -2066,14 +2177,23 @@ function parseDataImage(
   }
 
 
+  const mime = match[1].toLowerCase();
+
+  const supportedMimes = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+    "image/gif"
+  ];
+
+  if (!supportedMimes.includes(mime)) {
+    throw new Error("Unsupported image format: " + mime);
+  }
+
   return {
-
-    mime:
-      match[1],
-
-    base64:
-      match[2]
-
+    mime,
+    base64: match[2]
   };
 
 }
