@@ -25,8 +25,10 @@ const WEBSITE_URL =
 let generatedArticle =
   null;
 
-let selectedImageData =
-  null;
+let selectedImagesData = [];
+let selectedImageNames = [];
+let selectedImageData = null;
+let savedArticleURL = null;
 
 
 /* =====================================================
@@ -85,6 +87,7 @@ const publishButton =
   document.getElementById(
     "publishButton"
   );
+const facebookPublishButton = document.getElementById("facebookPublishButton");
 
 
 const statusBox =
@@ -100,112 +103,131 @@ const previewStatus =
 
 
 /* =====================================================
-   IMAGE SELECT
+   IMAGE SELECT — MULTIPLE IMAGES
 ===================================================== */
 
-if (
-  imageInput
-) {
+const selectedImagesPreview = (() => {
+  if (!imageInput) return null;
 
-  imageInput.addEventListener(
-    "change",
-    function () {
+  let element = document.getElementById("selectedImagesPreview");
 
-      const file =
-        this.files[0];
+  if (!element) {
+    element = document.createElement("div");
+    element.id = "selectedImagesPreview";
+    element.className = "selected-images-preview";
+    imageInput.insertAdjacentElement("afterend", element);
+  }
 
+  return element;
+})();
 
-      if (!file) {
+function renderSelectedImagesPreview() {
+  if (!selectedImagesPreview) return;
 
-        selectedImageData =
-          null;
+  if (!selectedImagesData.length) {
+    selectedImagesPreview.innerHTML = "";
+    return;
+  }
 
-        return;
-
-      }
-
-
-      if (
-        file.size >
-        5 * 1024 * 1024
-      ) {
-
-        showStatus(
-          "⚠️ Image size 5MB ထက် မကျော်ရပါ။",
-          true
-        );
-
-        this.value =
-          "";
-
-        selectedImageData =
-          null;
-
-        return;
-
-      }
-
-
-      if (
-        !file.type.startsWith(
-          "image/"
-        )
-      ) {
-
-        showStatus(
-          "⚠️ Image file သာ ရွေးပါ။",
-          true
-        );
-
-        this.value =
-          "";
-
-        selectedImageData =
-          null;
-
-        return;
-
-      }
-
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload =
-        function (
-          event
-        ) {
-
-          selectedImageData =
-            event.target.result;
-
-        };
-
-
-      reader.onerror =
-        function () {
-
-          selectedImageData =
-            null;
-
-          showStatus(
-            "⚠️ Image ဖတ်လို့ မရပါ။",
-            true
-          );
-
-        };
-
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
+  selectedImagesPreview.innerHTML = selectedImagesData.map(
+    (src, index) => `
+      <div class="selected-image-card">
+        <img src="${src}" alt="Selected article image ${index + 1}">
+        <div class="selected-image-actions">
+          <span>Image ${index + 1}</span>
+          <button type="button"
+            class="remove-selected-image"
+            data-remove-image="${index}"
+            aria-label="Remove image ${index + 1}">Remove</button>
+        </div>
+      </div>
+    `
+  ).join("");
 }
 
+if (selectedImagesPreview) {
+  selectedImagesPreview.addEventListener("click", function (event) {
+    const button = event.target.closest("[data-remove-image]");
+    if (!button) return;
+
+    const index = Number(button.dataset.removeImage);
+    if (!Number.isInteger(index) || index < 0 ||
+        index >= selectedImagesData.length) return;
+
+    selectedImagesData.splice(index, 1);
+    selectedImageNames.splice(index, 1);
+    selectedImageData = selectedImagesData[0] || null;
+    renderSelectedImagesPreview();
+  });
+}
+
+function readImageAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("Image ဖတ်လို့ မရပါ။"));
+    reader.readAsDataURL(file);
+  });
+}
+
+if (imageInput) {
+  imageInput.multiple = true;
+  imageInput.accept = "image/*";
+
+  imageInput.addEventListener("change", async function () {
+    const files = Array.from(this.files || []);
+
+    if (!files.length) {
+      selectedImagesData = [];
+      selectedImageNames = [];
+      selectedImageData = null;
+      renderSelectedImagesPreview();
+      return;
+    }
+
+    if (files.length > 10) {
+      showStatus("⚠️ ပုံ ၁၀ ပုံအထိသာ တစ်ကြိမ်ရွေးနိုင်ပါတယ်။", true);
+      this.value = "";
+      return;
+    }
+
+    const invalidFile = files.find(file =>
+      !file.type.startsWith("image/") ||
+      file.size > 5 * 1024 * 1024
+    );
+
+    if (invalidFile) {
+      showStatus(
+        "⚠️ ပုံဖိုင်သာ ရွေးပါ။ ပုံတစ်ပုံလျှင် 5MB ထက် မကျော်ရပါ။",
+        true
+      );
+      this.value = "";
+      return;
+    }
+
+    const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+
+    if (totalSize > 20 * 1024 * 1024) {
+      showStatus("⚠️ ရွေးထားတဲ့ပုံအားလုံးပေါင်း 20MB ထက် မကျော်ရပါ။", true);
+      this.value = "";
+      return;
+    }
+
+    try {
+      const images = await Promise.all(files.map(readImageAsDataURL));
+      selectedImagesData = images;
+      selectedImageNames = files.map(file => file.name);
+      selectedImageData = selectedImagesData[0] || null;
+      renderSelectedImagesPreview();
+    } catch (error) {
+      selectedImagesData = [];
+      selectedImageNames = [];
+      selectedImageData = null;
+      renderSelectedImagesPreview();
+      showStatus(error.message || "⚠️ Image ဖတ်လို့ မရပါ။", true);
+    }
+  });
+}
 
 /* =====================================================
    GENERATE ARTICLE
@@ -453,10 +475,19 @@ async function generateArticle() {
       date:
         new Date().toISOString(),
 
-      image:
-        selectedImageData
+      images: selectedImagesData.map((data, index) => ({
+        name: selectedImageNames[index] || `image-${index + 1}.jpg`,
+        data
+      })),
+      image: selectedImagesData[0] || null
 
     };
+
+      savedArticleURL = null;
+      if (facebookPublishButton) {
+        facebookPublishButton.disabled = true;
+        facebookPublishButton.textContent = "📘 Publish to Facebook";
+      }
 
 
     renderArticlePreview(
@@ -599,30 +630,23 @@ function renderArticlePreview(
     );
 
 
-  let imageHTML =
-    "";
+  const previewImages = Array.isArray(article.images)
+    ? article.images.map(item =>
+        typeof item === "string" ? item : item?.data
+      ).filter(Boolean)
+    : (article.image ? [article.image] : []);
 
-
-  if (
-    article.image
-  ) {
-
-    imageHTML = `
-
-      <figure class="preview-figure">
-
-        <img
-          src="${article.image}"
-          alt="${escapeHTML(article.title)}"
-          class="preview-image"
-        >
-
-      </figure>
-
-    `;
-
-  }
-
+  const imageHTML = previewImages.map((src, index) => `
+    <figure class="preview-figure">
+      <img
+        src="${src}"
+        alt="${escapeHTML(article.title)} — image ${index + 1}"
+        class="preview-image"
+        loading="lazy"
+      >
+      <figcaption>Image ${index + 1} of ${previewImages.length}</figcaption>
+    </figure>
+  `).join("");
 
   let contentHTML =
     "";
@@ -1043,223 +1067,196 @@ function renderFacebookPreview(
 
 
 /* =====================================================
-   PUBLISH ARTICLE
+   SAVE ARTICLE — GITHUB ONLY
 ===================================================== */
 
 async function publishArticle() {
-
-  if (
-    !generatedArticle
-  ) {
-
-    showStatus(
-      "⚠️ Article မရှိသေးပါ။",
-      true
-    );
-
+  if (!generatedArticle) {
+    showStatus("⚠️ Article မရှိသေးပါ။", true);
     return;
-
   }
 
-
-  if (
-    publishButton
-  ) {
-
-    publishButton.disabled =
-      true;
-
-    publishButton.textContent =
-      "🚀 Publishing...";
-
+  if (savedArticleURL) {
+    showStatus("✅ ဒီ Article ကို GitHub မှာ သိမ်းပြီးပါပြီ။");
+    return;
   }
 
-
-  if (
-    previewStatus
-  ) {
-
-    previewStatus.textContent =
-      "PUBLISHING";
-
+  if (publishButton) {
+    publishButton.disabled = true;
+    publishButton.textContent = "💾 Saving...";
   }
 
+  if (previewStatus) {
+    previewStatus.textContent = "SAVING";
+  }
 
-  showStatus(
-    "🚀 GitHub မှာ Article Publish လုပ်နေပါတယ်..."
-  );
-
+  showStatus("💾 GitHub မှာ Article သိမ်းနေပါတယ်...");
 
   try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "publish",
+        article: generatedArticle
+      })
+    });
 
-    const response =
-      await fetch(
+    const result = await response.json().catch(() => ({}));
 
-        WORKER_URL,
-
-        {
-
-          method:
-            "POST",
-
-          headers: {
-
-            "Content-Type":
-              "application/json"
-
-          },
-
-          body:
-            JSON.stringify({
-
-              action:
-                "publish",
-
-              article:
-                generatedArticle
-
-            })
-
-        }
-
-      );
-
-
-    const result =
-      await response.json();
-
-
-    if (
-      !response.ok ||
-      !result.success
-    ) {
-
-      throw new Error(
-
-        result.message ||
-        "Publish မအောင်မြင်ပါ။"
-
-      );
-
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "Article သိမ်းဆည်းမှု မအောင်မြင်ပါ။");
     }
 
+    if (!result.articleURL) {
+      throw new Error("GitHub response မှ Article URL မရရှိပါ။");
+    }
 
-    /* =================================================
-       SUCCESS
-    ================================================= */
+    savedArticleURL = result.articleURL;
 
     if (previewStatus) {
-      previewStatus.textContent =
-        result.facebookPublished ? "PUBLISHED" : "SAVED — FACEBOOK FAILED";
+      previewStatus.textContent = "SAVED — READY FOR FACEBOOK";
     }
+
+    if (facebookPreview && result.facebookPost) {
+      facebookPreview.textContent = result.facebookPost;
+    }
+
+    if (articlePreview) {
+      const oldNotice = articlePreview.querySelector(".publish-success");
+      if (oldNotice) oldNotice.remove();
+
+      const notice = document.createElement("div");
+      notice.className = "publish-success";
+
+      const heading = document.createElement("p");
+      heading.textContent = "✅ Article saved to GitHub.";
+      notice.appendChild(heading);
+
+      const link = document.createElement("a");
+      link.href = result.articleURL;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "🌐 Open Published Article";
+      notice.appendChild(link);
+
+      articlePreview.insertAdjacentElement("afterbegin", notice);
+    }
+
+    if (facebookPublishButton) {
+      facebookPublishButton.disabled = false;
+      facebookPublishButton.textContent = "📘 Publish to Facebook";
+    }
+
+    showStatus("✅ GitHub မှာ သိမ်းပြီးပါပြီ။ Facebook တင်ဖို့ သီးခြားခလုတ်ကို နှိပ်ပါ။");
+
+  } catch (error) {
+    if (previewStatus) previewStatus.textContent = "SAVE ERROR";
 
     showStatus(
-      result.facebookPublished
-        ? "✅ Article saved and Facebook post published!"
-        : "⚠️ Article saved to GitHub, but Facebook posting failed: " +
-          (result.facebookError || "Unknown Facebook error"),
-      !result.facebookPublished
-    );
-
-
-    if (
-      facebookPreview &&
-      result.facebookPost
-    ) {
-
-      facebookPreview.textContent =
-        result.facebookPost;
-
-    }
-
-
-    /* =================================================
-       SHOW LIVE LINK
-    ================================================= */
-
-    if (
-      articlePreview &&
-      result.articleURL
-    ) {
-
-      articlePreview.insertAdjacentHTML(
-
-        "afterbegin",
-
-        `
-
-          <div class="publish-success">
-
-            ✅ Published Successfully
-
-            <br>
-
-            <a
-              href="${result.articleURL}"
-              target="_blank"
-              rel="noopener"
-            >
-              🌐 Open Published Article
-            </a>
-
-          </div>
-
-        `
-
-      );
-
-    }
-
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      "Publish Error:",
-      error
-    );
-
-
-    if (
-      previewStatus
-    ) {
-
-      previewStatus.textContent =
-        "ERROR";
-
-    }
-
-
-    showStatus(
-
-      "❌ " +
-      (
-        error.message ||
-        "Publish မအောင်မြင်ပါ။"
-      ),
-
+      "❌ " + (error.message || "Article သိမ်းဆည်းမှု မအောင်မြင်ပါ။"),
       true
-
     );
-
 
   } finally {
-
-    if (
-      publishButton
-    ) {
-
-      publishButton.disabled =
-        false;
-
-      publishButton.textContent =
-        "🚀 Publish Article";
-
+    if (publishButton) {
+      publishButton.disabled = Boolean(savedArticleURL);
+      publishButton.textContent = savedArticleURL
+        ? "✅ Article Saved"
+        : "💾 Save Article";
     }
+  }
+}
 
+
+/* =====================================================
+   PUBLISH TO FACEBOOK — USER CONFIRMATION REQUIRED
+===================================================== */
+
+async function publishToFacebook() {
+  if (!generatedArticle || !savedArticleURL) {
+    showStatus("⚠️ Facebook မတင်ခင် Article ကို GitHub မှာ အရင် Save လုပ်ပါ။", true);
+    return;
   }
 
+  if (!window.confirm(
+    "Article ကို GitHub မှာ Save ပြီးပါပြီ။ Facebook Page မှာ အခုတင်မလား?"
+  )) {
+    return;
+  }
+
+  if (facebookPublishButton) {
+    facebookPublishButton.disabled = true;
+    facebookPublishButton.textContent = "📘 Publishing...";
+  }
+
+  if (previewStatus) previewStatus.textContent = "FACEBOOK PUBLISHING";
+
+  showStatus("📘 Facebook Page မှာ တင်နေပါတယ်...");
+
+  // Do not resend the image data. Facebook needs the article text only.
+  const source = generatedArticle;
+  const facebookArticle = {
+    title: source.title,
+    category: source.category,
+    level: source.level,
+    description: source.description,
+    introduction: source.introduction,
+    sections: source.sections,
+    key_points: source.key_points,
+    conclusion: source.conclusion,
+    facebook_summary: source.facebook_summary,
+    facebook_note: source.facebook_note,
+    facebook_hashtags: source.facebook_hashtags,
+    date: source.date
+  };
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "facebook",
+        article: facebookArticle
+      })
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.success || !result.facebookPublished) {
+      throw new Error(
+        result.message ||
+        "Facebook post အောင်မြင်ကြောင်း အတည်မပြုနိုင်ပါ။"
+      );
+    }
+
+    if (previewStatus) previewStatus.textContent = "FACEBOOK PUBLISHED";
+
+    if (facebookPreview && result.facebookPost) {
+      facebookPreview.textContent = result.facebookPost;
+    }
+
+    if (facebookPublishButton) {
+      facebookPublishButton.textContent = "✅ Facebook Published";
+    }
+
+    showStatus("✅ Facebook Page မှာ Post တင်ပြီးပါပြီ။");
+
+  } catch (error) {
+    // Prevent accidental duplicate posts if the response was lost.
+    if (facebookPublishButton) {
+      facebookPublishButton.disabled = true;
+      facebookPublishButton.textContent = "⚠️ Verify Facebook";
+    }
+
+    if (previewStatus) previewStatus.textContent = "FACEBOOK STATUS UNKNOWN";
+
+    showStatus(
+      "⚠️ " + (error.message || "Facebook post ကို အတည်မပြုနိုင်ပါ။") +
+      " Facebook Page ကို အရင်စစ်ပြီးမှ ထပ်ကြိုးစားပါ။",
+      true
+    );
+  }
 }
 
 
@@ -1268,6 +1265,17 @@ async function publishArticle() {
 ===================================================== */
 
 function clearPublisher() {
+
+  savedArticleURL = null;
+  if (facebookPublishButton) {
+    facebookPublishButton.disabled = true;
+    facebookPublishButton.textContent = "📘 Publish to Facebook";
+  }
+  if (publishButton) {
+    publishButton.disabled = true;
+    publishButton.textContent = "💾 Save Article";
+  }
+
 
   if (
     titleInput
@@ -1319,8 +1327,10 @@ function clearPublisher() {
   }
 
 
-  selectedImageData =
-    null;
+  selectedImagesData = [];
+  selectedImageNames = [];
+  selectedImageData = null;
+  renderSelectedImagesPreview();
 
 
   generatedArticle =
@@ -1588,3 +1598,78 @@ if (
     "DRAFT";
 
 }
+
+
+/* =====================================================
+   PREVIEW FULLSCREEN CONTROLS
+   Independent of article saving and Facebook publishing.
+===================================================== */
+
+function togglePreviewFullscreen(type) {
+  const panels = {
+    article: document.getElementById("articlePreviewPanel"),
+    facebook: document.querySelector(".facebook-preview")
+  };
+
+  const target = panels[type];
+  if (!target) return;
+
+  const opening = !target.classList.contains("preview-fullscreen-active");
+
+  // Keep only one preview fullscreen at a time.
+  document.querySelectorAll(".preview-fullscreen-active").forEach((panel) => {
+    panel.classList.remove("preview-fullscreen-active");
+
+    const panelType = panel.id === "articlePreviewPanel"
+      ? "article"
+      : "facebook";
+
+    const button = document.querySelector(
+      '[data-preview-fullscreen="' + panelType + '"]'
+    );
+
+    if (button) {
+      button.textContent = "⛶ Full Screen";
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  if (opening) {
+    target.classList.add("preview-fullscreen-active");
+    document.body.classList.add("preview-fullscreen-open");
+
+    const button = document.querySelector(
+      '[data-preview-fullscreen="' + type + '"]'
+    );
+
+    if (button) {
+      button.textContent = "✕ Close Full Screen";
+      button.setAttribute("aria-expanded", "true");
+    }
+  } else {
+    document.body.classList.remove("preview-fullscreen-open");
+  }
+}
+
+document.addEventListener("keydown", function (event) {
+  if (event.key !== "Escape") return;
+
+  document.querySelectorAll(".preview-fullscreen-active").forEach((panel) => {
+    panel.classList.remove("preview-fullscreen-active");
+
+    const type = panel.id === "articlePreviewPanel"
+      ? "article"
+      : "facebook";
+
+    const button = document.querySelector(
+      '[data-preview-fullscreen="' + type + '"]'
+    );
+
+    if (button) {
+      button.textContent = "⛶ Full Screen";
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.body.classList.remove("preview-fullscreen-open");
+});

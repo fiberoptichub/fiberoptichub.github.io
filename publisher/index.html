@@ -165,11 +165,8 @@
                 Article Image
             </label>
 
-            <input
-                type="file"
-                id="articleImage"
-                accept="image/*"
-            >
+            <input type="file" id="articleImage" accept="image/*" multiple>
+            <small>ပုံ ၁၀ ပုံအထိ ရွေးနိုင်ပါတယ်။ ပုံတစ်ပုံလျှင် 5MB၊ စုစုပေါင်း 20MB အထိ။ မထည့်လည်းရပါတယ်။</small>
 
             <small>
                 Image မရှိရင် မထည့်လည်းရပါတယ်။
@@ -220,6 +217,8 @@
         class="preview-section"
     >
 
+        <div id="articlePreviewPanel" class="article-preview-panel">
+
         <div class="preview-header">
 
             <div>
@@ -240,6 +239,14 @@
             >
                 DRAFT
             </span>
+
+            <button
+                type="button"
+                class="preview-fullscreen-btn"
+                data-preview-fullscreen="article"
+                aria-expanded="false"
+                onclick="togglePreviewFullscreen('article')"
+            >⛶ Full Screen</button>
 
         </div>
 
@@ -268,6 +275,8 @@
 
         </div>
 
+        </div><!-- /articlePreviewPanel -->
+
 
         <!-- =========================
              FACEBOOK PREVIEW
@@ -292,6 +301,14 @@
                 <span class="draft-badge">
                     DRAFT
                 </span>
+
+                <button
+                    type="button"
+                    class="preview-fullscreen-btn"
+                    data-preview-fullscreen="facebook"
+                    aria-expanded="false"
+                    onclick="togglePreviewFullscreen('facebook')"
+                >⛶ Full Screen</button>
 
             </div>
 
@@ -325,9 +342,18 @@
                 🚀 Publish Article
             </button>
 
+            <button
+                type="button"
+                id="facebookPublishButton"
+                class="publish-btn"
+                onclick="publishToFacebook()"
+                disabled
+            >
+                📘 Publish to Facebook
+            </button>
+
             <p>
-                Publish လုပ်တဲ့အခါ Website နှင့်
-                Facebook Auto Post System ကို ချိတ်ဆက်မယ်။
+                Save Article နဲ့ Facebook Post ကို သီးခြားလုပ်ဆောင်ပါမယ်။
             </p>
 
         </div>
