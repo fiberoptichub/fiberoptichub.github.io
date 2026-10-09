@@ -1034,14 +1034,52 @@ async function publishArticle(
        FACEBOOK POST TEXT
     ================================================= */
 
+    const articleURL =
+      WEBSITE_URL + "/articles/" + slug + ".html";
+
     const facebookPost =
-      buildFacebookPost(
-        article,
-        WEBSITE_URL +
-        "/articles/" +
-        slug +
-        ".html"
-      );
+      buildFacebookPost(article, articleURL);
+
+    /* =================================================
+       PUBLISH TO FACEBOOK PAGE
+    ================================================= */
+
+    let facebookPublished = false;
+    let facebookPostId = null;
+    let facebookError = null;
+
+    if (!env.FB_PAGE_ACCESS_TOKEN) {
+      facebookError = "FB_PAGE_ACCESS_TOKEN is not configured.";
+    } else {
+      try {
+        const fbResponse = await fetch(
+          "https://graph.facebook.com/v26.0/1154215104451751/feed",
+          {
+            method: "POST",
+            headers: {
+              "Authorization": "Bearer " + env.FB_PAGE_ACCESS_TOKEN,
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              message: facebookPost
+            })
+          }
+        );
+
+        const fbResult = await fbResponse.json().catch(() => ({}));
+
+        if (fbResponse.ok && fbResult.id) {
+          facebookPublished = true;
+          facebookPostId = fbResult.id;
+        } else {
+          facebookError =
+            fbResult?.error?.message ||
+            "Facebook rejected the post request.";
+        }
+      } catch (fbException) {
+        facebookError = "Could not connect to Facebook.";
+      }
+    }
 
 
     /* =================================================
@@ -1056,7 +1094,18 @@ async function publishArticle(
           true,
 
         message:
-          "Article published successfully.",
+          facebookPublished
+            ? "Article saved and Facebook post published."
+            : "Article saved to GitHub, but Facebook posting failed.",
+
+        facebookPublished:
+          facebookPublished,
+
+        facebookPostId:
+          facebookPostId,
+
+        facebookError:
+          facebookError,
 
         title:
           title,
@@ -2193,7 +2242,7 @@ function createSlug(
     return "fiber-optic-article-" + hashPart;
   }
 
-  if (/[^ -]/.test(input)) {
+  if (/[^\x00-]/.test(input)) {
     return slug + "-" + hashPart;
   }
 

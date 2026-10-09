@@ -1148,18 +1148,17 @@ async function publishArticle() {
        SUCCESS
     ================================================= */
 
-    if (
-      previewStatus
-    ) {
-
+    if (previewStatus) {
       previewStatus.textContent =
-        "PUBLISHED";
-
+        result.facebookPublished ? "PUBLISHED" : "SAVED — FACEBOOK FAILED";
     }
 
-
     showStatus(
-      "✅ Article Published Successfully!"
+      result.facebookPublished
+        ? "✅ Article saved and Facebook post published!"
+        : "⚠️ Article saved to GitHub, but Facebook posting failed: " +
+          (result.facebookError || "Unknown Facebook error"),
+      !result.facebookPublished
     );
 
 
