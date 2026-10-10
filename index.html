@@ -269,23 +269,15 @@
             <a href="#about">About</a>
         </nav>
 
-        <button class="menu" id="menuBtn" type="button" aria-label="Open menu" onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+        <button class="menu" id="menuBtn" type="button" aria-label="Open menu" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
             ☰
         </button>
-
-        <!-- MOBILE MENU -->
-        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
-            <a href="#top" onclick="toggleMobileMenu()"><span aria-hidden="true">🏠</span> Home</a>
-            <a href="#topics" onclick="toggleMobileMenu()"><span aria-hidden="true">📚</span> Learn</a>
-            <a href="#articles" onclick="toggleMobileMenu()"><span aria-hidden="true">📰</span> Articles</a>
-            <a href="#about" onclick="toggleMobileMenu()"><span aria-hidden="true">ℹ️</span> About</a>
-        </nav>
     </header>
 
     <!-- 1. HERO BANNER AT THE TOP -->
     <section class="hero-banner">
-        <h1>FIBER OPTIC <span>HUB</span></h1>
-        <p>Fiber Optic နည်းပညာဆောင်းပါးများကို လေ့လာနိုင်ပါသည်။</p>
+        <h1>Fiber Optic နည်းပညာကို လေ့လာပါ</h1>
+        <p>နည်းပညာဆောင်းပါးများနှင့် လက်တွေ့အသုံးချမှုများ။</p>
     </section>
 
     <!-- 2. MAIN CONTAINER WITH COLUMNS (Sidebar & Articles) -->
@@ -425,6 +417,7 @@
             <div class="section-heading" style="margin-bottom: 1.25rem;">
                 <span class="section-label" style="color: #38bdf8; font-size: 0.85rem; font-weight: bold;">ARCHIVES</span>
                 <h2 id="sectionTitle" style="font-size: 1.5rem; color: #fff; margin-top: 4px;">All Articles (Newest First)</h2>
+                <div id="paginationStatus" class="pagination-status" aria-live="polite">All Articles · Page 1 / 1</div>
             </div>
 
             <!-- Articles Container -->
@@ -439,6 +432,36 @@
         </main>
 
     </div>
+
+    <!-- LEARN SECTION: ALL PUBLISHED ARTICLES -->
+    <section id="topics" class="info-section learn-all-section">
+        <div class="info-section-inner">
+            <span class="section-label">LEARN</span>
+            <h2>Published Articles</h2>
+            <p class="info-section-intro">တင်ပြီးထားသမျှ ဆောင်းပါးခေါင်းစဉ်တွေကို စုစည်းထားပါသည်။ ခေါင်းစဉ်နှိပ်၍ ဖတ်ရှုနိုင်ပါသည်။</p>
+            <nav id="learnAllArticlesList" class="learn-all-articles-list" aria-label="All published articles">
+                <p class="learn-list-loading">ဆောင်းပါးစာရင်းကို ဖွင့်နေပါသည်...</p>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="info-section about-section">
+        <div class="info-section-inner">
+            <span class="section-label">ABOUT US</span>
+            <h2>Fiber Optic Hub အကြောင်း</h2>
+            <p>Fiber Optic Hub သည် Fiber Optic နည်းပညာ၊ Networking နှင့် လက်တွေ့အသုံးချမှုများကို မြန်မာဘာသာဖြင့် လေ့လာမျှဝေနိုင်ရန် ရည်ရွယ်ထားသော ပညာရေးဆိုင်ရာ ဝဘ်ဆိုက်တစ်ခုဖြစ်ပါတယ်။</p>
+            <div class="about-social-links" aria-label="Fiber Optic Hub social media">
+                <a class="about-social-link facebook-link" href="https://www.facebook.com/fiberoptichub" target="_blank" rel="noopener noreferrer">
+                    <svg class="social-logo facebook-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h2.8V21z"/></svg> Facebook Page
+                </a>
+                <a class="about-social-link youtube-link" href="https://youtube.com/@fiberoptichub?si=hKuM5KHTFEp3ODWw" target="_blank" rel="noopener noreferrer">
+                    <svg class="social-logo youtube-logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4" fill="currentColor"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg> YouTube Channel
+                </a>
+            </div>
+            <a class="info-section-link" href="#top">အပေါ်သို့ ပြန်သွားရန် ↑</a>
+        </div>
+    </section>
 
     <!-- 3. FOOTER -->
     <footer>

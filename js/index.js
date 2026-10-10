@@ -11,135 +11,201 @@ mobileNav.style.display = isExpanded ? 'none' : 'flex';
 });
 }
 
-// Loss Calculator Logic  
-const calcForm = document.getElementById('lossCalcForm');  
-if (calcForm) {  
-    calcForm.addEventListener('submit', (e) => {  
-        e.preventDefault();  
-        const length = parseFloat(document.getElementById('fiberLength').value) || 0;  
-        const splices = parseInt(document.getElementById('spliceCount').value) || 0;  
-        const totalLoss = (length * 0.3) + (splices * 0.1);  
-        const resultDiv = document.getElementById('calcResult');  
-        if (resultDiv) {  
-            resultDiv.textContent = `Estimated Loss: ${totalLoss.toFixed(2)} dB`;  
-        }  
-    });  
-}  
+// Loss Calculator Logic
+const calcForm = document.getElementById('lossCalcForm');
+if (calcForm) {
+    calcForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const length = parseFloat(document.getElementById('fiberLength').value) || 0;
+        const splices = parseInt(document.getElementById('spliceCount').value) || 0;
+        const totalLoss = (length * 0.3) + (splices * 0.1);
+        const resultDiv = document.getElementById('calcResult');
+        if (resultDiv) {
+            resultDiv.textContent = `Estimated Loss: ${totalLoss.toFixed(2)} dB`;
+        }
+    });
+}
 
-let allArticles = [];  
-let currentCategory = 'All';  
-let currentPage = 1;  
-const articlesPerPage = 5;  
+let allArticles = [];
+let currentCategory = 'All';
+let currentPage = 1;
+const articlesPerPage = 5;
 
-const container = document.getElementById('paginatedArticlesContainer') || document.getElementById('articlesContainer');  
-const paginationContainer = document.getElementById('paginationControls');  
+const container = document.getElementById('paginatedArticlesContainer') || document.getElementById('articlesContainer');
+const paginationContainer = document.getElementById('paginationControls');
 
-// JSON ဖိုင်ကို အမျိုးမျိုးသော path ဖြင့် စမ်းခေါ်ခြင်း (Error မတက်စေရန်)  
-const jsonPaths = ['articles.json', 'data/articles.json', './articles.json', './data/articles.json'];  
+// JSON ဖိုင်ကို အမျိုးမျိုးသော path ဖြင့် စမ်းခေါ်ခြင်း (Error မတက်စေရန်)
+const jsonPaths = ['articles.json', 'data/articles.json', './articles.json', './data/articles.json'];
 
-function loadArticlesJSON(index = 0) {  
-    if (index >= jsonPaths.length) {  
-        console.warn('articles.json not found. Using fallback demo articles.');  
-        // ဖိုင်မရှိသေးရင် Test လုပ်လို့ရအောင် နမူနာပြသရန်  
-        allArticles = [  
-            {  
-                title: "Fiber Optic အခြေခံများ နိဒါန်း",  
-                url: "#",  
-                date: "2026-09-19",  
-                category: "Fiber Optic Basics",  
-                level: "Beginner",  
-                summary: "Fiber Optic ကေဘယ်လ်များ အလုပ်လုပ်ပုံနှင့် အခြေခံသဘောတရားများကို လေ့လာပါ။"  
-            },  
-            {  
-                title: "Splicing ပြုလုပ်နည်း အဆင့်ဆင့်",  
-                url: "#",  
-                date: "2026-09-18",  
-                category: "Splicing",  
-                level: "Intermediate",  
-                summary: "ဖိုင်ဘာကြိုးဆက်ခြင်း (Splicing) ပြုလုပ်ရာတွင် သိထားရမည့် အချက်များနှင့် ကျင့်စဉ်များ။"  
-            }  
-        ];  
+function loadArticlesJSON(index = 0) {
+    if (index >= jsonPaths.length) {
+        console.warn('articles.json not found. Using fallback demo articles.');
+        // ဖိုင်မရှိသေးရင် Test လုပ်လို့ရအောင် နမူနာပြသရန်
+        allArticles = [
+            {
+                title: "Fiber Optic အခြေခံများ နိဒါန်း",
+                url: "#",
+                date: "2026-09-19",
+                category: "Fiber Optic Basics",
+                level: "Beginner",
+                summary: "Fiber Optic ကေဘယ်လ်များ အလုပ်လုပ်ပုံနှင့် အခြေခံသဘောတရားများကို လေ့လာပါ။"
+            },
+            {
+                title: "Splicing ပြုလုပ်နည်း အဆင့်ဆင့်",
+                url: "#",
+                date: "2026-09-18",
+                category: "Splicing",
+                level: "Intermediate",
+                summary: "ဖိုင်ဘာကြိုးဆက်ခြင်း (Splicing) ပြုလုပ်ရာတွင် သိထားရမည့် အချက်များနှင့် ကျင့်စဉ်များ။"
+            }
+        ];
         updateCategoryCounts();
-        renderArticles();  
-        setupCategoryFilter();  
-        return;  
-    }  
+        renderArticles();
+        setupCategoryFilter();
+        return;
+    }
 
-    fetch(jsonPaths[index])  
-        .then(response => {  
-            if (!response.ok) throw new Error('Not found');  
-            return response.json();  
-        })  
-        .then(data => {  
-            allArticles = data;  
+    fetch(jsonPaths[index])
+        .then(response => {
+            if (!response.ok) throw new Error('Not found');
+            return response.json();
+        })
+        .then(data => {
+            allArticles = data;
             updateCategoryCounts();
-            renderArticles();  
-            setupCategoryFilter();  
-            setupSearch();  
-        })  
-        .catch(() => {  
-            loadArticlesJSON(index + 1);  
-        });  
-}  
+            renderArticles();
+            setupCategoryFilter();
+            setupSearch();
+        })
+        .catch(() => {
+            loadArticlesJSON(index + 1);
+        });
+}
 
-loadArticlesJSON();  
+loadArticlesJSON();
 
-function renderArticles() {  
-    if (!container) return;  
+/* FOH LEARN ALL ARTICLES v1 */
+function renderLearnAllArticles() {
+    const list = document.getElementById('learnAllArticlesList');
+    if (!list) return;
 
-    let filtered = allArticles;  
-    if (currentCategory !== 'All') {  
-        filtered = allArticles.filter(art =>   
-            art.category && art.category.toLowerCase() === currentCategory.toLowerCase()  
-        );  
-    }  
+    list.replaceChildren();
 
-    const startIndex = (currentPage - 1) * articlesPerPage;  
-    const endIndex = startIndex + articlesPerPage;  
-    const paginatedItems = filtered.slice(startIndex, endIndex);  
+    const publishedArticles = [...allArticles]
+        .filter(article =>
+            article &&
+            typeof article.title === 'string' &&
+            typeof article.url === 'string' &&
+            article.url.trim() !== '' &&
+            article.url !== '#'
+        )
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
 
-    container.innerHTML = '';  
+    if (publishedArticles.length === 0) {
+        const message = document.createElement('p');
+        message.className = 'learn-list-empty';
+        message.textContent = 'လက်ရှိဖော်ပြနိုင်သော ဆောင်းပါး မရှိသေးပါ။';
+        list.appendChild(message);
+        return;
+    }
 
-    if (paginatedItems.length === 0) {  
-        container.innerHTML = '<p style="color: #94a3b8; padding: 1rem 0;">ဤ Category ထဲတွင် ဆောင်းပါး မရှိသေးပါ။ Python script ဖြင့် build လုပ်ထားခြင်း ရှိမရှိ စစ်ဆေးပါ။</p>';  
-        if (paginationContainer) paginationContainer.innerHTML = '';  
-        return;  
-    }  
+    const fragment = document.createDocumentFragment();
 
-    paginatedItems.forEach(art => {  
-        const card = document.createElement('article');  
-        card.className = 'article-card';  
-        card.style.cssText = 'background: #1e293b; padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem;';  
-        card.innerHTML = `  
-            <div style="font-size: 0.8rem; color: #38bdf8; margin-bottom: 0.4rem; font-weight: bold;">${art.category || 'General'} • ${art.date || ''}</div>  
-            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><a href="${art.url}" style="color: #fff; text-decoration: none;">${art.title}</a></h3>  
-            <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${art.summary || ''}</p>  
-        `;  
-        container.appendChild(card);  
-    });  
+    publishedArticles.forEach(article => {
+        const link = document.createElement('a');
+        link.className = 'learn-article-title';
+        link.href = article.url;
+        link.textContent = article.title;
+        fragment.appendChild(link);
+    });
 
-    renderPagination(filtered.length);  
-}  
+    list.appendChild(fragment);
+}
+/* END FOH LEARN ALL ARTICLES v1 */
 
-function renderPagination(totalItems) {  
-    if (!paginationContainer) return;  
-    paginationContainer.innerHTML = '';  
 
-    const totalPages = Math.ceil(totalItems / articlesPerPage);  
-    if (totalPages <= 1) return;  
+function renderArticles() {
+    renderLearnAllArticles();
+    if (!container) return;
 
-    for (let i = 1; i <= totalPages; i++) {  
-        const btn = document.createElement('button');  
-        btn.textContent = i;  
-        btn.style.cssText = `padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid #475569; background: ${i === currentPage ? '#2563eb' : '#0f172a'}; color: #fff; cursor: pointer; margin-right: 5px;`;  
-        btn.addEventListener('click', () => {  
-            currentPage = i;  
-            renderArticles();  
-            window.scrollTo({ top: 300, behavior: 'smooth' });  
-        });  
-        paginationContainer.appendChild(btn);  
-    }  
-}  
+    let filtered = allArticles;
+    if (currentCategory !== 'All') {
+        filtered = allArticles.filter(art =>
+            art.category && art.category.toLowerCase() === currentCategory.toLowerCase()
+        );
+    }
+
+    const startIndex = (currentPage - 1) * articlesPerPage;
+    const endIndex = startIndex + articlesPerPage;
+    const paginatedItems = filtered.slice(startIndex, endIndex);
+
+    container.innerHTML = '';
+
+    if (paginatedItems.length === 0) {
+        container.innerHTML = '<p style="color: #94a3b8; padding: 1rem 0;">ဤ Category ထဲတွင် ဆောင်းပါး မရှိသေးပါ။ Python script ဖြင့် build လုပ်ထားခြင်း ရှိမရှိ စစ်ဆေးပါ။</p>';
+        if (paginationContainer) paginationContainer.innerHTML = '';
+        const status = document.getElementById('paginationStatus');
+        const title = document.getElementById('sectionTitle');
+        if (status) {
+            const label = title ? title.textContent.replace(' (Newest First)', '').trim() : 'Articles';
+            status.textContent = `${label} · No articles found`;
+        }
+        return;
+    }
+
+    paginatedItems.forEach(art => {
+        const card = document.createElement('article');
+        card.className = 'article-card';
+        card.style.cssText = 'background: #1e293b; padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem;';
+        card.innerHTML = `
+            <div style="font-size: 0.8rem; color: #38bdf8; margin-bottom: 0.4rem; font-weight: bold;">${art.category || 'General'} • ${art.date || ''}</div>
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;"><a href="${art.url}" style="color: #fff; text-decoration: none;">${art.title}</a></h3>
+            <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${art.summary || ''}</p>
+        `;
+        container.appendChild(card);
+    });
+
+    renderPagination(filtered.length);
+}
+
+function renderPagination(totalItems) {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = '';
+
+    const totalPages = Math.ceil(totalItems / articlesPerPage);
+    const status = document.getElementById('paginationStatus');
+    const title = document.getElementById('sectionTitle');
+    const label = title
+        ? title.textContent.replace(' (Newest First)', '').trim()
+        : 'Articles';
+
+    if (status) {
+        status.textContent = totalPages > 0
+            ? `${label} · Page ${currentPage} / ${totalPages}`
+            : `${label} · No articles found`;
+    }
+
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = i;
+        btn.className = 'pagination-page-button' + (i === currentPage ? ' is-current' : '');
+
+        if (i === currentPage) {
+            btn.setAttribute('aria-current', 'page');
+        }
+
+        btn.addEventListener('click', () => {
+            currentPage = i;
+            renderArticles();
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        });
+
+        paginationContainer.appendChild(btn);
+    }
+}
 
 function updateCategoryCounts() {
     const categoryLinks = document.querySelectorAll('.sidebar-categories a');
@@ -174,33 +240,33 @@ function updateCategoryCounts() {
     });
 }
 
-        function setupCategoryFilter() {  
-    const categoryLinks = document.querySelectorAll('.sidebar-categories a, .categories a');  
-    const sectionTitle = document.getElementById('sectionTitle');  
+        function setupCategoryFilter() {
+    const categoryLinks = document.querySelectorAll('.sidebar-categories a, .categories a');
+    const sectionTitle = document.getElementById('sectionTitle');
 
-    categoryLinks.forEach(link => {  
-        link.addEventListener('click', (e) => {  
-            e.preventDefault();  
-            categoryLinks.forEach(l => l.style.fontWeight = 'normal');  
-            link.style.fontWeight = 'bold';  
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            categoryLinks.forEach(l => l.style.fontWeight = 'normal');
+            link.style.fontWeight = 'bold';
 
-            // HTML ထဲက Link text ယူမည့်အစား Link ရဲ့ href သို့မဟုတ် သတ်မှတ်ထားသော နာမည်ကို တိုက်ရိုက်သုံးခြင်း  
-            const href = link.getAttribute('href');  
+            // HTML ထဲက Link text ယူမည့်အစား Link ရဲ့ href သို့မဟုတ် သတ်မှတ်ထားသော နာမည်ကို တိုက်ရိုက်သုံးခြင်း
+            const href = link.getAttribute('href');
             let titleText = link.dataset.category || link.textContent.trim();
 
-            if (href.includes('all-articles')) {  
-                currentCategory = 'All';  
-                if (sectionTitle) sectionTitle.textContent = 'All Articles (Newest First)';  
-            } else {  
-                currentCategory = titleText;  
-                if (sectionTitle) sectionTitle.textContent = titleText;  
-            }  
-              
-            currentPage = 1;  
-            renderArticles();  
-        });  
-    });  
-}  
+            if (href.includes('all-articles')) {
+                currentCategory = 'All';
+                if (sectionTitle) sectionTitle.textContent = 'All Articles (Newest First)';
+            } else {
+                currentCategory = titleText;
+                if (sectionTitle) sectionTitle.textContent = titleText;
+            }
+
+            currentPage = 1;
+            renderArticles();
+        });
+    });
+}
 
 
 
@@ -491,23 +557,23 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 const backToTopBtn = document.getElementById("backToTopBtn");
 
-if (backToTopBtn) {  
-    // စာမျက်နှာကို ဆင်းသည့်အခါ ခလုတ်ပေါ်လာရန် စစ်ဆေးခြင်း  
-    window.addEventListener("scroll", () => {  
-        if (window.scrollY > 300) {  
-            backToTopBtn.classList.add("show");  
-        } else {  
-            backToTopBtn.classList.remove("show");  
-        }  
-    });  
+if (backToTopBtn) {
+    // စာမျက်နှာကို ဆင်းသည့်အခါ ခလုတ်ပေါ်လာရန် စစ်ဆေးခြင်း
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    });
 
-    // ခလုတ်ကို နှိပ်လိုက်လျှင် အပေါ်ဆုံးသို့ ပြန်တက်ရန်  
-    backToTopBtn.addEventListener("click", () => {  
-        window.scrollTo({  
-            top: 0,  
-            behavior: "smooth"  
-        });  
-    });  
+    // ခလုတ်ကို နှိပ်လိုက်လျှင် အပေါ်ဆုံးသို့ ပြန်တက်ရန်
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 }
 
 });
@@ -517,7 +583,7 @@ function selectCategory(element) {
 const items = document.querySelectorAll('.category-item');
 items.forEach(item => item.classList.remove('active'));
 
-// 2. အခုနှိပ်လိုက်တဲ့ item ကို active class ထည့်ပါ  
+// 2. အခုနှိပ်လိုက်တဲ့ item ကို active class ထည့်ပါ
 element.classList.add('active');
 
 }
@@ -527,26 +593,26 @@ document.addEventListener("DOMContentLoaded", function() {
 const currentPath = window.location.pathname;
 const categoryLinks = document.querySelectorAll('.category-item');
 
-categoryLinks.forEach(link => {  
-    // URL ထဲမှာ လင့်ခ်ပါလာရင် active class ထည့်ရန်  
-    if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {  
-        categoryLinks.forEach(el => el.classList.remove('active', 'font-bold'));  
-        link.classList.add('active');  
-        link.style.color = '#38bdf8';  
-        link.style.fontWeight = 'bold';  
-    }  
+categoryLinks.forEach(link => {
+    // URL ထဲမှာ လင့်ခ်ပါလာရင် active class ထည့်ရန်
+    if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
+        categoryLinks.forEach(el => el.classList.remove('active', 'font-bold'));
+        link.classList.add('active');
+        link.style.color = '#38bdf8';
+        link.style.fontWeight = 'bold';
+    }
 
-    // ကလစ်နှိပ်လိုက်တဲ့အခါ အရောင်ပြောင်းရန်  
-    link.addEventListener('click', function() {  
-        categoryLinks.forEach(el => {  
-            el.classList.remove('active');  
-            el.style.color = '#94a3b8'; // ပုံမှန်အရောင်  
-            el.style.fontWeight = 'normal';  
-        });  
-        this.classList.add('active');  
-        this.style.color = '#38bdf8'; // Active ဖြစ်စဉ် အရောင်  
-        this.style.fontWeight = 'bold';  
-    });  
+    // ကလစ်နှိပ်လိုက်တဲ့အခါ အရောင်ပြောင်းရန်
+    link.addEventListener('click', function() {
+        categoryLinks.forEach(el => {
+            el.classList.remove('active');
+            el.style.color = '#94a3b8'; // ပုံမှန်အရောင်
+            el.style.fontWeight = 'normal';
+        });
+        this.classList.add('active');
+        this.style.color = '#38bdf8'; // Active ဖြစ်စဉ် အရောင်
+        this.style.fontWeight = 'bold';
+    });
 });
 
 });
@@ -560,11 +626,11 @@ e.stopPropagation();
 mobileNav.classList.toggle('open');
 });
 
-// မီနူးအပြင်ဘက်ကို နှိပ်လိုက်ပါက ပိတ်သွားစေရန်  
-document.addEventListener('click', function(e) {  
-    if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {  
-        mobileNav.classList.remove('open');  
-    }  
+// မီနူးအပြင်ဘက်ကို နှိပ်လိုက်ပါက ပိတ်သွားစေရန်
+document.addEventListener('click', function(e) {
+    if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+        mobileNav.classList.remove('open');
+    }
 });
 
 }
@@ -841,3 +907,113 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+/* FOH MOBILE SIDEBAR DRAWER JS v1 */
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector(".main-wrapper .left-sidebar");
+    const menuBtn = document.getElementById("menuBtn");
+    if (!sidebar || !menuBtn) return;
+    if (document.getElementById("fohSidebarOverlay")) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)");
+    sidebar.id = "fohMobileSidebar";
+
+    const navigation = document.createElement("nav");
+    navigation.className = "foh-drawer-navigation";
+    navigation.setAttribute("aria-label", "Main Navigation");
+    navigation.innerHTML = `
+        <a href="#top"><span aria-hidden="true">🏠</span> Home</a>
+        <a href="#topics"><span aria-hidden="true">📚</span> Learn</a>
+        <a href="#articles"><span aria-hidden="true">📰</span> Articles</a>
+        <a href="#about"><span aria-hidden="true">ℹ️</span> About</a>
+    `;
+
+    const close = document.createElement("button");
+    close.id = "fohSidebarClose";
+    close.type = "button";
+    close.innerHTML = "<span aria-hidden='true'>✕</span>";
+    close.setAttribute("aria-label", "Close navigation menu");
+    close.title = "Close menu";
+
+    sidebar.insertBefore(close, sidebar.firstChild);
+    close.insertAdjacentElement("afterend", navigation);
+
+    const overlay = document.createElement("div");
+    overlay.id = "fohSidebarOverlay";
+    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.appendChild(overlay);
+
+    menuBtn.setAttribute("aria-controls", sidebar.id);
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+    function openDrawer() {
+        if (!isMobile.matches) return;
+        document.body.classList.add("foh-sidebar-drawer-open");
+        overlay.hidden = false;
+        overlay.setAttribute("aria-hidden", "false");
+        sidebar.setAttribute("aria-hidden", "false");
+        menuBtn.setAttribute("aria-expanded", "true");
+        menuBtn.setAttribute("aria-label", "Close navigation menu");
+        close.focus({ preventScroll: true });
+    }
+
+    function closeDrawer(returnFocus = false) {
+        document.body.classList.remove("foh-sidebar-drawer-open");
+        overlay.hidden = true;
+        overlay.setAttribute("aria-hidden", "true");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+        if (isMobile.matches) {
+            sidebar.setAttribute("aria-hidden", "true");
+        } else {
+            sidebar.removeAttribute("aria-hidden");
+        }
+
+        if (returnFocus && isMobile.matches) {
+            menuBtn.focus({ preventScroll: true });
+        }
+    }
+
+    menuBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (document.body.classList.contains("foh-sidebar-drawer-open")) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    });
+
+    close.addEventListener("click", () => closeDrawer(true));
+    overlay.addEventListener("click", () => closeDrawer(true));
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" &&
+            document.body.classList.contains("foh-sidebar-drawer-open")) {
+            closeDrawer(true);
+        }
+    });
+
+    sidebar.addEventListener("click", (event) => {
+        if (event.target.closest("a") && isMobile.matches) closeDrawer();
+    });
+
+    function syncViewport() {
+        if (!isMobile.matches) {
+            closeDrawer();
+        } else if (!document.body.classList.contains("foh-sidebar-drawer-open")) {
+            sidebar.setAttribute("aria-hidden", "true");
+        }
+    }
+
+    if (isMobile.addEventListener) {
+        isMobile.addEventListener("change", syncViewport);
+    } else {
+        isMobile.addListener(syncViewport);
+    }
+    syncViewport();
+});
+/* End FOH MOBILE SIDEBAR DRAWER JS v1 */

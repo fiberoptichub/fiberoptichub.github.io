@@ -17,6 +17,22 @@ const WORKER_URL =
 const WEBSITE_URL =
   "https://fiberoptichub.github.io";
 
+function getPublisherThailandDate() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Bangkok",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+
+  const values = Object.fromEntries(
+    parts.filter(part => part.type !== "literal")
+         .map(part => [part.type, part.value])
+  );
+
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
 
 /* =====================================================
    GLOBAL STATE
@@ -59,6 +75,10 @@ const descriptionInput =
   );
 
 
+
+
+const youtubeInput =
+  document.getElementById("articleYoutubeLink");
 const imageInput =
   document.getElementById(
     "articleImage"
@@ -331,15 +351,16 @@ async function generateArticle() {
     title:
       title,
 
-    category:
-      category,
+    category: String(category || "Auto"),
+    level: String(level || "Auto"),
 
-    level:
-      level,
+    description: description,
 
-    description:
-      description
+    imageNames: selectedImageNames.slice(0, 10),
 
+    youtubeLink: youtubeInput
+      ? youtubeInput.value.trim()
+      : ""
   };
 
 
@@ -413,10 +434,10 @@ async function generateArticle() {
         ),
 
       category:
-        category,
+        String(article.category || category || "Fiber Optic Basics"),
 
       level:
-        level,
+        String(article.level || level || "Beginner"),
 
       description:
         String(
@@ -471,9 +492,13 @@ async function generateArticle() {
         )
           ? article.facebook_hashtags
           : [],
+      image_placements: Array.isArray(article.image_placements)
+        ? article.image_placements
+        : [],
 
-      date:
-        new Date().toISOString(),
+      youtube_link: String(article.youtube_link || ""),
+
+      date: article.date || getPublisherThailandDate(),
 
       images: selectedImagesData.map((data, index) => ({
         name: selectedImageNames[index] || `image-${index + 1}.jpg`,
@@ -631,22 +656,75 @@ function renderArticlePreview(
 
 
   const previewImages = Array.isArray(article.images)
-    ? article.images.map(item =>
-        typeof item === "string" ? item : item?.data
-      ).filter(Boolean)
-    : (article.image ? [article.image] : []);
+    ? article.images.map((item, index) => ({
+        src: typeof item === "string" ? item : item?.data,
+        name: typeof item === "object" && item ? String(item.name || "").trim() : "",
+        index
+      })).filter(item => item.src)
+    : (article.image ? [{ src: article.image, name: "", index: 0 }] : []);
 
-  const imageHTML = previewImages.map((src, index) => `
-    <figure class="preview-figure">
-      <img
-        src="${src}"
-        alt="${escapeHTML(article.title)} — image ${index + 1}"
-        class="preview-image"
-        loading="lazy"
-      >
-      <figcaption>Image ${index + 1} of ${previewImages.length}</figcaption>
-    </figure>
-  `).join("");
+  const previewPlacements = Array.isArray(article.image_placements)
+    ? article.image_placements
+    : [];
+
+  const previewUsedImages = new Set();
+
+  const renderPreviewImages = images => images.map(image => {
+    previewUsedImages.add(image.index);
+
+    const placement = image.placement || {};
+    const alt = String(placement.alt_text || "").trim()
+      || `${article.title} — image ${image.index + 1}`;
+    const caption = String(placement.caption || "").trim();
+
+    return `
+      <figure class="preview-figure">
+        <img
+          src="${image.src}"
+          alt="${escapeHTML(alt)}"
+          class="preview-image"
+          loading="lazy"
+        >
+        <figcaption>
+          Image ${image.index + 1} of ${previewImages.length}
+          ${caption ? ` — ${escapeHTML(caption)}` : ""}
+        </figcaption>
+      </figure>
+    `;
+  }).join("");
+
+  const previewImagesWithPlacement = previewImages.map(image => {
+    const placement =
+      previewPlacements.find(item =>
+        image.name &&
+        String(item.image_name || "").trim() === image.name
+      ) ||
+      previewPlacements[image.index] ||
+      {};
+
+    return {
+      ...image,
+      placement,
+      heading: String(placement.section_heading || "").trim()
+    };
+  });
+
+  const renderImagesForHeading = heading =>
+    renderPreviewImages(previewImagesWithPlacement.filter(image =>
+      !previewUsedImages.has(image.index) &&
+      image.heading &&
+      image.heading.toLowerCase() === String(heading || "").trim().toLowerCase()
+    ));
+
+  const renderUnassignedImages = () =>
+    renderPreviewImages(previewImagesWithPlacement.filter(image =>
+      !previewUsedImages.has(image.index) && !image.heading
+    ));
+
+  const renderRemainingImages = () =>
+    renderPreviewImages(previewImagesWithPlacement.filter(image =>
+      !previewUsedImages.has(image.index)
+    ));
 
   let contentHTML =
     "";
@@ -672,6 +750,8 @@ function renderArticlePreview(
 
   }
 
+
+  contentHTML += renderUnassignedImages();
 
   if (
     Array.isArray(
@@ -712,6 +792,10 @@ function renderArticlePreview(
 
         }
 
+
+        if (heading) {
+          contentHTML += renderImagesForHeading(heading);
+        }
 
         if (
           Array.isArray(
@@ -788,6 +872,9 @@ function renderArticlePreview(
 
   }
 
+
+  contentHTML += renderUnassignedImages();
+  contentHTML += renderRemainingImages();
 
   if (
     Array.isArray(
@@ -887,9 +974,6 @@ function renderArticlePreview(
         ${formattedDate}
 
       </div>
-
-
-      ${imageHTML}
 
 
       <div class="preview-content">
@@ -1265,6 +1349,7 @@ async function publishToFacebook() {
 ===================================================== */
 
 function clearPublisher() {
+  if (youtubeInput) youtubeInput.value = "";
 
   savedArticleURL = null;
   if (facebookPublishButton) {

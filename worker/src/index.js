@@ -194,6 +194,23 @@ export default {
    GENERATE ARTICLE
 ===================================================== */
 
+function getThailandDateISO() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Bangkok",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+
+  const values = Object.fromEntries(
+    parts.filter(part => part.type !== "literal")
+         .map(part => [part.type, part.value])
+  );
+
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+/* FOH_ARTICLE_STANDARD_PATCH_V1 */
 async function generateArticle(
   data,
   env
@@ -248,10 +265,22 @@ async function generateArticle(
 
 
   const description =
-    String(
-      data.description ||
-      ""
-    ).trim();
+    String(data.description || "").trim();
+
+  const imageNames = Array.isArray(data.imageNames)
+    ? data.imageNames
+        .slice(0, 10)
+        .map(name => String(name || "").trim())
+        .filter(Boolean)
+    : [];
+
+  const youtubeLink = String(data.youtubeLink || "").trim();
+
+  const categoryIsAuto =
+    !category || category.toLowerCase() === "auto";
+
+  const levelIsAuto =
+    !level || level.toLowerCase() === "auto";
 
 
   /* =================================================
@@ -295,122 +324,78 @@ async function generateArticle(
   ================================================= */
 
   const prompt = `
+You are the official AI educational content assistant
+for Fiber Optic Hub, a technical knowledge-sharing website.
 
-You are the official AI educational
-content assistant for Fiber Optic Hub.
+Create a technically accurate website article and a separate,
+medium-length educational Facebook post about the same topic.
 
-Fiber Optic Hub is a technical knowledge-sharing
-website focused on Fiber Optic Technology.
-
-Create a technically accurate educational
-Website Article and Facebook Educational Summary
-about the same topic.
-
-Topic:
+USER'S EXACT ARTICLE TITLE:
 ${title}
 
-Category:
-${category}
+Do not rewrite, translate, shorten, or embellish the title.
+Return it exactly as supplied.
 
-Level:
-${level}
+CATEGORY INPUT: ${category}
+CATEGORY AUTO-CLASSIFICATION: ${categoryIsAuto}
+LEVEL INPUT: ${level}
+LEVEL AUTO-CLASSIFICATION: ${levelIsAuto}
 
-User Description:
-${description ||
-"Create a useful educational article about this topic."
-}
+USER DESCRIPTION:
+${description || "Create a useful educational article about this topic."}
 
+IMAGE FILENAMES SUPPLIED BY THE USER:
+${JSON.stringify(imageNames)}
 
-==================================================
-WEBSITE ARTICLE
-==================================================
+USER-SUPPLIED YOUTUBE URL:
+${youtubeLink || "(No YouTube URL supplied)"}
 
-Write primarily in clear Myanmar language.
+WEBSITE ARTICLE REQUIREMENTS
+- Write primarily in clear, professional Myanmar language.
+- Keep important technical terms in English.
+- Explain concepts accurately and accessibly for the specified level.
+- Include an introduction, relevant main sections, working principles,
+  components or concepts, practical Fiber Optic examples, useful
+  technical details, key points and a conclusion as appropriate.
+- Use short mobile-friendly paragraphs and helpful bullet points.
+- Use ##-style section headings in the structured JSON headings.
+- Never invent specifications, measurements, sources or URLs.
+- Do not include HTML, code fences, website URLs, Facebook promotions,
+  hashtags, previous/next article links or related-article lists in prose.
+- Preserve the term "Light Signal" exactly in English.
+- In Fiber Optic context, translate "guide light" using "လမ်းကြောင်း",
+  not "လမ်းညွှန်". For example, "Light ကို Fiber အတွင်း လမ်းကြောင်းပေးသည်".
+- Use the exact category supplied unless CATEGORY AUTO-CLASSIFICATION
+  is true. When Auto, select the most suitable category from:
+  Fiber Optic Basics, FTTH, Splicing, Testing & Measurement,
+  Troubleshooting, Advanced.
+- Use the exact level supplied unless LEVEL AUTO-CLASSIFICATION is true.
+  When Auto, classify as Beginner, Intermediate, or Advanced based
+  on the technical depth required.
+- If description is empty, generate a concise Myanmar description.
 
-Keep important technical terms in English.
+IMAGE PLACEMENT
+- Never invent image filenames or image URLs.
+- Only use filenames in the supplied list.
+- Return one image_placements entry for each supplied filename.
+- Select the most relevant section_heading from your generated sections.
+- If no section is a good fit, use an empty section_heading.
+- Write concise alt_text and an optional Myanmar caption.
+- The application will render actual uploaded image URLs; do not output URLs.
 
-Explain technical concepts clearly.
+FACEBOOK EDUCATIONAL POST DATA
+- Provide a useful educational summary, not merely an advertisement.
+- Keep it substantially shorter than the website article.
+- Include useful technical facts and mobile-friendly points.
+- Use Burmese where appropriate and a few relevant emojis.
+- Avoid claiming that a Facebook post has already been published.
+- The application adds the required final article link and hashtags.
 
-Use:
-
-- Introduction
-- Main topic explanation
-- Important concepts/components
-- How it works
-- Practical Fiber Optic example
-- Technical details when relevant
-- Key Points
-- Conclusion
-
-Use short mobile-friendly paragraphs.
-
-Use bullet points when useful.
-
-Do not invent technical information.
-
-Technical numbers must have correct context.
-
-Do not present technology-specific specifications
-as universal Fiber Optic specifications.
-
-
-==================================================
-WEBSITE ARTICLE MUST NOT CONTAIN
-==================================================
-
-Facebook content
-Facebook hashtags
-Facebook promotional language
-Website URL
-Read Full Article
-Previous Article
-Next Article
-Related Articles
-HTML
-Markdown
-Code
-AI notices
-
-
-==================================================
-FACEBOOK SUMMARY
-==================================================
-
-Create a useful educational Facebook summary.
-
-It must teach something useful.
-
-It must be substantially shorter than
-the Website Article.
-
-Include useful technical facts.
-
-Use:
-
-💡 မှတ်သားစရာ
-
-when appropriate.
-
-At the end the system will add:
-
-📚 Read Full Article:
-${articleURL}
-
-Learn • Practice • Share
-
-Relevant hashtags.
-
-
-==================================================
-JSON OUTPUT
-==================================================
-
-Return ONLY valid JSON.
-
-Use EXACTLY:
-
+Return ONLY valid JSON with exactly this schema:
 {
   "title": "",
+  "category": "",
+  "level": "",
   "description": "",
   "introduction": "",
   "sections": [
@@ -422,17 +407,22 @@ Use EXACTLY:
   ],
   "key_points": [],
   "conclusion": "",
+  "image_placements": [
+    {
+      "image_name": "",
+      "section_heading": "",
+      "alt_text": "",
+      "caption": ""
+    }
+  ],
   "facebook_summary": [],
   "facebook_note": [],
   "facebook_hashtags": []
 }
 
-Do not return Markdown.
-
-Do not return code fences.
-
-Do not write explanations outside JSON.
-
+For a non-Auto category or level, preserve the supplied value exactly.
+Return the article title exactly as supplied.
+Do not return Markdown, code fences or explanations outside JSON.
 Verify technical accuracy before returning.
 `;
 
@@ -702,11 +692,23 @@ Verify technical accuracy before returning.
     ================================================= */
 
     const finalArticle = {
+      title: title,
 
-      title:
-        String(
-          article.title
-        ),
+      category: categoryIsAuto
+        ? String(article.category || "Fiber Optic Basics").trim()
+        : category,
+
+      level: levelIsAuto
+        ? String(article.level || "Beginner").trim()
+        : level,
+
+      date: getThailandDateISO(),
+
+      youtube_link: youtubeLink,
+
+      image_placements: Array.isArray(article.image_placements)
+        ? article.image_placements.slice(0, 10)
+        : [],
 
       description:
         String(
@@ -1444,44 +1446,20 @@ async function githubPutFile(
 ===================================================== */
 
 function buildArticleMarkdown(article, imageURLs) {
+  const title = String(article.title || "").trim();
+  const category = String(article.category || "Fiber Optic Basics").trim();
+  const level = String(article.level || "Beginner").trim();
+  const description = String(article.description || "")
+    .replace(/\r?\n/g, " ")
+    .trim();
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(String(article.date || ""))
+    ? String(article.date)
+    : getThailandDateISO();
 
-  const title =
-    String(
-      article.title || ""
-    ).trim();
-
-  const category =
-    String(
-      article.category ||
-      "Fiber Optic Basics"
-    ).trim();
-
-  const level =
-    String(
-      article.level ||
-      "Beginner"
-    ).trim();
-
-  const description =
-    String(
-      article.description || ""
-    )
-      .replace(/\r?\n/g, " ")
-      .trim();
-
-  const date =
-    String(
-      article.date ||
-      new Date().toISOString()
-    ).slice(0, 10);
-
-  const yamlEscape = value =>
-    String(
-      value || ""
-    )
-      .replace(/\\/g, "\\\\")
-      .replace(/"/g, '\\"')
-      .replace(/\r?\n/g, " ");
+  const yamlEscape = value => String(value || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"')
+    .replace(/\r?\n/g, " ");
 
   const lines = [
     "---",
@@ -1496,162 +1474,138 @@ function buildArticleMarkdown(article, imageURLs) {
     ""
   ];
 
-
-  const markdownImageURLs = Array.isArray(imageURLs)
+  const urls = Array.isArray(imageURLs)
     ? imageURLs
     : (imageURLs ? [imageURLs] : []);
 
-  markdownImageURLs.forEach((url, index) => {
-    if (typeof url !== "string" ||
-        !url.startsWith(WEBSITE_URL + "/")) {
-      return;
+  const uploadedImages = urls.map((url, index) => {
+    if (typeof url !== "string" || !url.startsWith(WEBSITE_URL + "/")) {
+      return null;
     }
 
-    const imagePath = url.replace(WEBSITE_URL + "/", "../");
-    lines.push(
-      `![${title} — image ${index + 1}](${imagePath})`,
-      ""
-    );
-  });
+    const metadata = Array.isArray(article.images)
+      ? article.images[index] || {}
+      : {};
 
-  if (
-    article.introduction
+    const sourceName = String(metadata.name || "").trim();
+    const placements = Array.isArray(article.image_placements)
+      ? article.image_placements
+      : [];
 
-  ) {
+    const placement =
+      placements.find(item =>
+        String(item.image_name || "").trim() === sourceName
+      ) ||
+      placements[index] ||
+      {};
 
-    lines.push(
-      String(
-        article.introduction
-      ).trim(),
-      ""
-    );
+    const rawAlt = String(placement.alt_text || "").trim();
+    const rawCaption = String(placement.caption || "").trim();
+
+    return {
+      url: url.replace(WEBSITE_URL + "/", "../"),
+      sourceName,
+      heading: String(placement.section_heading || "").trim(),
+      alt: rawAlt || `${title} — image ${index + 1}`,
+      caption: rawCaption
+    };
+  }).filter(Boolean);
+
+  const usedImages = new Set();
+
+  const appendImage = image => {
+    if (usedImages.has(image)) return;
+    usedImages.add(image);
+
+    lines.push(`![${image.alt.replace(/\]/g, "\\]")}](${image.url})`, "");
+
+    if (image.caption) {
+      lines.push(`*${image.caption}*`, "");
+    }
+  };
+
+  if (article.introduction) {
+    lines.push(String(article.introduction).trim(), "");
   }
 
-  if (
-    Array.isArray(
-      article.sections
-    )
-  ) {
+  // Images without a matching section are shown after the introduction.
+  uploadedImages
+    .filter(image => !image.heading)
+    .forEach(appendImage);
 
-    article.sections.forEach(
-      section => {
+  if (Array.isArray(article.sections)) {
+    article.sections.forEach(section => {
+      const heading = String(section?.heading || "").trim();
 
-        const heading =
-          String(
-            section?.heading || ""
-          ).trim();
-
-        if (heading) {
-
-          lines.push(
-            `## ${heading}`,
-            ""
-          );
-        }
-
-        if (
-          Array.isArray(
-            section?.paragraphs
-          )
-        ) {
-
-          section.paragraphs.forEach(
-            paragraph => {
-
-              const text =
-                String(
-                  paragraph || ""
-                ).trim();
-
-              if (text) {
-
-                lines.push(
-                  text,
-                  ""
-                );
-              }
-            }
-          );
-        }
-
-        if (
-          Array.isArray(
-            section?.bullets
-          )
-        ) {
-
-          section.bullets.forEach(
-            bullet => {
-
-              const text =
-                String(
-                  bullet || ""
-                ).trim();
-
-              if (text) {
-
-                lines.push(
-                  `- ${text}`
-                );
-              }
-            }
-          );
-
-          if (
-            section.bullets.length
-          ) {
-
-            lines.push("");
-          }
-        }
+      if (heading) {
+        lines.push(`## ${heading}`, "");
       }
-    );
+
+      // Put each image directly under its matching section heading.
+      uploadedImages
+        .filter(image =>
+          !usedImages.has(image) &&
+          image.heading &&
+          image.heading.toLowerCase() === heading.toLowerCase()
+        )
+        .forEach(appendImage);
+
+      if (Array.isArray(section?.paragraphs)) {
+        section.paragraphs.forEach(paragraph => {
+          const text = String(paragraph || "").trim();
+          if (text) lines.push(text, "");
+        });
+      }
+
+      if (Array.isArray(section?.bullets)) {
+        const bullets = section.bullets
+          .map(bullet => String(bullet || "").trim())
+          .filter(Boolean);
+
+        bullets.forEach(bullet => lines.push(`- ${bullet}`));
+        if (bullets.length) lines.push("");
+      }
+    });
   }
 
-  if (
-    Array.isArray(
-      article.key_points
-    ) &&
-    article.key_points.length
-  ) {
+  // Never silently omit an uploaded image because its heading did not match.
+  uploadedImages.filter(image => !usedImages.has(image)).forEach(appendImage);
 
-    lines.push(
-      "## Key Points",
-      ""
-    );
+  if (Array.isArray(article.key_points) && article.key_points.length) {
+    lines.push("## Key Points", "");
 
-    article.key_points.forEach(
-      point => {
-
-        const text =
-          String(
-            point || ""
-          ).trim();
-
-        if (text) {
-
-          lines.push(
-            `- ${text}`
-          );
-        }
-      }
-    );
+    article.key_points.forEach(point => {
+      const text = String(point || "").trim();
+      if (text) lines.push(`- ${text}`);
+    });
 
     lines.push("");
   }
 
-  if (
-    article.conclusion
-  ) {
+  if (article.conclusion) {
+    lines.push("## Conclusion", "", String(article.conclusion).trim(), "");
+  }
 
-    lines.push(
-      "## Conclusion",
-      "",
-      String(
-        article.conclusion
-      ).trim(),
-      ""
-    );
+  const youtubeLink = String(article.youtube_link || "").trim();
+
+  if (youtubeLink) {
+    try {
+      const parsed = new URL(youtubeLink);
+      const allowedHosts = [
+        "youtube.com",
+        "www.youtube.com",
+        "m.youtube.com",
+        "youtu.be",
+        "www.youtu.be"
+      ];
+
+      if (["https:", "http:"].includes(parsed.protocol) &&
+          allowedHosts.includes(parsed.hostname.toLowerCase())) {
+        lines.push("## Further Learning", "", `[Watch on YouTube](${parsed.href})`, "");
+      }
+    } catch {
+      // Invalid user-provided URL: omit it rather than invent or rewrite it.
+    }
   }
 
   return lines.join("\n").trim() + "\n";
@@ -2033,128 +1987,45 @@ ${title} | Fiber Optic Hub
    BUILD FACEBOOK POST
 ===================================================== */
 
-function buildFacebookPost(
-  article,
-  articleURL
-) {
+function buildFacebookPost(article, articleURL) {
+  let post = "";
 
-  let post =
-    "";
+  post += "🌐 " + String(article.title || "") + "\n\n";
 
-
-  post +=
-    "🌐 " +
-    String(
-      article.title ||
-      ""
-    ) +
-    "\n\n";
-
-
-  if (
-    article.description
-  ) {
-
-    post +=
-      String(
-        article.description
-      ) +
-      "\n\n";
-
+  if (article.description) {
+    post += String(article.description) + "\n\n";
   }
 
-
-  if (
-    Array.isArray(
-      article.facebook_summary
-    ) &&
-    article.facebook_summary.length
-  ) {
-
-    article.facebook_summary
-      .slice(0, 6)
-      .forEach(
-        item => {
-
-          post +=
-            "🔹 " +
-            String(
-              item
-            ).trim() +
-            "\n";
-
-        }
-      );
-
-
-    post +=
-      "\n";
-
+  if (Array.isArray(article.facebook_summary) && article.facebook_summary.length) {
+    article.facebook_summary.slice(0, 6).forEach(item => {
+      post += "🔹 " + String(item).trim() + "\n";
+    });
+    post += "\n";
   }
 
-
-  if (
-    Array.isArray(
-      article.facebook_note
-    ) &&
-    article.facebook_note.length
-  ) {
-
-    post +=
-      "💡 မှတ်သားစရာ\n\n";
-
-
-    article.facebook_note
-      .slice(0, 6)
-      .forEach(
-        item => {
-
-          post +=
-            "🔹 " +
-            String(
-              item
-            ).trim() +
-            "\n";
-
-        }
-      );
-
-
-    post +=
-      "\n";
-
+  if (Array.isArray(article.facebook_note) && article.facebook_note.length) {
+    post += "💡 မှတ်သားစရာ\n\n";
+    article.facebook_note.slice(0, 6).forEach(item => {
+      post += "🔹 " + String(item).trim() + "\n";
+    });
+    post += "\n";
   }
 
-
   post +=
-    "📚 Read Full Article:\n" +
-    articleURL +
-    "\n\n";
+    "📖 အသေးစိတ်အကြောင်းအရာများကို Fiber Optic Hub Website ရှိ Article အပြည့်အစုံတွင် ဆက်လက်ဖတ်ရှုနိုင်ပါတယ်။\n" +
+    "👉 Read Full Article: " + String(articleURL || "") + "\n\n";
 
+  const hashtags = Array.isArray(article.facebook_hashtags)
+    ? article.facebook_hashtags
+    : [];
 
-  post +=
-    "Learn • Practice • Share\n\n";
-
-
-  const hashtags =
-    Array.isArray(
-      article.facebook_hashtags
-    )
-      ? article.facebook_hashtags
-      : [];
-
-
-  post +=
-    hashtags
-      .join(" ");
-
+  post += hashtags.join(" ");
 
   return post;
-
 }
-
-
 /* =====================================================
+   DATA IMAGE PARSER
+===================================================== *//* =====================================================
    DATA IMAGE PARSER
 ===================================================== */
 

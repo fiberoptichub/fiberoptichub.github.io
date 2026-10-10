@@ -88,7 +88,9 @@
 
                 <select id="articleCategory">
 
-                    <option value="Fiber Optic Basics">
+
+                    <option value="Auto" selected>Auto — AI classify</option>
+<option value="Fiber Optic Basics">
                         Fiber Optic Basics
                     </option>
 
@@ -125,7 +127,9 @@
 
                 <select id="articleLevel">
 
-                    <option value="Beginner">
+
+                    <option value="Auto" selected>Auto — AI classify</option>
+<option value="Beginner">
                         Beginner
                     </option>
 
@@ -159,7 +163,17 @@
         </div>
 
 
-        <div class="form-group">
+                <div class="form-group">
+            <label for="articleYoutubeLink">YouTube Link (Optional)</label>
+            <input
+                type="url"
+                id="articleYoutubeLink"
+                placeholder="https://www.youtube.com/watch?v=..."
+            >
+            <small>ကိုယ်တိုင်ပေးထားတဲ့ YouTube URL ကိုသာ Article ထဲမှာ ထည့်ပါမယ်။</small>
+        </div>
+
+<div class="form-group">
 
             <label for="articleImage">
                 Article Image
