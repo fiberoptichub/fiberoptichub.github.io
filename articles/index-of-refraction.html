@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- METADATA AUTOMATION -->
+    <meta content="Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics" name="article-title"/>
+    <meta content="2026-10-04" name="article-date"/>
+    <meta content="Fiber Optics" name="article-category"/>
+    <meta content="Beginner" name="article-level"/>
+    <meta content="Index of Refraction (IOR) သည် Light ၏ medium တစ်ခုအတွင်း ဖြတ်သန်းသွားလာမှုနှင့် Fiber Optic အတွင်း Light ၏ လမ်းကြောင်းကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်သည်။ ဤဆောင်းပါးတွင် IOR ၏ အဓိပ္ပာယ်၊ Snell's Law၊ Core နှင့် Cladding ၏ IOR ကွာခြားချက်နှင့် Fiber Optic တွင် ၎င်း၏ အရေးပါပုံကို ရှင်းလင်းထားပါသည်။" name="article-description"/>
+    <meta content="Index of Refraction (IOR) သည် Light ၏ medium တစ်ခုအတွင်း ဖြတ်သန်းသွားလာမှုနှင့် Fiber Optic အတွင်း Light ၏ လမ်းကြောင်းကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်သည်။ ဤဆောင်းပါးတွင် IOR ၏ အဓိပ္ပာယ်၊ Snell's Law၊ Core နှင့် Cladding ၏ IOR ကွာခြားချက်နှင့် Fiber Optic တွင် ၎င်း၏ အရေးပါပုံကို ရှင်းလင်းထားပါသည်။" name="description"/>
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics | Fiber Optic Hub"/>
+    <meta property="og:description" content="Index of Refraction (IOR) သည် Light ၏ medium တစ်ခုအတွင်း ဖြတ်သန်းသွားလာမှုနှင့် Fiber Optic အတွင်း Light ၏ လမ်းကြောင်းကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်သည်။ ဤဆောင်းပါးတွင် IOR ၏ အဓိပ္ပာယ်၊ Snell's Law၊ Core နှင့် Cladding ၏ IOR ကွာခြားချက်နှင့် Fiber Optic တွင် ၎င်း၏ အရေးပါပုံကို ရှင်းလင်းထားပါသည်။"/>
+    <meta property="og:url" content="https://fiberoptichub.github.io/articles/index-of-refraction.html"/>
+    <link rel="canonical" href="https://fiberoptichub.github.io/articles/index-of-refraction.html"/>
+    <meta property="og:image" content="https://fiberoptichub.github.io/images/index-of-refraction/ior.jpg"/>
+    <meta property="og:site_name" content="Fiber Optic Hub"/>
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics | Fiber Optic Hub"/>
+    <meta name="twitter:description" content="Index of Refraction (IOR) သည် Light ၏ medium တစ်ခုအတွင်း ဖြတ်သန်းသွားလာမှုနှင့် Fiber Optic အတွင်း Light ၏ လမ်းကြောင်းကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်သည်။ ဤဆောင်းပါးတွင် IOR ၏ အဓိပ္ပာယ်၊ Snell's Law၊ Core နှင့် Cladding ၏ IOR ကွာခြားချက်နှင့် Fiber Optic တွင် ၎င်း၏ အရေးပါပုံကို ရှင်းလင်းထားပါသည်။"/>
+    <meta name="twitter:image" content="https://fiberoptichub.github.io/images/index-of-refraction/ior.jpg"/>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <!-- PAGE TITLE & STYLESHEET -->
+    <title>Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics | Fiber Optic Hub</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+
+    <!-- MATHJAX 3 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+</head>
+<body id="top">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
+        <!-- HEADER NAVIGATION -->
+    <header class="site-header">
+        <a href="../index.html" class="logo">🌐 Fiber <span>Optic Hub</span></a>
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#topics">Learn</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <button type="button" class="menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html" onclick="closeMenu()">🏠 Home</a>
+        <a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
+        <a href="../index.html#articles" onclick="closeMenu()">📰 Articles</a>
+        <a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
+
+
+    <!-- MAIN ARTICLE CONTAINER -->
+    <main class="article-page">
+        <!-- BACK BUTTON -->
+        <a class="back-btn" href="../index.html">← Back to Home</a>
+
+        <!-- TITLE & METADATA -->
+        <h1 class="article-page-title">Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics</h1>
+        <p class="article-meta">Fiber Optics • Beginner • ⏱️ 5 min read<br/>Published: 2026-10-04</p>
+
+        <!-- PURE ARTICLE CONTENT INJECTION -->
+        <article class="article-content">
+            <h1>Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics</h1>
+<p>Fiber Optic ကို နားလည်ရန် <strong>Light Signal</strong> သည် Fiber အတွင်း ဘာကြောင့် သတ်မှတ်ထားသော လမ်းကြောင်းအတိုင်း သွားနိုင်သလဲဆိုတာ သိထားရန် အရေးကြီးပါတယ်။</p>
+<p>ဒီနေရာမှာ အခြေခံကျတဲ့ optical property တစ်ခုကတော့ <strong>Index of Refraction (IOR)</strong> သို့မဟုတ် <strong>Refractive Index</strong> ဖြစ်ပါတယ်။</p>
+<p>IOR သည် Light သည် medium တစ်ခုအတွင်း ဖြတ်သန်းသောအခါ ဘယ်လောက်အတိုင်းအတာအထိ အရှိန်ပြောင်းလဲသွားနိုင်သလဲ၊ medium နှစ်ခုကြား boundary ကို ဖြတ်သန်းတဲ့အခါ Light ရဲ့ လမ်းကြောင်း ဘယ်လိုပြောင်းလဲနိုင်သလဲဆိုတာ နားလည်ရန် အသုံးပြုတဲ့ တန်ဖိုးတစ်ခုဖြစ်ပါတယ်။</p>
+<hr />
+<h2>Index of Refraction (IOR) ဆိုတာဘာလဲ?</h2>
+<p><strong>Index of Refraction (IOR)</strong> ကို <code>n</code> ဖြင့် ဖော်ပြလေ့ရှိပြီး vacuum ထဲရှိ Light ၏ အရှိန်နှင့် သက်ဆိုင်ရာ medium ထဲရှိ Light ၏ အရှိန်တို့၏ အချိုးအဖြစ် သတ်မှတ်နိုင်ပါတယ်။</p>
+<p>Formula ကတော့ -</p>
+<p><strong>n = c / v</strong></p>
+<p>ဖြစ်ပါတယ်။</p>
+<p>ဒီမှာ -</p>
+<ul>
+<li><strong>n</strong> = Index of Refraction</li>
+<li><strong>c</strong> = Vacuum ထဲရှိ Light ၏ အရှိန်</li>
+<li><strong>v</strong> = သက်ဆိုင်ရာ medium ထဲရှိ Light ၏ အရှိန်</li>
+</ul>
+<p>IOR တန်ဖိုးသည် material တစ်ခုအတွင်း Light ၏ propagation behavior ကို နားလည်ရန် အရေးကြီးပါတယ်။</p>
+<p>ဥပမာအားဖြင့် Air ၏ IOR သည် 1 နှင့် အလွန်နီးစပ်ပြီး Glass နှင့် Silica ကဲ့သို့သော optical materials များတွင် IOR သည် 1 ထက် ပိုမြင့်ပါတယ်။</p>
+<p><img alt="Index of Refraction concept" src="../images/index-of-refraction/ior.jpg" /></p>
+<p><em>Medium မတူညီသည့်အခါ Light ၏ propagation နှင့် refractive behavior ကွာခြားနိုင်ပုံ</em></p>
+<hr />
+<h2>IOR နဲ့ Light ဘာကြောင့် ဆက်စပ်သလဲ?</h2>
+<p>Light သည် medium တစ်ခုမှ အခြား medium တစ်ခုသို့ ဖြတ်သန်းတဲ့အခါ medium နှစ်ခု၏ IOR မတူညီပါက Light ၏ လမ်းကြောင်း ပြောင်းလဲနိုင်ပါတယ်။</p>
+<p>ဒီဖြစ်စဉ်ကို <strong>Refraction</strong> လို့ခေါ်ပါတယ်။</p>
+<p>ဥပမာ -</p>
+<p><strong>Air → Glass</strong></p>
+<p>ဆိုတဲ့ boundary တစ်ခုကို Light ဖြတ်သန်းတဲ့အခါ Glass ရဲ့ IOR က Air ထက် မြင့်တဲ့အတွက် Light ရဲ့ propagation direction ပြောင်းလဲနိုင်ပါတယ်။</p>
+<p>ဒါကြောင့် medium နှစ်ခုရဲ့ IOR ကွာခြားချက်ဟာ Light ရဲ့ propagation behavior ကို သတ်မှတ်ရာမှာ အရေးကြီးတဲ့ factor တစ်ခုဖြစ်ပါတယ်။</p>
+<hr />
+<h2>Snell's Law</h2>
+<p>Medium နှစ်ခုကြားမှာ Light ဖြတ်သန်းတဲ့အခါ ဖြစ်ပေါ်တဲ့ Refraction ကို <strong>Snell's Law</strong> ဖြင့် ဖော်ပြနိုင်ပါတယ်။</p>
+<p><strong>n₁ sin θ₁ = n₂ sin θ₂</strong></p>
+<p>ဒီမှာ -</p>
+<ul>
+<li><strong>n₁</strong> = ပထမ medium ၏ IOR</li>
+<li><strong>n₂</strong> = ဒုတိယ medium ၏ IOR</li>
+<li><strong>θ₁</strong> = ပထမ medium တွင် Normal နှင့် ဖြစ်သော angle</li>
+<li><strong>θ₂</strong> = ဒုတိယ medium တွင် Normal နှင့် ဖြစ်သော angle</li>
+</ul>
+<p>Snell's Law ကို အသုံးပြုပြီး medium တစ်ခုမှ အခြား medium တစ်ခုသို့ Light ဝင်ရောက်တဲ့အခါ Light ရဲ့ လမ်းကြောင်း ဘယ်လိုပြောင်းနိုင်သလဲဆိုတာ တွက်ချက်နိုင်ပါတယ်။</p>
+<p><img alt="Snell's Law" src="../images/index-of-refraction/snell-law.jpg" /></p>
+<p><em>Snell's Law ဖြင့် medium နှစ်ခုကြား Refraction ကို ဖော်ပြပုံ</em></p>
+<hr />
+<h2>Fiber Optic မှာ IOR ဘာကြောင့် အရေးကြီးသလဲ?</h2>
+<p>Fiber Optic တစ်ခုမှာ အဓိကအားဖြင့် -</p>
+<ul>
+<li><strong>Core</strong></li>
+<li><strong>Cladding</strong></li>
+</ul>
+<p>ဆိုတဲ့ optical regions နှစ်ခုရှိပါတယ်။</p>
+<p>Core နဲ့ Cladding နှစ်ခုလုံးဟာ Glass သို့မဟုတ် သင့်လျော်သော optical material များဖြင့် ဖွဲ့စည်းထားနိုင်ပေမယ့် သူတို့ရဲ့ <strong>Refractive Index</strong> ကို တူညီအောင် မထားပါဘူး။</p>
+<p>ပုံမှန် Step-Index Fiber တစ်ခုမှာ -</p>
+<p><strong>Core IOR &gt; Cladding IOR</strong></p>
+<p>ဖြစ်အောင် ပြုလုပ်ထားပါတယ်။</p>
+<p>ဒီ IOR ကွာခြားချက်က Fiber အတွင်း <strong>Total Internal Reflection (TIR)</strong> ဖြစ်ပေါ်နိုင်ရန် အခြေခံအချက်တစ်ခု ဖြစ်ပါတယ်။</p>
+<p><img alt="IOR in Fiber Optics" src="../images/index-of-refraction/fiber-ior.png" /></p>
+<p><em>Fiber Optic Core နှင့် Cladding တို့၏ IOR ကွာခြားချက်</em></p>
+<hr />
+<h2>Core နှင့် Cladding ၏ IOR</h2>
+<p>Fiber Core မှာ Light Signal သွားလာတဲ့ အဓိက optical region ဖြစ်ပါတယ်။</p>
+<p>Cladding က Core ကို ပတ်ပတ်လည်ဖုံးထားပြီး Core ထက် <strong>Refractive Index နိမ့်သော</strong> material ကို အသုံးပြုထားပါတယ်။</p>
+<p>ဥပမာအနေနဲ့ concept နားလည်ရန် -</p>
+<ul>
+<li>Core IOR ≈ <strong>1.48</strong></li>
+<li>Cladding IOR ≈ <strong>1.46</strong></li>
+</ul>
+<p>လိုမျိုး ဖြစ်နိုင်ပါတယ်။</p>
+<p>သို့သော် အမှန်တကယ် IOR တန်ဖိုးများသည် Fiber အမျိုးအစား၊ material composition၊ wavelength နှင့် manufacturer specification တို့အပေါ် မူတည်ပြီး ကွာခြားနိုင်ပါတယ်။</p>
+<p>အရေးကြီးတာက တန်ဖိုးအတိအကျထက် -</p>
+<p><strong>Core ၏ IOR သည် Cladding ထက် မြင့်ရမည်</strong></p>
+<p>ဆိုတဲ့ relationship ဖြစ်ပါတယ်။</p>
+<hr />
+<h2>IOR က Total Internal Reflection နဲ့ ဘယ်လိုဆက်စပ်သလဲ?</h2>
+<p>Fiber Optic ရဲ့ အခြေခံအလုပ်လုပ်ပုံကို နားလည်ရန် <strong>Total Internal Reflection (TIR)</strong> ကိုလည်း နားလည်ဖို့လိုပါတယ်။</p>
+<p>Light သည် <strong>higher IOR medium</strong> မှ <strong>lower IOR medium</strong> သို့ ရွေ့တဲ့အခါ သတ်မှတ်ထားတဲ့ angle condition တစ်ခုအောက်မှာ boundary ကို ဖြတ်မထွက်ဘဲ Internal Reflection ဖြစ်နိုင်ပါတယ်။</p>
+<p>ဒီဖြစ်စဉ်ကို <strong>Total Internal Reflection (TIR)</strong> လို့ခေါ်ပါတယ်။</p>
+<p>Fiber Optic မှာ Core ၏ IOR က Cladding ထက် မြင့်တဲ့အတွက် သင့်လျော်တဲ့ Launch Condition နဲ့ Propagation Condition ရှိပါက Light ကို Core အတွင်း လမ်းကြောင်းပေးနိုင်ပါတယ်။</p>
+<p><strong>Total Internal Reflection (TIR)</strong> အကြောင်းကို သီးခြား Article တစ်ပုဒ်အနေနဲ့ အသေးစိတ်လေ့လာချင်ပါက အောက်ပါ Article မှာ ဆက်လက်ဖတ်ရှုနိုင်ပါတယ်။</p>
+<p>👉 <a href="total-internal-reflection.html">Read More: Total Internal Reflection (TIR)</a></p>
+<p>ဒါကြောင့် Fiber Optic ရဲ့ Light Guiding behavior ကို နားလည်ရာမှာ -</p>
+<p><strong>IOR → Refraction → Critical Angle → Total Internal Reflection</strong></p>
+<p>ဆိုတဲ့ ဆက်နွယ်မှုကို နားလည်ထားဖို့ အရေးကြီးပါတယ်။</p>
+<h2>Critical Angle</h2>
+<p>Higher IOR medium မှ Lower IOR medium သို့ Light ရွေ့တဲ့အခါ Refraction angle က 90° ဖြစ်လာစေတဲ့ Incident Angle ကို <strong>Critical Angle</strong> လို့ခေါ်ပါတယ်။</p>
+<p>Critical Angle ကို -</p>
+<p><strong>sin θc = n₂ / n₁</strong></p>
+<p>ဖြင့် ဖော်ပြနိုင်ပါတယ်။</p>
+<p>ဒီမှာ <code>n₁ &gt; n₂</code> ဖြစ်ရပါမယ်။</p>
+<p>Incident Angle သည် Critical Angle ထက် ကြီးသွားတဲ့အခါ သတ်မှတ်ထားတဲ့ အခြေအနေတွင် Total Internal Reflection ဖြစ်ပေါ်နိုင်ပါတယ်။</p>
+<p>Fiber Optic အတွက် ဒီ concept က Core နဲ့ Cladding ကြား Light propagation ကို နားလည်ရန် အရေးကြီးပါတယ်။</p>
+<hr />
+<h2>IOR သည် Wavelength နှင့်လည်း ဆက်စပ်သည်</h2>
+<p>IOR ကို material တစ်ခုအတွက် fixed number တစ်ခုအဖြစ် အမြဲတမ်း သတ်မှတ်လို့မရပါဘူး။</p>
+<p>IOR သည် <strong>Wavelength</strong> ပေါ်မူတည်ပြီး အနည်းငယ်ပြောင်းလဲနိုင်ပါတယ်။</p>
+<p>ဒီ phenomenon ကို <strong>Dispersion</strong> နဲ့ ဆက်စပ်ပြီး လေ့လာနိုင်ပါတယ်။</p>
+<p>Fiber Optic Communication တွေမှာ အသုံးပြုတဲ့ wavelength မတူညီတဲ့အခါ Fiber ရဲ့ optical behavior လည်း အနည်းငယ်ကွာခြားနိုင်ပါတယ်။</p>
+<p>ဒါကြောင့် Fiber specification တွေကို လေ့လာတဲ့အခါ IOR တစ်ခုတည်းကို ကြည့်ရုံနဲ့ မလုံလောက်ဘဲ သက်ဆိုင်ရာ wavelength ကိုလည်း ထည့်သွင်းစဉ်းစားဖို့လိုပါတယ်။</p>
+<hr />
+<h2>Fiber Optic Design မှာ IOR ရဲ့ အရေးပါမှု</h2>
+<p>IOR ကို နားလည်ခြင်းက Fiber Optic system ရဲ့ အခြေခံ optical behavior ကို နားလည်နိုင်စေပါတယ်။</p>
+<p>အထူးသဖြင့် -</p>
+<ul>
+<li>Core နှင့် Cladding ကို ဘာကြောင့် IOR မတူအောင် ပြုလုပ်ထားသလဲ</li>
+<li>Refraction ဘာကြောင့် ဖြစ်ပေါ်သလဲ</li>
+<li>Critical Angle ဆိုတာ ဘာလဲ</li>
+<li>Total Internal Reflection ဘယ်လိုဖြစ်ပေါ်သလဲ</li>
+<li>Light ကို Fiber Core အတွင်း ဘယ်လို လမ်းကြောင်းပေးနိုင်သလဲ</li>
+<li>Wavelength ပြောင်းလဲတဲ့အခါ Optical behavior ဘာကြောင့် ပြောင်းလဲနိုင်သလဲ</li>
+</ul>
+<p>ဆိုတာတွေကို ဆက်စပ်ပြီး နားလည်နိုင်ပါတယ်။</p>
+<hr />
+<h2>Simple Example</h2>
+<p>Air နဲ့ Glass ကို စဉ်းစားကြည့်ပါ။</p>
+<p>Air ၏ IOR သည် Glass ထက် နိမ့်ပါတယ်။</p>
+<p>Light သည် Air မှ Glass သို့ ဝင်တဲ့အခါ medium နှစ်ခုရဲ့ IOR မတူတဲ့အတွက် Light ရဲ့ လမ်းကြောင်း ပြောင်းလဲနိုင်ပါတယ်။</p>
+<p>Fiber Optic မှာလည်း အလားတူ optical principle ကို အသုံးပြုပါတယ်။ သို့သော် Fiber အတွင်းမှာ Core နှင့် Cladding တို့ရဲ့ IOR ကို သတ်မှတ်ထားပြီး Light ကို Core အတွင်း လမ်းကြောင်းပေးနိုင်ရန် သင့်လျော်တဲ့ optical conditions ကို ဖန်တီးထားပါတယ်။</p>
+<p>ဒီအခြေခံကို နားလည်ပြီးနောက် <strong>Total Internal Reflection (TIR)</strong> ကို လေ့လာရင် Fiber Optic ရဲ့ Light propagation ကို ပိုမိုရှင်းလင်းစွာ နားလည်နိုင်ပါလိမ့်မယ်။</p>
+<hr />
+<h2>IOR ကို အကျဉ်းချုပ်မယ်ဆိုရင်</h2>
+<p><strong>Index of Refraction (IOR)</strong> သည် medium တစ်ခုအတွင်း Light ၏ propagation behavior ကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်ပါတယ်။</p>
+<p>Fiber Optic မှာတော့ -</p>
+<p><strong>Core IOR &gt; Cladding IOR</strong></p>
+<p>ဖြစ်ခြင်းက အရေးကြီးပြီး ဒီ IOR difference က Total Internal Reflection ဖြစ်ပေါ်နိုင်တဲ့ optical condition ကို ဖန်တီးပေးပါတယ်။</p>
+<p>ထို့ကြောင့် Fiber Optic ကို အခြေခံကနေ လေ့လာမယ်ဆိုရင် -</p>
+<p><strong>IOR → Snell's Law → Critical Angle → Total Internal Reflection</strong></p>
+<p>ဆိုတဲ့ concept တွေကို ဆက်စပ်ပြီး နားလည်ထားသင့်ပါတယ်။</p>
+<hr />
+        </article>
+    </main>
+
+    <!-- RELATED ARTICLES SECTION (Card အပြင်ဘက် သီးသန့် ကာဗာဖြင့်) -->
+    <div class="article-related" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #fff;">ဆက်လက်လေ့လာရန်</h3>
+        <div id="relatedArticlesContainer" class="articles-grid"></div>
+    </div>
+
+    <!-- ARTICLE NAVIGATION BUTTONS -->
+    <div class="article-nav" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1rem;">
+        <a class="nav-btn" href="#">← Previous Article</a>
+        <a class="nav-btn" href="total-internal-reflection.html">Next Article →</a>
+    </div>
+
+    <!-- SOCIAL SHARE SECTION -->
+    <div class="social-share-container">
+        <span>📌 ဤဆောင်းပါးကို သူငယ်ချင်းများထံ မျှဝေရန်:</span>
+        <div class="share-buttons-group">
+            <a class="share-btn fb" href="#" id="shareFacebook" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a class="share-btn tg" href="#" id="shareTelegram" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.622-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.46-1.903-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.153.228.166.331.011.093.024.304.007.469z"></path>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- COMMENTS SECTION -->
+    <section class="section" id="comments">
+        <div class="section-heading">
+            <span class="section-label">COMMUNITY</span>
+            <h2>Comments & Discussions</h2>
+            <p>ဆောင်းပါးနှင့် ပတ်သက်သည့် မေးခွန်းများနှင့် မှတ်ချက်များကို အောက်တွင် မေးမြန်းနိုင်ပါသည်။</p>
+        </div>
+        <div id="commentsContainer" style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Utterances Comment Script ကို ဤနေရာတွင် တိုက်ရိုက်ထည့်ပါ -->
+            <script src="https://utteranc.es/client.js"
+                    repo="fiberoptichub/fiberoptichub.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT & FOOTER -->
+    <script src="../js/index.js"></script>
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+  
+  <!-- Back to Top Button -->
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    ⬆
+</button>
+
+</body>
+</html>
