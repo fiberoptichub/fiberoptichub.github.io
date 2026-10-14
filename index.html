@@ -9,22 +9,22 @@
     <meta name="author" content="Fiber Optic Hub">
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://htaylinnaung.github.io/fiberoptichub/">
+    <link rel="canonical" href="https://fiberoptichub.github.io/">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Fiber Optic Hub">
     <meta property="og:description" content="Fiber Optic, FTTH, OTDR, Troubleshooting and Network Technology.">
-    <meta property="og:image" content="https://htaylinnaung.github.io/fiberoptichub/images/og-image.png">
-    <meta property="og:url" content="https://htaylinnaung.github.io/fiberoptichub/">
+    <meta property="og:image" content="https://fiberoptichub.github.io/images/og-image.jpg">
+    <meta property="og:url" content="https://fiberoptichub.github.io/">
     <meta property="og:site_name" content="Fiber Optic Hub">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fiber Optic Hub">
     <meta name="twitter:description" content="Fiber Optic, FTTH, OTDR, Troubleshooting and Network Technology.">
-    <meta name="twitter:image" content="https://htaylinnaung.github.io/fiberoptichub/images/og-image.png">
+    <meta name="twitter:image" content="https://fiberoptichub.github.io/images/og-image.jpg">
 
     <!-- CSS Link -->
     <link rel="stylesheet" href="css/index.css">
@@ -252,6 +252,507 @@
             border-radius: 3px;
         }
     </style>
+
+<style id="homepage-dynamic-sections">
+/* Compact Fiber Loss Calculator widget */
+.foh-tool-card-compact {
+    appearance: none;
+    box-sizing: border-box;
+    display: inline-flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-self: start;
+    align-self: start;
+    width: max-content !important;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0 !important;
+    height: auto !important;
+    gap: 7px;
+    padding: 5px 9px !important;
+    margin: 0 !important;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.foh-tool-card-compact .foh-tool-icon {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    margin: 0 !important;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    line-height: 1;
+}
+.foh-tool-card-compact .foh-tool-tag,
+.foh-tool-card-compact p,
+.foh-tool-card-compact .foh-tool-launch,
+.foh-tool-card-compact .foh-tool-card-arrow {
+    display: none !important;
+}
+.foh-tool-card-compact .foh-tool-card-title {
+    flex: 0 1 auto !important;
+    width: auto;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0;
+    white-space: nowrap;
+    font-size: .84rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.foh-tool-card-compact:focus-visible {
+    outline: 2px solid #38bdf8;
+    outline-offset: 2px;
+}
+
+.youtube-shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+.youtube-short-card {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(56,189,248,.24);
+    background: #111c32;
+    color: #e2e8f0;
+    text-decoration: none;
+}
+.youtube-short-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    background: #07111f;
+}
+.youtube-short-card span {
+    display: block;
+    padding: 10px;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+#latestArticlesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 18px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#latestArticlesContainer .latest-article-card {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.latest-article-card {
+    display: block;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(56,189,248,.22);
+    background: #111c32;
+    color: #e2e8f0;
+    text-decoration: none;
+}
+.latest-article-card h3 { color: #38bdf8; margin-top: 0; }
+.latest-article-card p { color: #cbd5e1; line-height: 1.6; }
+.latest-article-meta { color: #94a3b8; font-size: .82rem; }
+.youtube-short-card:hover,
+.latest-article-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+}
+
+/* Homepage archive cards live on articles.html, not the homepage. */
+body:not(.articles-page) .main-wrapper {
+    display: none !important;
+}
+
+/* Sidebar begins beside the first homepage section. */
+body:not(.articles-page) .homepage-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    padding: 20px 16px 36px;
+    box-sizing: border-box;
+}
+body:not(.articles-page) .homepage-layout .left-sidebar {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    position: sticky;
+    top: 16px;
+    align-self: start;
+}
+body:not(.articles-page) .homepage-main {
+    min-width: 0;
+}
+body:not(.articles-page) .homepage-main > .info-section {
+    margin-top: 0;
+}
+body:not(.articles-page) .foh-tool-card input {
+    width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    body:not(.articles-page) .homepage-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+    body:not(.articles-page) .homepage-layout .left-sidebar {
+        position: static;
+    }
+}
+
+/* Desktop navigation remains visible. */
+.site-header .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.site-header .menu {
+    display: none;
+}
+.site-header .main-nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+}
+.site-header .main-nav a:hover {
+    color: #38bdf8;
+}
+
+/* Mobile menu toggle. */
+@media (max-width: 768px) {
+    .site-header {
+        flex-wrap: wrap;
+    }
+    .site-header .menu {
+        display: block !important;
+    }
+    .site-header .main-nav {
+        display: none !important;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0 !important;
+        padding-top: 12px;
+    }
+    .site-header .main-nav.mobile-menu-open {
+        display: flex !important;
+    }
+    .site-header .main-nav a {
+        display: block;
+        padding: 12px 8px;
+        border-top: 1px solid rgba(255,255,255,.08);
+    }
+}
+@media (max-width: 480px) {
+    .youtube-shorts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+/* FOH HOMEPAGE MOBILE SIDEBAR DRAWER FIX */
+@media (max-width: 768px) {
+    body:not(.articles-page) .homepage-layout .left-sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        z-index: 10011 !important;
+        width: min(86vw, 340px) !important;
+        min-width: 0 !important;
+        max-width: 340px !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        margin: 0 !important;
+        padding: 68px 14px 24px !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        background: #0b1220 !important;
+        border-right: 1px solid #29435b !important;
+        transform: translateX(-110%);
+        visibility: hidden;
+        transition: transform 0.25s ease, visibility 0.25s ease;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body:not(.articles-page).foh-sidebar-drawer-open
+    .homepage-layout .left-sidebar {
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body:not(.articles-page) .homepage-layout .left-sidebar {
+        transition: none !important;
+    }
+}
+/* END FOH HOMEPAGE MOBILE SIDEBAR DRAWER FIX */
+
+
+/* Homepage CTA links: clear contrast and touch-friendly targets */
+.homepage-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba(56,189,248,.48);
+    border-radius: 9px;
+    background: rgba(8,47,73,.62);
+    color: #7dd3fc !important;
+    font-weight: 700;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.homepage-cta-link:hover,
+.homepage-cta-link:focus-visible {
+    background: rgba(8,145,178,.2);
+    border-color: #67e8f9;
+    color: #cffafe !important;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Tool widget card */
+.foh-tool-card {
+    position: relative;
+    padding: 22px;
+    margin-top: 16px;
+    max-width: 420px;
+    border: 1px solid rgba(56,189,248,.34);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #13243d, #0d172b);
+    box-shadow: 0 12px 28px rgba(0,0,0,.2);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.foh-tool-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(0,0,0,.28);
+}
+.foh-tool-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: rgba(8,145,178,.2);
+    color: #67e8f9;
+    font-size: 28px;
+    font-weight: 800;
+}
+.foh-tool-tag {
+    display: inline-block;
+    color: #67e8f9;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+.foh-tool-card h3 {
+    margin: 8px 0;
+    color: #f1f5f9;
+}
+.foh-tool-card p,
+.foh-modal-panel > p {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+.foh-tool-launch,
+.foh-calculate-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 16px;
+    border: 1px solid #0891b2;
+    border-radius: 9px;
+    background: #075985;
+    color: #fff;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+.foh-tool-launch:hover,
+.foh-calculate-button:hover {
+    background: #0369a1;
+}
+.foh-tool-launch:focus-visible,
+.foh-calculate-button:focus-visible,
+.foh-modal-close:focus-visible,
+.back-to-top:focus-visible {
+    outline: 3px solid #a5f3fc;
+    outline-offset: 3px;
+}
+
+/* Calculator modal */
+.foh-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    box-sizing: border-box;
+}
+.foh-modal.is-open {
+    display: flex;
+}
+.foh-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2,6,23,.82);
+    backdrop-filter: blur(5px);
+}
+.foh-modal-panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 520px);
+    max-height: min(88vh, 760px);
+    overflow-y: auto;
+    padding: 22px;
+    border: 1px solid rgba(56,189,248,.4);
+    border-radius: 16px;
+    background: #0f1b30;
+    color: #f1f5f9;
+    box-shadow: 0 24px 70px rgba(0,0,0,.5);
+}
+.foh-modal-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+.foh-modal-heading h3 {
+    margin: 7px 0;
+    font-size: 1.3rem;
+}
+.foh-modal-close {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: #17263d;
+    color: #e2e8f0;
+    font-size: 27px;
+    cursor: pointer;
+}
+.foh-modal-panel .calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+.foh-modal-panel .calculator-form label {
+    color: #e2e8f0;
+    font-weight: 650;
+}
+.foh-modal-panel .calculator-form input {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    background: #071426;
+    color: #fff;
+    font: inherit;
+}
+.foh-modal-panel .calculator-form input:focus {
+    outline: 2px solid #38bdf8;
+    outline-offset: 1px;
+}
+.foh-modal-panel .calc-result {
+    min-height: 1.5em;
+    margin-top: 16px;
+    color: #67e8f9;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+.foh-tool-note {
+    margin-top: 14px;
+    color: #94a3b8;
+    font-size: .88rem;
+    line-height: 1.65;
+}
+body.foh-modal-open {
+    overflow: hidden;
+}
+@media (max-width: 480px) {
+    .foh-modal { padding: 10px; }
+    .foh-modal-panel { padding: 18px; }
+    .foh-tool-card { max-width: none; }
+}
+
+
+        /* Compact Published Articles sidebar list */
+        .published-articles-widget .learn-all-articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-height: 320px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: #475569 #1e293b;
+        }
+
+        .published-articles-widget .learn-article-title {
+            display: flex;
+            align-items: flex-start;
+            column-gap: 8px;
+            color: #67e8f9;
+            font-size: 12px;
+            line-height: 1.5;
+            font-weight: 400;
+            text-decoration: underline;
+            text-decoration-color: rgba(103,232,249,0.55);
+            text-underline-offset: 3px;
+            padding: 5px 5px;
+            border-bottom: none;
+            border-radius: 5px;
+            overflow-wrap: anywhere;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+
+        .published-articles-widget .learn-article-title:hover,
+        .published-articles-widget .learn-article-title:focus-visible {
+            color: #38bdf8;
+            background: rgba(56,189,248,0.07);
+            outline: none;
+        }
+
+        .published-articles-widget .learn-list-empty,
+        .published-articles-widget .learn-list-loading {
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+</style>
+
 </head>
 
 <body id="top">
@@ -264,8 +765,9 @@
 
         <nav class="main-nav" aria-label="Main Navigation" style="display: flex; gap: 1.5rem;">
             <a href="#top">Home</a>
-            <a href="#topics">Learn</a>
-            <a href="#articles">Articles</a>
+            <a href="categories/all-articles.html">Articles</a>
+            <a href="#tools">Tools</a>
+            <a href="#technical-books">Technical Books</a>
             <a href="#about">About</a>
         </nav>
 
@@ -274,18 +776,9 @@
         </button>
     </header>
 
-    <!-- 1. HERO BANNER AT THE TOP -->
-    <section class="hero-banner">
-        <h1>Fiber Optic နည်းပညာကို လေ့လာပါ</h1>
-        <p>နည်းပညာဆောင်းပါးများနှင့် လက်တွေ့အသုံးချမှုများ။</p>
-    </section>
+<div class="homepage-layout" id="homepageLayout">
+<aside class="left-sidebar">
 
-    <!-- 2. MAIN CONTAINER WITH COLUMNS (Sidebar & Articles) -->
-    <div class="main-wrapper">
-        
-        <!-- LEFT SIDEBAR -->
-        <aside class="left-sidebar">
-            
             <!-- SEARCH BOX WIDGET -->
             <div class="sidebar-widget" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
                 <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #fff;">🔍 Search Knowledge</h3>
@@ -375,7 +868,7 @@
 
 </div>
 
-          
+
             <!-- CATEGORIES WIDGET (Collapsible ပုံစံပြောင်းထားသည် - collapsed ထည့်ပါက ပိတ်ထားမည်) -->
             <div class="sidebar-widget collapsible-widget" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.08);">
                 <h3 class="widget-header" onclick="toggleWidget(this)" style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 0;">
@@ -388,29 +881,125 @@
                         <li><a href="categories/splicing.html" class="category-item" data-category="Splicing" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔧 Splicing</span><span class="category-count"></span></a></li>
                         <li><a href="categories/otdr-and-opm.html" class="category-item" data-category="OTDR and OPM" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔬 OTDR and OPM</span><span class="category-count"></span></a></li>
                         <li><a href="categories/ftth.html" class="category-item" data-category="FTTH" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">📡 FTTH</span><span class="category-count"></span></a></li>
-                        <li><a href="#" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
+                        <li><a href="categories/networking.html" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
                         <li><a href="categories/all-articles.html" class="category-item active" style="color: #38bdf8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px; font-weight: bold;"><span class="category-name">✨ All</span><span class="category-count"></span></a></li>
                     </ul>
                 </div>
             </div>
-          
-            <!-- CALCULATOR WIDGET (Collapsible ပုံစံ - စဖွင့်ချင်း ပိတ်ထားရန် collapsed ထည့်ထားသည်) -->
-            <div class="sidebar-widget collapsible-widget collapsed" style="background: #1e293b; padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
-                <h3 class="widget-header" onclick="toggleWidget(this)" style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 0;">
-                    <span>📐 Loss Calculator</span>
-                    <span class="arrow">▼</span>
+
+
+
+
+            <!-- PUBLISHED ARTICLES SIDEBAR WIDGET -->
+            <div class="sidebar-widget published-articles-widget" id="topics"
+                 style="background:#1e293b;padding:1rem;border-radius:12px;
+                        margin-bottom:1.5rem;border:1px solid rgba(255,255,255,0.08);">
+                <h3 style="font-size:15px;margin:0 0 0.75rem;
+                           padding-bottom:0.15rem;border-bottom:none;">
+                    📚 Published Articles
                 </h3>
-                <div class="widget-content" style="margin-top: 0.75rem;">
-                    <form id="lossCalcForm" class="calculator-form" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <input type="number" id="fiberLength" placeholder="Distance (km)" step="0.1" required style="padding: 0.5rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff;">
-                        <input type="number" id="spliceCount" placeholder="Splice Count" required style="padding: 0.5rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff;">
-                        <button type="submit" class="btn" style="padding: 0.5rem; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Calculate</button>
-                    </form>
-                    <div class="calc-result" id="calcResult" style="margin-top: 10px; font-size: 0.9rem; color: #38bdf8;"></div>
-                </div>
+                <p class="learn-list-hint" style="font-size:11px; line-height:1.6; color:#94a3b8; margin:0 0 3px;">
+                    ခေါင်းစဉ်ကို နှိပ်ပြီး ဆောင်းပါးဖတ်ရှုနိုင်ပါသည်။
+                </p>
+                <nav id="learnAllArticlesList"
+                     class="learn-all-articles-list"
+                     aria-label="All published articles">
+                    <p class="learn-list-loading">ဆောင်းပါးစာရင်းကို ဖွင့်နေပါသည်...</p>
+                </nav>
             </div>
+            <!-- END PUBLISHED ARTICLES SIDEBAR WIDGET -->
 
         </aside>
+<div class="homepage-main">
+
+
+    <!-- 1. HERO BANNER AT THE TOP -->
+    <section class="hero-banner">
+        <h1>Fiber Optic နည်းပညာကို လေ့လာပါ</h1>
+        <p>နည်းပညာဆောင်းပါးများနှင့် လက်တွေ့အသုံးချမှုများ။</p>
+    </section>
+
+
+    <!-- HOMEPAGE: YOUTUBE SHORTS -->
+    <section id="youtube-shorts-section" class="info-section" style="padding: 28px 16px; background: #0b132b;">
+        <div class="info-section-inner" style="max-width: 1200px; margin: auto;">
+            <span class="section-label">WATCH & LEARN</span>
+            <h2>YouTube Shorts</h2>
+            <p class="info-section-intro">Fiber Optic လက်တွေ့လုပ်ငန်းခွင် ဗီဒီယိုတိုများ။</p>
+            <div id="youtubeShortsContainer" class="youtube-shorts-grid">
+                <p>ဗီဒီယိုများကို ဖွင့်နေပါသည်...</p>
+            </div>
+            <p style="margin-top: 16px;">
+                <a class="homepage-cta-link" href="https://www.youtube.com/@FiberOpticHub/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts အားလုံး ကြည့်ရန် ↗</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- HOMEPAGE: CALCULATING TOOLS -->
+    <section id="tools" class="info-section" style="padding: 28px 16px; background: #0b132b;">
+        <div class="info-section-inner" style="max-width: 1200px; margin: auto;">
+            <span class="section-label">FIBER OPTIC TOOLS</span>
+            <h2>Useful Calculating Tools</h2>
+            <p class="info-section-intro">Fiber Optic လုပ်ငန်းအတွက် အသုံးဝင်သော တွက်ချက်ရေးကိရိယာများ။</p>
+
+            <button type="button" class="foh-tool-card foh-tool-card-compact" id="openLossCalculator">
+  <span class="foh-tool-icon" aria-hidden="true">∑</span>
+  <span class="foh-tool-card-title">Fiber Loss Calculator</span>
+
+</button>
+<div class="foh-modal" id="lossCalculatorModal" aria-hidden="true">
+                <div class="foh-modal-backdrop" data-close-loss-modal></div>
+                <section class="foh-modal-panel" role="dialog" aria-modal="true" aria-labelledby="lossModalTitle">
+                    <div class="foh-modal-heading">
+                        <div>
+                            <span class="foh-tool-tag">FIBER OPTIC TOOL</span>
+                            <h3 id="lossModalTitle">Fiber Loss Calculator</h3>
+                        </div>
+                        <button type="button" class="foh-modal-close" id="closeLossCalculator" aria-label="Close calculator">×</button>
+                    </div>
+                    <p>Fiber အရှည်နှင့် Fusion Splice အရေအတွက်ကို ထည့်ပါ။</p>
+                    <form id="lossCalcForm" class="calculator-form">
+                        <label for="fiberLength">Fiber Length (km)</label>
+                        <input type="number" id="fiberLength" min="0" step="0.1" value="1" required>
+                        <label for="spliceCount">Fusion Splice Count</label>
+                        <input type="number" id="spliceCount" min="0" step="1" value="0" required>
+                        <button type="submit" class="foh-calculate-button">Calculate Loss</button>
+                    </form>
+                    <div class="calc-result" id="calcResult" aria-live="polite"></div>
+                    <p class="foh-tool-note">ခန့်မှန်းတွက်ချက်မှုသာ ဖြစ်ပါသည်။ Fiber Loss = 0.3 dB/km၊ Splice Loss = 0.1 dB/splice ဟု သတ်မှတ်ထားသည်။ လက်တွေ့တန်ဖိုးသည် ပစ္စည်းနှင့် တိုင်းတာချက်အပေါ် မူတည်ပါသည်။</p>
+                </section>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOMEPAGE: LATEST ARTICLES -->
+    <section id="latest-articles" class="info-section" style="padding: 28px 16px; background: #0b132b;">
+        <div class="info-section-inner" style="max-width: 1200px; margin: auto;">
+            <span class="section-label">RECENT UPDATES</span>
+            <h2>Latest Articles</h2>
+            <p class="info-section-intro">နောက်ဆုံးတင်ထားသော ဆောင်းပါး ၃ ပုဒ်။</p>
+            <div id="latestArticlesContainer" class="article-grid">
+                <p>ဆောင်းပါးများကို ဖွင့်နေပါသည်...</p>
+            </div>
+            <p style="margin-top: 16px;"><a class="homepage-cta-link" href="categories/all-articles.html">ဆောင်းပါးအားလုံး ဖတ်ရန် →</a></p>
+        </div>
+    </section>
+
+    <!-- HOMEPAGE: TECHNICAL BOOKS -->
+    <section id="technical-books" class="info-section" style="padding: 28px 16px; background: #0b132b;">
+        <div class="info-section-inner" style="max-width: 1200px; margin: auto;">
+            <span class="section-label">TECHNICAL LIBRARY</span>
+            <h2>Technical Books</h2>
+            <p class="info-section-intro">Fiber Optics နည်းပညာစာအုပ်များကို အခန်းလိုက် လေ့လာနိုင်ရန် စီစဉ်နေပါသည်။</p>
+        </div>
+    </section>
+
+    <!-- 2. MAIN CONTAINER WITH COLUMNS (Sidebar & Articles) -->
+    <div class="main-wrapper">
+
+        <!-- LEFT SIDEBAR -->
+
 
         <!-- RIGHT COLUMN (ARTICLES SECTION) -->
         <main class="right-content" id="articles">
@@ -433,17 +1022,7 @@
 
     </div>
 
-    <!-- LEARN SECTION: ALL PUBLISHED ARTICLES -->
-    <section id="topics" class="info-section learn-all-section">
-        <div class="info-section-inner">
-            <span class="section-label">LEARN</span>
-            <h2>Published Articles</h2>
-            <p class="info-section-intro">တင်ပြီးထားသမျှ ဆောင်းပါးခေါင်းစဉ်တွေကို စုစည်းထားပါသည်။ ခေါင်းစဉ်နှိပ်၍ ဖတ်ရှုနိုင်ပါသည်။</p>
-            <nav id="learnAllArticlesList" class="learn-all-articles-list" aria-label="All published articles">
-                <p class="learn-list-loading">ဆောင်းပါးစာရင်းကို ဖွင့်နေပါသည်...</p>
-            </nav>
-        </div>
-    </section>
+
 
     <!-- ABOUT SECTION -->
     <section id="about" class="info-section about-section">
@@ -459,11 +1038,17 @@
                     <svg class="social-logo youtube-logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4" fill="currentColor"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg> YouTube Channel
                 </a>
             </div>
-            <a class="info-section-link" href="#top">အပေါ်သို့ ပြန်သွားရန် ↑</a>
+
         </div>
     </section>
 
-    <!-- 3. FOOTER -->
+
+</div><!-- /.homepage-main -->
+</div><!-- /#homepageLayout -->
+<!-- 3. FOOTER -->
+    <button type="button" id="backToTopBtn" class="back-to-top"
+        aria-label="အပေါ်သို့ ပြန်သွားရန်" title="အပေါ်သို့ ပြန်သွားရန်">↑</button>
+
     <footer>
         <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px; justify-content: center; display: flex; align-items: center; gap: 6px;">
             <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
@@ -493,6 +1078,227 @@
             widget.classList.toggle('collapsed');
         }
     </script>
+
+<script id="homepage-dynamic-sections">
+(() => {
+    "use strict";
+
+    const SHORTS_WORKER =
+        "https://foh-youtube-shorts.htaylinnaung-ep.workers.dev";
+    const ATOM_NS = "http://www.w3.org/2005/Atom";
+    const YT_NS = "http://www.youtube.com/xml/schemas/2015";
+    const MEDIA_NS = "http://search.yahoo.com/mrss/";
+
+    function el(tag, cls, text) {
+        const node = document.createElement(tag);
+        if (cls) node.className = cls;
+        if (text !== undefined) node.textContent = text;
+        return node;
+    }
+
+    function initMobileMenu() {
+        const button = document.getElementById("menuBtn");
+        const nav = document.querySelector(".site-header .main-nav");
+        if (!button || !nav || button.dataset.menuReady === "true") return;
+
+        // The shared header button controls the sidebar drawer when a sidebar exists.
+        if (document.querySelector(".homepage-layout .left-sidebar, .main-wrapper .left-sidebar")) {
+            return;
+        }
+
+        button.dataset.menuReady = "true";
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Open menu");
+
+        button.addEventListener("click", () => {
+            const open = nav.classList.toggle("mobile-menu-open");
+            button.setAttribute("aria-expanded", String(open));
+            button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+            button.textContent = open ? "✕" : "☰";
+        });
+
+        nav.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("mobile-menu-open");
+                button.setAttribute("aria-expanded", "false");
+                button.setAttribute("aria-label", "Open menu");
+                button.textContent = "☰";
+            });
+        });
+    }
+
+    async function loadLatestArticles() {
+        const container = document.getElementById("latestArticlesContainer");
+        if (!container) return;
+
+        let records = null;
+        for (const url of ["data/articles.json", "./data/articles.json",
+                           "articles.json", "./articles.json"]) {
+            try {
+                const response = await fetch(url, { cache: "no-cache" });
+                if (!response.ok) continue;
+                const data = await response.json();
+                records = Array.isArray(data) ? data :
+                    (Array.isArray(data.articles) ? data.articles : null);
+                if (records) break;
+            } catch (_) {}
+        }
+
+        container.replaceChildren();
+        if (!records) {
+            container.append(el("p", "", "ဆောင်းပါးစာရင်းကို ဖွင့်မရပါ။"));
+            return;
+        }
+
+        const latest = records
+            .filter(x => x && x.title && (x.url || x.path || x.link))
+            .sort((x, y) =>
+                (Date.parse(y.date || "") || 0) -
+                (Date.parse(x.date || "") || 0)
+            ).slice(0, 3);
+
+        for (const article of latest) {
+            const card = el("a", "latest-article-card");
+            card.href = String(article.url || article.path || article.link);
+            card.append(el("h3", "", article.title));
+            const desc = article.description || article.summary || "";
+            if (desc) card.append(el("p", "", desc));
+            const meta = [article.category, article.date].filter(Boolean).join(" · ");
+            if (meta) card.append(el("div", "latest-article-meta", meta));
+            container.append(card);
+        }
+        if (!latest.length) container.append(el("p", "", "ဆောင်းပါး မတွေ့ပါ။"));
+    }
+
+    function nsText(node, ns, name) {
+        const found = node.getElementsByTagNameNS(ns, name)[0];
+        return found ? found.textContent.trim() : "";
+    }
+
+    async function loadShorts() {
+        const container = document.getElementById("youtubeShortsContainer");
+        if (!container) return;
+
+        try {
+            const response = await fetch(SHORTS_WORKER, { cache: "no-cache" });
+            if (!response.ok) throw new Error("Worker HTTP " + response.status);
+
+            const xml = new DOMParser().parseFromString(
+                await response.text(), "application/xml"
+            );
+            if (xml.getElementsByTagName("parsererror").length) {
+                throw new Error("Invalid XML feed");
+            }
+
+            const entries = Array.from(
+                xml.getElementsByTagNameNS(ATOM_NS, "entry")
+            );
+            const seen = new Set();
+
+            const shorts = entries.map(entry => {
+                const title = nsText(entry, ATOM_NS, "title");
+                const id = nsText(entry, YT_NS, "videoId");
+                const links = Array.from(
+                    entry.getElementsByTagNameNS(ATOM_NS, "link")
+                );
+                const alternate = links.find(link =>
+                    link.getAttribute("rel") === "alternate"
+                );
+                const originalUrl = alternate ?
+                    alternate.getAttribute("href") : "";
+                const isShort = /#shorts\b/i.test(title) ||
+                    /youtube\.com\/shorts\//i.test(originalUrl);
+                const thumbnail = entry.getElementsByTagNameNS(
+                    MEDIA_NS, "thumbnail"
+                )[0];
+
+                return {
+                    id, title, isShort,
+                    href: originalUrl.includes("/shorts/") ? originalUrl :
+                        (id ? "https://www.youtube.com/shorts/" +
+                            encodeURIComponent(id) : ""),
+                    image: (thumbnail && thumbnail.getAttribute("url")) ||
+                        (id ? "https://i.ytimg.com/vi/" +
+                            encodeURIComponent(id) + "/hqdefault.jpg" : "")
+                };
+            }).filter(item => {
+                if (!item.id || !item.title || !item.isShort ||
+                    !item.href || seen.has(item.id)) return false;
+                seen.add(item.id);
+                return true;
+            }).slice(0, 6);
+
+            container.replaceChildren();
+            if (!shorts.length) {
+                container.append(el("p", "",
+                    "Shorts မတွေ့ပါ။ YouTube Channel မှာ ကြည့်နိုင်ပါသည်။"));
+                return;
+            }
+
+            shorts.forEach(item => {
+                const card = el("a", "youtube-short-card");
+                card.href = item.href;
+                card.target = "_blank";
+                card.rel = "noopener noreferrer";
+
+                const img = document.createElement("img");
+                img.src = item.image;
+                img.alt = item.title;
+                img.loading = "lazy";
+                img.onerror = () => {
+                    img.onerror = null;
+                    img.src = "https://i.ytimg.com/vi/" +
+                        encodeURIComponent(item.id) + "/mqdefault.jpg";
+                };
+
+                card.append(img, el("span", "", item.title));
+                container.append(card);
+            });
+        } catch (error) {
+            container.replaceChildren(el("p", "",
+                "YouTube Shorts ကို ယခုအချိန်တွင် ဖွင့်မရပါ။"));
+            console.warn("Fiber Optic Hub Shorts:", error);
+        }
+    }
+
+    function scrollToAboutWhenReady() {
+        if (window.location.hash !== "#about") return;
+
+        const about = document.getElementById("about");
+        if (!about) return;
+
+        requestAnimationFrame(() => {
+            about.scrollIntoView({ behavior: "auto", block: "start" });
+        });
+    }
+
+    function init() {
+        initMobileMenu();
+        loadLatestArticles();
+
+        // Scroll again after the asynchronous Shorts feed has settled.
+        window.addEventListener("hashchange", scrollToAboutWhenReady);
+        window.addEventListener("load", scrollToAboutWhenReady, { once: true });
+
+        loadShorts().then(() => {
+            if (window.location.hash === "#about") {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(scrollToAboutWhenReady);
+                });
+            }
+        });
+
+        scrollToAboutWhenReady();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init, { once: true });
+    } else {
+        init();
+    }
+})();
+</script>
+
 </body>
 
 </html>

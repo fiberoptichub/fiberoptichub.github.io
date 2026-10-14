@@ -26,6 +26,43 @@ if (calcForm) {
     });
 }
 
+
+
+// Fiber Loss Calculator modal controls.
+const lossModal = document.getElementById('lossCalculatorModal');
+const openLossCalculator = document.getElementById('openLossCalculator');
+const closeLossCalculator = document.getElementById('closeLossCalculator');
+
+function closeLossModal() {
+    if (!lossModal) return;
+    lossModal.classList.remove('is-open');
+    lossModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('foh-modal-open');
+    if (openLossCalculator) openLossCalculator.focus();
+}
+
+if (lossModal && openLossCalculator && closeLossCalculator) {
+    openLossCalculator.addEventListener('click', () => {
+        lossModal.classList.add('is-open');
+        lossModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('foh-modal-open');
+        const lengthInput = document.getElementById('fiberLength');
+        if (lengthInput) lengthInput.focus();
+    });
+
+    closeLossCalculator.addEventListener('click', closeLossModal);
+
+    lossModal.querySelectorAll('[data-close-loss-modal]').forEach((element) => {
+        element.addEventListener('click', closeLossModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lossModal.classList.contains('is-open')) {
+            closeLossModal();
+        }
+    });
+}
+
 let allArticles = [];
 let currentCategory = 'All';
 let currentPage = 1;
@@ -99,6 +136,11 @@ function renderLearnAllArticles() {
             article.url.trim() !== '' &&
             article.url !== '#'
         )
+        .filter(article =>
+            currentCategory === 'All' ||
+            (article.category &&
+             article.category.toLowerCase() === currentCategory.toLowerCase())
+        )
         .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
 
     if (publishedArticles.length === 0) {
@@ -111,11 +153,22 @@ function renderLearnAllArticles() {
 
     const fragment = document.createDocumentFragment();
 
-    publishedArticles.forEach(article => {
+    publishedArticles.forEach((article, index) => {
         const link = document.createElement('a');
         link.className = 'learn-article-title';
         link.href = article.url;
-        link.textContent = article.title;
+        link.setAttribute('aria-label', `${String(index + 1).padStart(2, '0')}. ${article.title}`);
+
+        const number = document.createElement('span');
+        number.className = 'learn-article-number';
+        number.textContent = String(index + 1).padStart(2, '0');
+        number.style.cssText = 'display:inline-block; flex:0 0 auto; width:auto; min-width:2ch; white-space:nowrap; word-break:keep-all; overflow-wrap:normal; writing-mode:horizontal-tb;';
+
+        const title = document.createElement('span');
+        title.className = 'learn-article-link-text';
+        title.textContent = article.title;
+
+        link.append(number, document.createTextNode(' '), title);
         fragment.appendChild(link);
     });
 
@@ -241,31 +294,9 @@ function updateCategoryCounts() {
 }
 
         function setupCategoryFilter() {
-    const categoryLinks = document.querySelectorAll('.sidebar-categories a, .categories a');
-    const sectionTitle = document.getElementById('sectionTitle');
-
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            categoryLinks.forEach(l => l.style.fontWeight = 'normal');
-            link.style.fontWeight = 'bold';
-
-            // HTML ထဲက Link text ယူမည့်အစား Link ရဲ့ href သို့မဟုတ် သတ်မှတ်ထားသော နာမည်ကို တိုက်ရိုက်သုံးခြင်း
-            const href = link.getAttribute('href');
-            let titleText = link.dataset.category || link.textContent.trim();
-
-            if (href.includes('all-articles')) {
-                currentCategory = 'All';
-                if (sectionTitle) sectionTitle.textContent = 'All Articles (Newest First)';
-            } else {
-                currentCategory = titleText;
-                if (sectionTitle) sectionTitle.textContent = titleText;
-            }
-
-            currentPage = 1;
-            renderArticles();
-        });
-    });
+    // Category links navigate to dedicated HTML pages.
+    // Do not intercept clicks or filter the homepage.
+    return;
 }
 
 
@@ -910,7 +941,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* FOH MOBILE SIDEBAR DRAWER JS v1 */
 document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.querySelector(".main-wrapper .left-sidebar");
+    const sidebar = document.querySelector(".homepage-layout .left-sidebar, .main-wrapper .left-sidebar");
     const menuBtn = document.getElementById("menuBtn");
     if (!sidebar || !menuBtn) return;
     if (document.getElementById("fohSidebarOverlay")) return;
@@ -924,7 +955,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigation.innerHTML = `
         <a href="#top"><span aria-hidden="true">🏠</span> Home</a>
         <a href="#topics"><span aria-hidden="true">📚</span> Learn</a>
-        <a href="#articles"><span aria-hidden="true">📰</span> Articles</a>
+        <a href="categories/all-articles.html"><span aria-hidden="true">📰</span> Articles</a>
         <a href="#about"><span aria-hidden="true">ℹ️</span> About</a>
     `;
 

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FTTH | Fiber Optic Hub</title>
+  <meta name="description" content="FTTH Architecture၊ Fiber Distribution၊ Network Components နှင့် Fiber-to-the-Home တပ်ဆင်အသုံးပြုပုံများကို လေ့လာနိုင်ပါသည်။">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://fiberoptichub.github.io/categories/ftth.html">
+  <meta property="og:title" content="FTTH | Fiber Optic Hub">
+  <meta property="og:description" content="FTTH Architecture၊ Fiber Distribution၊ Network Components နှင့် Fiber-to-the-Home တပ်ဆင်အသုံးပြုပုံများကို လေ့လာနိုင်ပါသည်။">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fiberoptichub.github.io/categories/ftth.html">
+  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body.category-page {
+      margin: 0; min-height: 100vh; background: #07111f;
+      color: #e2e8f0; font-family: inherit;
+    }
+    .category-header {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px; padding:16px max(20px,calc((100% - 1100px)/2));
+      background:#07111f; border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .category-brand { color:#f8fafc; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .category-brand span { color:#38bdf8; }
+    .category-nav { display:flex; flex-wrap:wrap; gap:16px; }
+    .category-nav a { color:#cbd5e1; text-decoration:none; font-size:.94rem; }
+    .category-nav a:hover { color:#38bdf8; }
+    .category-shell { width:min(100% - 32px,1000px); margin:0 auto; padding:24px 0 44px; }
+    .category-home-link {
+      display:inline-flex; align-items:center; gap:9px; padding:10px 14px;
+      border:1px solid #29435b; border-radius:10px; color:#7dd3fc;
+      text-decoration:none; background:#0c1a2b; font-weight:600;
+    }
+    .category-home-link:hover { border-color:#38bdf8; background:#10243a; }
+    .category-heading {
+      margin:22px 0; padding:26px 22px; border:1px solid #20374e;
+      border-radius:16px; background:linear-gradient(135deg,#10243a,#0b1727);
+    }
+    .category-heading h1 {
+  margin:0 0 8px; color:#f8fafc;
+  font-size:clamp(1.4rem,4vw,1.9rem); line-height:1.15;
+}
+    .category-heading p { margin:0; color:#b6c7d9; font-size:.84rem; line-height:1.45; }
+    .category-result-count { margin:0 0 14px; color:#94a3b8; font-size:.95rem; }
+    .category-article-list { display:flex; flex-direction:column; gap:12px; }
+    .category-article {
+      display:block; min-width:0; padding:18px;
+      border:1px solid #233b52; border-radius:13px; background:#0c1a2b;
+      color:#e2e8f0; text-decoration:none;
+      transition:border-color .18s ease,transform .18s ease;
+    }
+    .category-article:hover { border-color:#38bdf8; transform:translateY(-2px); }
+    .category-article h2 { margin:0 0 8px; color:#7dd3fc; font-size:1.08rem; line-height:1.6; }
+    .category-article p { margin:0 0 12px; color:#b6c7d9; font-size:.94rem; line-height:1.8; overflow-wrap:anywhere; }
+    .category-article-meta { display:flex; flex-wrap:wrap; gap:7px 12px; color:#94a3b8; font-size:.82rem; }
+    .category-empty { padding:20px; border:1px solid #29435b; border-radius:12px; color:#cbd5e1; line-height:1.8; }
+    .category-pagination { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin:24px 0; }
+    .category-pagination button {
+      min-width:40px; padding:10px 12px; border:1px solid #29435b;
+      border-radius:9px; background:#0c1a2b; color:#dbeafe; cursor:pointer;
+    }
+    .category-pagination button:hover:not(:disabled),
+    .category-pagination button[aria-current="page"] {
+      background:#12314a; border-color:#38bdf8; color:#7dd3fc;
+    }
+    .category-pagination button:disabled { opacity:.4; cursor:not-allowed; }
+    .category-footer { padding:24px 16px; border-top:1px solid #20374e; background:#050d18; text-align:center; color:#94a3b8; font-size:.9rem; line-height:1.8; }
+    .category-footer strong { color:#7dd3fc; }
+    .category-top {
+      position:fixed; right:18px; bottom:20px; z-index:50; width:46px; height:46px;
+      border:1px solid #38bdf8; border-radius:50%; background:#0c263b;
+      color:#7dd3fc; font-size:1.35rem; cursor:pointer;
+      box-shadow:0 6px 24px rgba(0,0,0,.3);
+    }
+    .category-top[hidden] { display:none; }
+    .category-menu-toggle {
+      display:none; align-items:center; justify-content:center;
+      width:42px; height:40px; border:1px solid #29435b;
+      border-radius:9px; background:#0c1a2b; color:#7dd3fc;
+      font-size:1.4rem; cursor:pointer;
+    }
+    .category-menu-toggle:hover { border-color:#38bdf8; }
+    .category-nav.is-open { display:flex; }
+    @media (max-width:650px) {
+      .category-header {
+        position:relative; flex-direction:row; align-items:center;
+        justify-content:space-between; flex-wrap:wrap; gap:12px; padding:14px 16px;
+      }
+      .category-menu-toggle { display:inline-flex; }
+      .category-nav {
+        display:none; width:100%; flex-direction:column; gap:0;
+        padding:6px 10px; margin-top:4px;
+        background:#0b1727; border:1px solid #29435b;
+        border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.55);
+        border-top:2px solid #38bdf8;
+      }
+      .category-nav a {
+        display:block; padding:13px 10px; font-size:.92rem;
+        background:#0b1727; color:#e2e8f0;
+        border-bottom:1px solid #20374e;
+      }
+      .category-nav a:last-child { border-bottom:none; }
+      .category-nav a:hover,
+      .category-nav a:focus-visible {
+        background:#10243a; color:#7dd3fc; outline:none;
+      }
+      .category-shell { width:min(100% - 24px,1000px); padding-top:18px; }
+      .category-heading { padding:22px 17px; }
+      .category-article { padding:15px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .category-article { transition:none; }
+      .category-article:hover { transform:none; }
+    }
+  </style>
+</head>
+<body class="category-page" id="top">
+  <header class="category-header">
+    <a class="category-brand" href="../index.html" aria-label="Fiber Optic Hub Home">🌐 Fiber <span>Optic Hub</span></a>
+    <button class="category-menu-toggle" id="categoryMenuToggle" type="button" aria-expanded="false" aria-controls="categoryMainNav" aria-label="မီနူးဖွင့်ရန်">☰</button>
+    <nav class="category-nav" id="categoryMainNav" aria-label="Main Navigation">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#topics">Articles</a>
+      <a href="../index.html#tools">Tools</a>
+      <a href="../index.html#technical-books">Technical Books</a>
+      <a href="../index.html#about">About</a>
+    </nav>
+  </header>
+
+  <main class="category-shell">
+    <a class="category-home-link" href="../index.html"><span aria-hidden="true">←</span> ပင်မစာမျက်နှာသို့</a>
+    <section class="category-heading">
+      <h1>FTTH</h1>
+      <p>FTTH Architecture၊ Fiber Distribution၊ Network Components နှင့် Fiber-to-the-Home တပ်ဆင်အသုံးပြုပုံများကို လေ့လာနိုင်ပါသည်။</p>
+    </section>
+    <p class="category-result-count" id="categoryResultCount" aria-live="polite">ဆောင်းပါးများကို ရှာဖွေနေပါသည်...</p>
+    <section class="category-article-list" id="categoryArticleList" aria-label="FTTH articles"></section>
+    <nav class="category-pagination" id="categoryPagination" aria-label="ဆောင်းပါးစာမျက်နှာများ"></nav>
+  </main>
+
+  <footer class="category-footer">
+    <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px; justify-content: center; display: flex; align-items: center; gap: 6px;">
+      <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
+    </div>
+    <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+  </footer>
+
+  <button class="category-top" id="categoryTop" type="button" aria-label="စာမျက်နှာထိပ်သို့ ပြန်သွားရန်" title="အပေါ်သို့" hidden>↑</button>
+
+  <script>
+  (() => {
+    const allowedCategories = ["FTTH"];
+    const list = document.getElementById("categoryArticleList");
+    const count = document.getElementById("categoryResultCount");
+    const pagination = document.getElementById("categoryPagination");
+    const topButton = document.getElementById("categoryTop");
+    const menuToggle = document.getElementById("categoryMenuToggle");
+    const mainNav = document.getElementById("categoryMainNav");
+    const pageSize = 5;
+    let articles = [];
+    let currentPage = 1;
+
+    function addText(parent, tag, className, value) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      element.textContent = value || "";
+      parent.appendChild(element);
+      return element;
+    }
+
+    function renderPage() {
+      list.replaceChildren();
+      pagination.replaceChildren();
+
+      const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+      currentPage = Math.min(currentPage, totalPages);
+      const start = (currentPage - 1) * pageSize;
+      const pageArticles = articles.slice(start, start + pageSize);
+
+      if (!articles.length) {
+        addText(list, "p", "category-empty", "ဤအမျိုးအစားတွင် ထုတ်ဝေပြီးသော ဆောင်းပါး မရှိသေးပါ။");
+        count.textContent = "ဆောင်းပါး မရှိသေးပါ။";
+        return;
+      }
+
+      count.textContent = "စုစုပေါင်း " + articles.length + " ပုဒ် · " +
+        (start + 1) + " မှ " + (start + pageArticles.length) + " ပုဒ်အထိ ပြသထားသည်";
+
+      pageArticles.forEach(article => {
+        const link = document.createElement("a");
+        link.className = "category-article";
+        const articleUrl = article.url.trim();
+        link.href = articleUrl.startsWith("articles/") ? "../" + articleUrl : articleUrl;
+        addText(link, "h2", "", article.title);
+        addText(link, "p", "", article.summary || article.description || "");
+        const meta = document.createElement("div");
+        meta.className = "category-article-meta";
+        if (article.category) addText(meta, "span", "", article.category);
+        if (article.level) addText(meta, "span", "", article.level);
+        if (article.date) addText(meta, "span", "", article.date);
+        if (article.readingTime) addText(meta, "span", "", article.readingTime);
+        link.appendChild(meta);
+        list.appendChild(link);
+      });
+
+      function addPageButton(label, page, disabled, current) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = label;
+        button.disabled = disabled;
+        if (current) button.setAttribute("aria-current", "page");
+        button.addEventListener("click", () => {
+          currentPage = page;
+          renderPage();
+          document.querySelector(".category-heading").scrollIntoView({behavior:"smooth", block:"start"});
+        });
+        pagination.appendChild(button);
+      }
+
+      addPageButton("‹ ယခင်", currentPage - 1, currentPage === 1, false);
+      for (let page = 1; page <= totalPages; page++) {
+        addPageButton(String(page), page, false, page === currentPage);
+      }
+      addPageButton("နောက် ›", currentPage + 1, currentPage === totalPages, false);
+    }
+
+    fetch("../data/articles.json")
+      .then(response => {
+        if (!response.ok) throw new Error("Article data could not be loaded");
+        return response.json();
+      })
+      .then(data => {
+        articles = data
+          .filter(article => article && typeof article.title === "string" &&
+            typeof article.url === "string" && article.url.trim() !== "" &&
+            article.url !== "#")
+          .filter(article => allowedCategories === null ||
+            allowedCategories.some(category =>
+              String(article.category || "").toLowerCase() === category.toLowerCase()))
+          .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+        renderPage();
+      })
+      .catch(() => {
+        count.textContent = "ဆောင်းပါးများကို ဖွင့်မရပါ။";
+        addText(list, "p", "category-empty", "အင်တာနက်ချိတ်ဆက်မှုနှင့် Article Data ဖိုင်ကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။");
+      });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "မီနူးပိတ်ရန်" : "မီနူးဖွင့်ရန်");
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "မီနူးဖွင့်ရန်");
+        menuToggle.textContent = "☰";
+      });
+    });
+    window.addEventListener("scroll", () => {
+      topButton.hidden = window.scrollY < 300;
+    }, {passive:true});
+    topButton.addEventListener("click", () => {
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  })();
+  </script>
+</body>
+</html>
