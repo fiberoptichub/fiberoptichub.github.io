@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <!-- METADATA AUTOMATION -->
+    <meta content="What is Computer Networking?" name="article-title"/>
+    <meta content="2026-10-14" name="article-date"/>
+    <meta content="Networking" name="article-category"/>
+    <meta content="Beginner" name="article-level"/>
+    <meta content="Computer Networking ဆိုတာဘာလဲ၊ Network အမျိုးအစားများ၊ Topology နှင့် Fiber Optic နည်းပညာတို့၏ ဆက်စပ်ပုံကို အခြေခံမှစတင်လေ့လာနိုင်ရန် ရှင်းပြထားသော Beginner Guide ဖြစ်သည်။" name="article-description"/>
+    <meta content="Computer Networking ဆိုတာဘာလဲ၊ Network အမျိုးအစားများ၊ Topology နှင့် Fiber Optic နည်းပညာတို့၏ ဆက်စပ်ပုံကို အခြေခံမှစတင်လေ့လာနိုင်ရန် ရှင်းပြထားသော Beginner Guide ဖြစ်သည်။" name="description"/>
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="What is Computer Networking? | Fiber Optic Hub"/>
+    <meta property="og:description" content="Computer Networking ဆိုတာဘာလဲ၊ Network အမျိုးအစားများ၊ Topology နှင့် Fiber Optic နည်းပညာတို့၏ ဆက်စပ်ပုံကို အခြေခံမှစတင်လေ့လာနိုင်ရန် ရှင်းပြထားသော Beginner Guide ဖြစ်သည်။"/>
+    <meta property="og:url" content="https://fiberoptichub.github.io/articles/computer-networking.html"/>
+    <link rel="canonical" href="https://fiberoptichub.github.io/articles/computer-networking.html"/>
+    <meta property="og:image" content="https://fiberoptichub.github.io/images/computer-networking/computer-network-basics.webp"/>
+    <meta property="og:site_name" content="Fiber Optic Hub"/>
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="What is Computer Networking? | Fiber Optic Hub"/>
+    <meta name="twitter:description" content="Computer Networking ဆိုတာဘာလဲ၊ Network အမျိုးအစားများ၊ Topology နှင့် Fiber Optic နည်းပညာတို့၏ ဆက်စပ်ပုံကို အခြေခံမှစတင်လေ့လာနိုင်ရန် ရှင်းပြထားသော Beginner Guide ဖြစ်သည်။"/>
+    <meta name="twitter:image" content="https://fiberoptichub.github.io/images/computer-networking/computer-network-basics.webp"/>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <!-- PAGE TITLE & STYLESHEET -->
+    <title>What is Computer Networking? | Fiber Optic Hub</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+
+    <!-- MATHJAX 3 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+</head>
+<body id="top">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
+        <!-- HEADER NAVIGATION -->
+    <header class="site-header">
+        <a href="../index.html" class="logo">🌐 Fiber <span>Optic Hub</span></a>
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#topics">Learn</a>
+            <a href="../index.html#articles">Articles</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <button type="button" class="menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html" onclick="closeMenu()">🏠 Home</a>
+        <a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
+        <a href="../index.html#articles" onclick="closeMenu()">📰 Articles</a>
+        <a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
+
+
+    <!-- MAIN ARTICLE CONTAINER -->
+    <main class="article-page">
+        <!-- BACK BUTTON -->
+        <a class="back-btn" href="../index.html">← Back to Home</a>
+
+        <!-- TITLE & METADATA -->
+        <h1 class="article-page-title">What is Computer Networking?</h1>
+        <p class="article-meta">Networking • Beginner • ⏱️ 5 min read<br/>Published: 2026-10-14</p>
+
+        <!-- PURE ARTICLE CONTENT INJECTION -->
+        <article class="article-content">
+            <h1>What is Computer Networking?</h1>
+<p>Computer Networking ဆိုတာ Computer, Server, Smartphone, Printer နဲ့ အခြား Network Devices တွေကို ချိတ်ဆက်ပြီး Data နဲ့ Resources တွေကို အပြန်အလှန် ပေးပို့အသုံးပြုနိုင်အောင် ပြုလုပ်ထားတဲ့ စနစ်ဖြစ်ပါတယ်။</p>
+<p>ဥပမာအားဖြင့် ရုံးတစ်ရုံးမှာ Computer အများအပြားကို Network ချိတ်ဆက်ထားခြင်းကြောင့် File တွေမျှဝေနိုင်တယ်၊ Printer တစ်လုံးကို အများအပြားအသုံးပြုနိုင်တယ်၊ Internet ကိုလည်း အတူတကွ အသုံးပြုနိုင်ပါတယ်။</p>
+<p>Computer Networking ဟာ ယနေ့ခေတ် Internet, Cloud Computing, Data Centers, CCTV Systems နဲ့ Fiber Optic Communication တို့အတွက် အရေးကြီးတဲ့ အခြေခံနည်းပညာတစ်ခု ဖြစ်ပါတယ်။</p>
+<p><img alt="Computer Network Basics" src="../images/computer-networking/computer-network-basics.webp" /></p>
+<p><em>ပုံ ၁ — Computer Networking ၏ အခြေခံဖွဲ့စည်းပုံ</em></p>
+<h2>1. How Does a Computer Network Work?</h2>
+<p>Network တစ်ခုအတွင်း Data ပေးပို့တဲ့အခါ အောက်ပါလုပ်ငန်းစဉ်တွေ ပါဝင်နိုင်ပါတယ်။</p>
+<ol>
+<li><strong>Sender:</strong> Data ပေးပို့မယ့် Computer သို့မဟုတ် Device။</li>
+<li><strong>Network Device:</strong> Switch, Router နဲ့ Access Point တို့က Data ပေးပို့မှုကို သက်ဆိုင်ရာ Network အတွင်း စီမံပေးတယ်။</li>
+<li><strong>Transmission Medium:</strong> Copper Cable, Fiber Optic Cable သို့မဟုတ် Wireless Signal တို့က Data သယ်ဆောင်ပေးတယ်။</li>
+<li><strong>Receiver:</strong> Data ကို လက်ခံမယ့် Device။</li>
+</ol>
+<p>ဥပမာ Computer A က Computer B ဆီ File တစ်ခု ပို့တဲ့အခါ Data ကို Network Protocol တွေနဲ့ စီမံပြီး သင့်လျော်တဲ့ Network Path ကတစ်ဆင့် ပေးပို့ပါတယ်။</p>
+<h2>2. Types of Computer Networks</h2>
+<p>Network တွေကို လွှမ်းခြုံထားတဲ့ ပထဝီဝင်အကျယ်အဝန်းနဲ့ အသုံးပြုပုံအပေါ် မူတည်ပြီး အမျိုးအစားခွဲနိုင်ပါတယ်။</p>
+<p><img alt="LAN MAN WAN Network Types" src="../images/computer-networking/lan-man-wan.webp" /></p>
+<p><em>ပုံ ၂ — LAN, MAN နှင့် WAN Network အမျိုးအစားများ</em></p>
+<table>
+<thead>
+<tr>
+<th>Network Type</th>
+<th>Full Form</th>
+<th>အသုံးပြုပုံ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>LAN</td>
+<td>Local Area Network</td>
+<td>အိမ်၊ ရုံး၊ အဆောက်အအုံအတွင်း Network ချိတ်ဆက်ခြင်း</td>
+</tr>
+<tr>
+<td>MAN</td>
+<td>Metropolitan Area Network</td>
+<td>မြို့တစ်မြို့ သို့မဟုတ် မြို့ပြဧရိယာအတွင်း Network ချိတ်ဆက်ခြင်း</td>
+</tr>
+<tr>
+<td>WAN</td>
+<td>Wide Area Network</td>
+<td>မြို့များ၊ နိုင်ငံများ သို့မဟုတ် အကွာအဝေးကြီးမားသော နေရာများကို ချိတ်ဆက်ခြင်း</td>
+</tr>
+</tbody>
+</table>
+<h3>LAN — Local Area Network</h3>
+<p>LAN ကို အိမ်၊ ရုံး၊ ကျောင်းနဲ့ စက်ရုံတွေမှာ အသုံးများပါတယ်။ Ethernet Cable နဲ့ Wi-Fi တို့ကို အသုံးပြုပြီး Devices တွေကို ချိတ်ဆက်နိုင်ပါတယ်။</p>
+<h3>MAN — Metropolitan Area Network</h3>
+<p>MAN ဟာ မြို့ပြဧရိယာအတွင်းရှိ ရုံးခွဲများ၊ အဖွဲ့အစည်းများနဲ့ Network Locations များကို ချိတ်ဆက်ရာမှာ အသုံးဝင်ပါတယ်။ Fiber Optic Infrastructure ကို အသုံးပြုနိုင်ပါတယ်။</p>
+<h3>WAN — Wide Area Network</h3>
+<p>WAN ဟာ အကွာအဝေးကြီးမားတဲ့ နေရာတွေကို ချိတ်ဆက်ပေးပါတယ်။ Internet ဟာ WAN နည်းပညာများစွာနဲ့ Network များကို အပြန်အလှန် ချိတ်ဆက်ထားတဲ့ ကမ္ဘာလုံးဆိုင်ရာ စနစ်တစ်ခု ဖြစ်ပါတယ်။</p>
+<h2>3. Network Topology</h2>
+<p>Network Topology ဆိုတာ Network Devices တွေကို ဘယ်လိုပုံစံနဲ့ ချိတ်ဆက်ထားသလဲဆိုတာကို ဖော်ပြတဲ့ ဖွဲ့စည်းပုံဖြစ်ပါတယ်။</p>
+<p><img alt="Network Topology" src="../images/computer-networking/neotwork-topology.webp" /></p>
+<p><em>ပုံ ၃ — Network Topology ပုံစံများ</em></p>
+<p>အသုံးများတဲ့ Topology ပုံစံတွေမှာ အောက်ပါတို့ ပါဝင်ပါတယ်။</p>
+<ul>
+<li><strong>Star Topology:</strong> Devices တွေကို Central Switch သို့မဟုတ် Hub တစ်ခုဆီ ချိတ်ဆက်ထားတယ်။ ယနေ့ခေတ် Ethernet LAN တွေမှာ အသုံးများတယ်။</li>
+<li><strong>Bus Topology:</strong> Devices တွေကို Main Communication Line တစ်ခုတည်းနဲ့ ချိတ်ဆက်ထားတဲ့ ပုံစံဖြစ်တယ်။</li>
+<li><strong>Ring Topology:</strong> Devices တွေကို စက်ဝိုင်းပုံစံ ချိတ်ဆက်ထားတယ်။</li>
+<li><strong>Mesh Topology:</strong> Devices သို့မဟုတ် Network Nodes တွေကြားမှာ လမ်းကြောင်းအများအပြား ရှိနိုင်တယ်။ Redundancy နဲ့ Reliability အတွက် အသုံးဝင်တယ်။</li>
+</ul>
+<p>Topology တစ်ခုချင်းစီမှာ Cost, Scalability, Performance နဲ့ Fault Tolerance တို့အပေါ် မူတည်ပြီး အားသာချက်၊ အားနည်းချက်တွေ ရှိပါတယ်။</p>
+<h2>4. Basic Network Architecture</h2>
+<p>Network တစ်ခုမှာ End Devices, Network Devices နဲ့ Transmission Media တို့ အဓိကပါဝင်ပါတယ်။</p>
+<p><img alt="Basic Network Architecture" src="../images/computer-networking/basic-network-architecture.webp" /></p>
+<p><em>ပုံ ၄ — Basic Network Architecture</em></p>
+<h3>End Devices</h3>
+<p>Network ကို အသုံးပြုတဲ့ Devices တွေဖြစ်ပါတယ်။</p>
+<ul>
+<li>Desktop Computer</li>
+<li>Laptop</li>
+<li>Server</li>
+<li>Smartphone</li>
+<li>Network Printer</li>
+<li>IP Camera</li>
+</ul>
+<h3>Switch</h3>
+<p>Switch ဟာ Local Area Network အတွင်းရှိ Devices တွေကို ချိတ်ဆက်ပေးပါတယ်။ ပုံမှန် Ethernet Switch တစ်ခုဟာ Ethernet Frame တွေကို MAC Address အပေါ်မူတည်ပြီး သက်ဆိုင်ရာ Port ဆီ Forward လုပ်ပေးပါတယ်။</p>
+<h3>Router</h3>
+<p>Router ဟာ မတူညီတဲ့ IP Networks တွေအကြား Data Packet တွေကို ပို့ဆောင်ပေးပါတယ်။ Home Router တစ်ခုမှာ Routing အပြင် Wi-Fi နဲ့ အခြားလုပ်ဆောင်ချက်တွေလည်း ပါဝင်နိုင်ပါတယ်။</p>
+<h3>Access Point</h3>
+<p>Access Point (AP) ဟာ Wireless Devices တွေကို Network တစ်ခုနဲ့ ချိတ်ဆက်ပေးပါတယ်။</p>
+<h3>Transmission Media</h3>
+<p>Data ကို ပို့ဆောင်ရာမှာ အသုံးပြုတဲ့ ကြားခံပစ္စည်းတွေ ဖြစ်ပါတယ်။</p>
+<ul>
+<li><strong>Copper Cable:</strong> Ethernet Network တွေမှာ အသုံးများတယ်။</li>
+<li><strong>Fiber Optic Cable:</strong> အလင်းကို အသုံးပြုပြီး Data ပို့ဆောင်တယ်။</li>
+<li><strong>Wireless:</strong> Radio Frequency Signal တွေကို အသုံးပြုတယ်။</li>
+</ul>
+<h2>5. How Data Travels Through a Network</h2>
+<p>ဥပမာ Computer တစ်လုံးက Internet Website တစ်ခုကို ဝင်ကြည့်တဲ့အခါ ပုံမှန်အားဖြင့် အောက်ပါအဆင့်တွေ ပါဝင်နိုင်ပါတယ်။</p>
+<ol>
+<li>User က Browser ထဲမှာ Website Address ကို ရိုက်ထည့်တယ်။</li>
+<li>DNS က Domain Name နဲ့ သက်ဆိုင်တဲ့ IP Address ကို ရှာဖွေပေးတယ်။</li>
+<li>Computer က Data Packet တွေကို Network ကတစ်ဆင့် ပေးပို့တယ်။</li>
+<li>Router တွေက Packet တွေကို သင့်လျော်တဲ့ Network Path အတိုင်း Forward လုပ်ပေးတယ်။</li>
+<li>Server က Request ကို လက်ခံပြီး Response ပြန်ပို့တယ်။</li>
+<li>Browser က လက်ခံရရှိတဲ့ Data ကို အသုံးပြုပြီး Website ကို ဖော်ပြတယ်။</li>
+</ol>
+<p>အမှန်တကယ် Network Communication မှာ DNS Cache, Routing, TCP သို့မဟုတ် QUIC, TLS နဲ့ အခြား Protocol တွေလည်း ပါဝင်နိုင်ပါတယ်။</p>
+<h2>6. IP Address and MAC Address</h2>
+<p>IP Address နဲ့ MAC Address တို့ဟာ Network Communication မှာ အရေးကြီးတဲ့ Address အမျိုးအစားနှစ်ခု ဖြစ်ပါတယ်။</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>IP Address</th>
+<th>MAC Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>အဓိကအသုံးပြုမှု</td>
+<td>IP Network အတွင်း Routing</td>
+<td>Local Network အတွင်း Frame Delivery</td>
+</tr>
+<tr>
+<td>အမျိုးအစား</td>
+<td>IPv4, IPv6</td>
+<td>ပုံမှန် Ethernet Interface များတွင် 48-bit Address</td>
+</tr>
+<tr>
+<td>အသုံးပြုသည့် Layer</td>
+<td>Network Layer</td>
+<td>Data Link Layer</td>
+</tr>
+</tbody>
+</table>
+<p>IP Address ဟာ Network တစ်ခုအတွင်း သို့မဟုတ် Network များအကြား Data ပို့ဆောင်ရာမှာ အသုံးပြုပါတယ်။ MAC Address ကတော့ Ethernet လို Data Link Technology တွေမှာ Local Link အတွင်း Frame ပို့ဆောင်ဖို့ အသုံးပြုပါတယ်။</p>
+<h2>7. Client-Server and Peer-to-Peer Networks</h2>
+<h3>Client-Server Network</h3>
+<p>Client Devices တွေက Server ဆီက Service သို့မဟုတ် Data ကို Request လုပ်ပြီး ရယူတဲ့ ပုံစံဖြစ်ပါတယ်။</p>
+<p>ဥပမာ — Website Hosting, Email Services နဲ့ File Servers။</p>
+<h3>Peer-to-Peer (P2P) Network</h3>
+<p>Devices တွေက Central Server တစ်ခုတည်းအပေါ် အပြည့်အဝ မမှီခိုဘဲ တစ်ခုနဲ့တစ်ခု Resources တွေကို တိုက်ရိုက်မျှဝေနိုင်တဲ့ ပုံစံဖြစ်ပါတယ်။</p>
+<p>အသုံးပြုမယ့် Network ရဲ့ ရည်ရွယ်ချက်၊ Security နဲ့ Management Requirements တွေအပေါ် မူတည်ပြီး Architecture ကို ရွေးချယ်ရပါတယ်။</p>
+<h2>8. The Relationship Between Computer Networking and Fiber Optics</h2>
+<p>Computer Networking နဲ့ Fiber Optic Technology တို့ဟာ အလွန်နီးကပ်စွာ ဆက်စပ်နေပါတယ်။</p>
+<p>Computer Networking က Data ကို ဘယ်လို Address လုပ်မလဲ၊ ဘယ်လို Forward လုပ်မလဲ၊ ဘယ်လို Protocol တွေ အသုံးပြုမလဲဆိုတာကို စီမံပေးပါတယ်။ Fiber Optic Technology ကတော့ Data ကို အလင်း Signal အဖြစ် Optical Fiber အတွင်း သယ်ဆောင်ပေးနိုင်ပါတယ်။</p>
+<p>Fiber Optic Cable တွေရဲ့ အားသာချက်တွေကတော့ -</p>
+<ul>
+<li><strong>High Bandwidth:</strong> Data ပမာဏများစွာကို သယ်ဆောင်နိုင်တယ်။</li>
+<li><strong>Long-Distance Transmission:</strong> အကွာအဝေးကြီးမားတဲ့ နေရာတွေကို ချိတ်ဆက်နိုင်တယ်။</li>
+<li><strong>Low Attenuation:</strong> သင့်လျော်တဲ့ Fiber နဲ့ System Design ကို အသုံးပြုရင် အကွာအဝေးရှည် Transmission အတွက် သင့်တော်တယ်။</li>
+<li><strong>Electromagnetic Interference Resistance:</strong> Electrical Noise ကြောင့် သက်ရောက်မှုရှိနိုင်တဲ့ ပတ်ဝန်းကျင်တွေမှာ အားသာချက်ရှိတယ်။</li>
+</ul>
+<p>Fiber Optic Cable တွေကို ISP Backbone Networks, Data Centers, FTTH (Fiber to the Home), Enterprise Networks နဲ့ Submarine Cable Systems တွေမှာ အသုံးပြုကြပါတယ်။</p>
+<p>Fiber Optic Technician တစ်ယောက်အတွက် Computer Networking Fundamentals ကို နားလည်ထားခြင်းဟာ Switch, Router, SFP Module, Optical Transceiver နဲ့ Network Troubleshooting တို့ကို ပိုမိုနားလည်စေပါတယ်။</p>
+<h2>9. Advantages and Limitations of Computer Networking</h2>
+<h3>Advantages</h3>
+<ul>
+<li>Devices တွေအကြား File နဲ့ Resource Sharing ပြုလုပ်နိုင်တယ်။</li>
+<li>Centralized Data Management ကို အသုံးပြုနိုင်တယ်။</li>
+<li>Communication နဲ့ Collaboration ပိုမိုလွယ်ကူစေတယ်။</li>
+<li>Internet နဲ့ Cloud Services တွေကို အသုံးပြုနိုင်တယ်။</li>
+<li>Network Monitoring နဲ့ Security Policies တွေကို စီမံနိုင်တယ်။</li>
+</ul>
+<h3>Limitations</h3>
+<ul>
+<li>Network Infrastructure တည်ဆောက်ဖို့ ကုန်ကျစရိတ်ရှိတယ်။</li>
+<li>Configuration မှားယွင်းမှုကြောင့် Communication ပြတ်တောက်နိုင်တယ်။</li>
+<li>Security အားနည်းရင် Unauthorized Access နဲ့ Data Loss ဖြစ်နိုင်တယ်။</li>
+<li>Network တစ်ခုလုံးကို အနှောင့်အယှက်ဖြစ်စေမယ့် Single Point of Failure ရှိနိုင်တယ်။</li>
+<li>ပုံမှန် Monitoring, Maintenance နဲ့ Troubleshooting လိုအပ်တယ်။</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Computer Networking ဟာ ယနေ့ခေတ် Digital Communication ရဲ့ အခြေခံဖြစ်ပါတယ်။ LAN, MAN, WAN, Network Topology, Switch, Router နဲ့ IP Address တို့ကို နားလည်ထားခြင်းက ပိုမိုအဆင့်မြင့်တဲ့ Networking နဲ့ Fiber Optic Technology တွေကို ဆက်လက်လေ့လာရာမှာ အထောက်အကူပြုပါတယ်။</p>
+<p>Fiber Optic နည်းပညာကို လေ့လာနေသူတွေအတွက် Networking Fundamentals ဟာ Fiber Optic Infrastructure ကို နားလည်ဖို့နဲ့ Network Fault တွေကို မှန်ကန်စွာ Troubleshoot လုပ်နိုင်ဖို့ အရေးကြီးတဲ့ အခြေခံတစ်ခု ဖြစ်ပါတယ်။</p>
+        </article>
+    </main>
+
+    <!-- RELATED ARTICLES SECTION (Card အပြင်ဘက် သီးသန့် ကာဗာဖြင့်) -->
+    <div class="article-related" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #fff;">ဆက်လက်လေ့လာရန်</h3>
+        <div id="relatedArticlesContainer" class="articles-grid"></div>
+    </div>
+
+    <!-- ARTICLE NAVIGATION BUTTONS -->
+    <div class="article-nav" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1rem;">
+        <a class="nav-btn" href="#">← Previous Article</a>
+        <a class="nav-btn" href="index-of-refraction.html">Next Article →</a>
+    </div>
+
+    <!-- SOCIAL SHARE SECTION -->
+    <div class="social-share-container">
+        <span>📌 ဤဆောင်းပါးကို သူငယ်ချင်းများထံ မျှဝေရန်:</span>
+        <div class="share-buttons-group">
+            <a class="share-btn fb" href="#" id="shareFacebook" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a class="share-btn tg" href="#" id="shareTelegram" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.622-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.46-1.903-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.153.228.166.331.011.093.024.304.007.469z"></path>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- COMMENTS SECTION -->
+    <section class="section" id="comments">
+        <div class="section-heading">
+            <span class="section-label">COMMUNITY</span>
+            <h2>Comments & Discussions</h2>
+            <p>ဆောင်းပါးနှင့် ပတ်သက်သည့် မေးခွန်းများနှင့် မှတ်ချက်များကို အောက်တွင် မေးမြန်းနိုင်ပါသည်။</p>
+        </div>
+        <div id="commentsContainer" style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Utterances Comment Script ကို ဤနေရာတွင် တိုက်ရိုက်ထည့်ပါ -->
+            <script src="https://utteranc.es/client.js"
+                    repo="fiberoptichub/fiberoptichub.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT & FOOTER -->
+    <script src="../js/index.js"></script>
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+
+  <!-- Back to Top Button -->
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    ⬆
+</button>
+
+</body>
+</html>
