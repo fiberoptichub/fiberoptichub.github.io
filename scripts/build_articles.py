@@ -11,6 +11,7 @@ import frontmatter
 
 ARTICLES_DIR = "articles"
 MARKDOWN_DIR = "markdown_articles"
+BOOKS_DIR = "markdown_books"
 TEMPLATE_PATH = os.path.join("templates", "template.html")
 
 DATA_DIR = "data"
@@ -623,6 +624,8 @@ def build_articles_pipeline():
                 "summary": description,
                 "description": description,
 
+                "type": "article",
+
                 "readingTime": read_time
 
             })
@@ -642,6 +645,131 @@ def build_articles_pipeline():
             )
 
     # -----------------------------------------------------
+
+    # -----------------------------------------------------
+    # Build Technical Books chapters independently
+    # -----------------------------------------------------
+    if os.path.isdir(BOOKS_DIR):
+        for book_folder in sorted(os.listdir(BOOKS_DIR)):
+            book_path = os.path.join(BOOKS_DIR, book_folder)
+
+            # Only direct child directories represent books.
+            if not os.path.isdir(book_path):
+                continue
+
+            book_id = re.sub(
+                r"[^a-z0-9]+", "-", book_folder.lower()
+            ).strip("-")
+
+            if not book_id:
+                print(f"Skipping invalid book folder: {book_folder}")
+                continue
+
+            book_title = re.sub(
+                r"[-_]+", " ", book_folder
+            ).strip().title()
+
+            book_config = os.path.join(book_path, "book.json")
+            if os.path.isfile(book_config):
+                try:
+                    with open(book_config, "r", encoding="utf-8") as bf:
+                        config_data = json.load(bf)
+                    configured_title = config_data.get("title")
+                    if isinstance(configured_title, str) and configured_title.strip():
+                        book_title = configured_title.strip()
+                except Exception as e:
+                    print(f"WARNING: Could not read {book_config}: {e}")
+                    print("Using the book folder name as its title.")
+
+            chapter_files = sorted(
+                name for name in os.listdir(book_path)
+                if name.lower().endswith(".md")
+                and os.path.isfile(os.path.join(book_path, name))
+            )
+
+            chapter_count = len(chapter_files)
+            if not chapter_count:
+                continue
+
+            # Determine every output name before building navigation.
+            output_names = [
+                f"{book_id}-{os.path.splitext(name)[0]}.html"
+                for name in chapter_files
+            ]
+
+            for chapter_index, filename in enumerate(chapter_files):
+                md_path = os.path.join(book_path, filename)
+                output_filename = output_names[chapter_index]
+
+                print(f"Processing book chapter: {book_id}/{filename}")
+
+                try:
+                    with open(md_path, "r", encoding="utf-8") as mf:
+                        post = frontmatter.load(mf)
+
+                    body_html = markdown_to_html(post.content)
+
+                    title, date, _category, level, description = get_metadata(post)
+                    category = "Technical Books"
+                    og_image = get_og_image(post.content)
+                    read_time = calculate_reading_time(post.content)
+
+                    prev_link = (
+                        output_names[chapter_index - 1]
+                        if chapter_index > 0 else "#"
+                    )
+                    next_link = (
+                        output_names[chapter_index + 1]
+                        if chapter_index < chapter_count - 1 else "#"
+                    )
+
+                    article_html = template_content
+                    replacements = {
+                        "{{ARTICLE_TITLE}}": title,
+                        "{{ARTICLE_SLUG}}": os.path.splitext(output_filename)[0],
+                        "{{ARTICLE_DATE}}": date,
+                        "{{ARTICLE_CATEGORY}}": category,
+                        "{{ARTICLE_LEVEL}}": level,
+                        "{{ARTICLE_DESCRIPTION}}": description,
+                        "{{ARTICLE_OG_IMAGE}}": og_image,
+                        "{{READ_TIME}}": read_time,
+                        "{{ARTICLE_CONTENT}}": body_html,
+                        "{{PREV_ARTICLE}}": prev_link,
+                        "{{NEXT_ARTICLE}}": next_link,
+                    }
+
+                    for placeholder, value in replacements.items():
+                        article_html = article_html.replace(
+                            placeholder, str(value)
+                        )
+
+                    output_path = os.path.join(ARTICLES_DIR, output_filename)
+                    with open(output_path, "w", encoding="utf-8") as outf:
+                        outf.write(article_html)
+
+                    articles_data.append({
+                        "title": title,
+                        "url": f"articles/{output_filename}",
+                        "date": date,
+                        "category": category,
+                        "level": level,
+                        "summary": description,
+                        "description": description,
+                        "readingTime": read_time,
+                        "type": "book",
+                        "bookId": book_id,
+                        "bookTitle": book_title,
+                        "chapterOrder": chapter_index + 1,
+                        "chapterCount": chapter_count,
+                    })
+
+                    print(f"Generated book HTML: {output_filename}")
+
+                except Exception as e:
+                    print(f"ERROR processing book chapter {book_id}/{filename}:")
+                    print(f"  {type(e).__name__}: {e}")
+                    print("  Skipping this chapter.")
+
     # Sort by date
     # -----------------------------------------------------
 

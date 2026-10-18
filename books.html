@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical Books | Fiber Optic Hub</title>
+  <meta name="description" content="Fiber Optic Hub Technical Library ရှိ Fiber Optics နှင့် Networking နည်းပညာစာအုပ်များကို ရှာဖွေဖတ်ရှုပါ။">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://fiberoptichub.github.io/books.html">
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body.category-page {
+      margin: 0; min-height: 100vh; background: #07111f;
+      color: #e2e8f0; font-family: inherit;
+    }
+    .category-header {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px; padding:16px max(20px,calc((100% - 1100px)/2));
+      background:#07111f; border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .category-brand { color:#f8fafc; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .category-brand span { color:#38bdf8; }
+    .category-nav { display:flex; flex-wrap:wrap; gap:16px; }
+    .category-nav a { color:#cbd5e1; text-decoration:none; font-size:.94rem; }
+    .category-nav a:hover { color:#38bdf8; }
+    .category-shell { width:min(100% - 32px,1000px); margin:0 auto; padding:24px 0 44px; }
+    .category-home-link {
+      display:inline-flex; align-items:center; gap:9px; padding:10px 14px;
+      border:1px solid #29435b; border-radius:10px; color:#7dd3fc;
+      text-decoration:none; background:#0c1a2b; font-weight:600;
+    }
+    .category-home-link:hover { border-color:#38bdf8; background:#10243a; }
+    .category-heading {
+      margin:22px 0; padding:26px 22px; border:1px solid #20374e;
+      border-radius:16px; background:linear-gradient(135deg,#10243a,#0b1727);
+    }
+    .category-heading h1 {
+  margin:0 0 8px; color:#f8fafc;
+  font-size:clamp(1.4rem,4vw,1.9rem); line-height:1.15;
+}
+    .category-heading p { margin:0; color:#b6c7d9; font-size:.84rem; line-height:1.45; }
+    .category-result-count { margin:0 0 14px; color:#94a3b8; font-size:.95rem; }
+    .category-article-list,
+    .books-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      align-items:stretch;
+      gap:12px;
+    }
+    .books-grid .category-empty { grid-column:1 / -1; }
+    @media (min-width:520px) {
+      .books-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    }
+    @media (min-width:850px) {
+      .books-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+    }
+    .category-article {
+      display:block; min-width:0; padding:18px;
+      border:1px solid #233b52; border-radius:13px; background:#0c1a2b;
+      color:#e2e8f0; text-decoration:none;
+      transition:border-color .18s ease,transform .18s ease;
+    }
+    .category-article:hover { border-color:#38bdf8; transform:translateY(-2px); }
+    .category-article h2 { margin:0 0 8px; color:#7dd3fc; font-size:1.08rem; line-height:1.6; }
+    .category-article p { margin:0 0 12px; color:#b6c7d9; font-size:.94rem; line-height:1.8; overflow-wrap:anywhere; }
+    .category-article-meta { display:flex; flex-wrap:wrap; gap:7px 12px; color:#94a3b8; font-size:.82rem; }
+    .category-empty { padding:20px; border:1px solid #29435b; border-radius:12px; color:#cbd5e1; line-height:1.8; }
+    .category-pagination { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin:24px 0; }
+    .category-pagination button {
+      min-width:40px; padding:10px 12px; border:1px solid #29435b;
+      border-radius:9px; background:#0c1a2b; color:#dbeafe; cursor:pointer;
+    }
+    .category-pagination button:hover:not(:disabled),
+    .category-pagination button[aria-current="page"] {
+      background:#12314a; border-color:#38bdf8; color:#7dd3fc;
+    }
+    .category-pagination button:disabled { opacity:.4; cursor:not-allowed; }
+    .category-footer { padding:24px 16px; border-top:1px solid #20374e; background:#050d18; text-align:center; color:#94a3b8; font-size:.9rem; line-height:1.8; }
+    .category-footer strong { color:#7dd3fc; }
+    .category-top {
+      position:fixed; right:18px; bottom:20px; z-index:50; width:46px; height:46px;
+      border:1px solid #38bdf8; border-radius:50%; background:#0c263b;
+      color:#7dd3fc; font-size:1.35rem; cursor:pointer;
+      box-shadow:0 6px 24px rgba(0,0,0,.3);
+    }
+    .category-top[hidden] { display:none; }
+    .category-menu-toggle {
+      display:none; align-items:center; justify-content:center;
+      width:42px; height:40px; border:1px solid #29435b;
+      border-radius:9px; background:#0c1a2b; color:#7dd3fc;
+      font-size:1.4rem; cursor:pointer;
+    }
+    .category-menu-toggle:hover { border-color:#38bdf8; }
+    .category-nav.is-open { display:flex; }
+    @media (max-width:650px) {
+      .category-header {
+        position:relative; flex-direction:row; align-items:center;
+        justify-content:space-between; flex-wrap:wrap; gap:12px; padding:14px 16px;
+      }
+      .category-menu-toggle { display:inline-flex; }
+      .category-nav {
+        display:none; width:100%; flex-direction:column; gap:0;
+        padding:6px 10px; margin-top:4px;
+        background:#0b1727; border:1px solid #29435b;
+        border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.55);
+        border-top:2px solid #38bdf8;
+      }
+      .category-nav a {
+        display:block; padding:13px 10px; font-size:.92rem;
+        background:#0b1727; color:#e2e8f0;
+        border-bottom:1px solid #20374e;
+      }
+      .category-nav a:last-child { border-bottom:none; }
+      .category-nav a:hover,
+      .category-nav a:focus-visible {
+        background:#10243a; color:#7dd3fc; outline:none;
+      }
+      .category-shell { width:min(100% - 24px,1000px); padding-top:18px; }
+      .category-heading { padding:22px 17px; }
+      .category-article { padding:15px; }
+    }
+
+    .books-search-wrap { margin: 0 0 18px; }
+    .books-search-label { display:block; margin-bottom:8px; color:#cbd5e1; }
+    .books-search {
+      display:block; width:100%; box-sizing:border-box; padding:13px 14px;
+      border:1px solid #29435b; border-radius:10px; background:#0c1a2b;
+      color:#f8fafc; font:inherit; font-size:16px; outline:none;
+    }
+    .books-search:focus { border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.12); }
+    .book-card {
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      min-width:0;
+      height:100%;
+      gap:0;
+      padding:10px;
+      border:1px solid #233b52;
+      border-radius:12px;
+      background:#0c1a2b;
+      overflow:hidden;
+    }
+    .book-card:hover { border-color:#38bdf8; }
+    .book-cover {
+      width:100%;
+      flex:none;
+      aspect-ratio:3 / 4;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      background:linear-gradient(145deg,#123c59,#087e9b);
+      color:#fff;
+      text-align:center;
+      padding:5px;
+    }
+    .book-cover img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .book-cover strong { font-size:clamp(18px,4vw,26px); }
+    .book-cover span { font-size:8px; margin-top:5px; }
+    .book-info {
+      display:flex;
+      flex-direction:column;
+      flex:1;
+      min-width:0;
+      padding-top:10px;
+    }
+    .book-info h2 {
+      margin:0 0 6px;
+      color:#7dd3fc;
+      font-size:.88rem;
+      line-height:1.45;
+      overflow-wrap:anywhere;
+    }
+    .book-info p {
+      margin:0 0 5px;
+      color:#94a3b8;
+      font-size:.72rem;
+      line-height:1.5;
+      overflow-wrap:anywhere;
+    }
+    .book-action {
+      display:block;
+      margin-top:auto;
+      padding:8px 5px;
+      text-align:center;
+      border:1px solid #29435b;
+      border-radius:8px;
+      background:#10243a;
+      color:#7dd3fc !important;
+      font-size:.76rem;
+      line-height:1.4;
+      text-decoration:none !important;
+      font-weight:600;
+    }
+    .book-action:hover {
+      border-color:#38bdf8;
+      background:#12314a;
+    }
+    @media(max-width:380px) {
+      .books-grid { gap:9px; }
+      .book-card { padding:7px; }
+      .book-info h2 { font-size:.82rem; }
+      .book-info p { font-size:.68rem; }
+      .book-action { font-size:.7rem; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .category-article { transition:none; }
+      .category-article:hover { transform:none; }
+    }
+  
+</style>
+</head>
+<body class="category-page" id="top">
+<header class="category-header">
+    <a class="category-brand" href="index.html" aria-label="Fiber Optic Hub Home">🌐 Fiber <span>Optic Hub</span></a>
+    <button class="category-menu-toggle" id="categoryMenuToggle" type="button" aria-expanded="false" aria-controls="categoryMainNav" aria-label="မီနူးဖွင့်ရန်">☰</button>
+    <nav class="category-nav" id="categoryMainNav" aria-label="Main Navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#topics">Articles</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="index.html#technical-books">Technical Books</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+  <main class="category-shell">
+    <a class="category-home-link" href="index.html#technical-books"><span aria-hidden="true">←</span> ပင်မစာမျက်နှာသို့</a>
+    <section class="category-heading">
+      <h1>Technical Books Library</h1>
+      <p>Fiber Optics၊ Networking နှင့် Telecommunications နည်းပညာစာအုပ်များကို ရှာဖွေလေ့လာနိုင်ပါသည်။</p>
+    </section>
+    <div class="books-search-wrap">
+      <label class="books-search-label" for="fohBooksSearch">စာအုပ် ရှာဖွေရန်</label>
+      <input class="books-search" id="fohBooksSearch" type="search"
+        placeholder="စာအုပ်အမည်၊ Author၊ Publisher ရိုက်ထည့်ပါ..."
+        autocomplete="off" aria-label="Search technical books">
+    </div>
+    <p class="category-result-count" id="fohBooksStatus" aria-live="polite">စာအုပ်စာရင်းကို ဖွင့်နေပါသည်...</p>
+    <section class="books-grid" id="fohBooksGrid" aria-label="Technical Books"></section>
+  </main>
+<footer class="category-footer">
+    <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px; justify-content: center; display: flex; align-items: center; gap: 6px;">
+      <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
+    </div>
+    <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+    <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+  </footer>
+<button class="category-top" id="categoryTop" type="button" aria-label="စာမျက်နှာထိပ်သို့ ပြန်သွားရန်" title="အပေါ်သို့" hidden>↑</button>
+<script>
+(() => {
+  "use strict";
+  const BOT = "Yadukhit_bot";
+  const search = document.getElementById("fohBooksSearch");
+  const list = document.getElementById("fohBooksGrid");
+  const status = document.getElementById("fohBooksStatus");
+  const topButton = document.getElementById("categoryTop");
+  const menuToggle = document.getElementById("categoryMenuToggle");
+  const mainNav = document.getElementById("categoryMainNav");
+  let books = [];
+
+  function text(parent, tag, cls, value) {
+    const el = document.createElement(tag);
+    if (cls) el.className = cls;
+    el.textContent = value || "";
+    parent.appendChild(el);
+    return el;
+  }
+
+  function render() {
+    const q = search.value.trim().toLowerCase();
+    const results = books.filter(book => {
+      const searchable = [
+        book.title,
+        book.author
+      ].filter(Boolean).join(" ").toLowerCase();
+      return searchable.includes(q);
+    });
+    list.replaceChildren();
+
+    if (!results.length) {
+      text(list, "p", "category-empty",
+        q ? "ကိုက်ညီသောစာအုပ် မတွေ့ပါ။" : "စာအုပ် မရှိသေးပါ။");
+      status.textContent = q
+        ? "ကိုက်ညီသောစာအုပ် 0 အုပ် — မတွေ့ပါ။"
+        : "စာအုပ် မရှိသေးပါ။";
+      return;
+    }
+
+    status.textContent = q
+      ? "ကိုက်ညီသောစာအုပ် " + results.length + " အုပ် တွေ့ပါသည်။"
+      : "စာအုပ် စုစုပေါင်း " + results.length + " အုပ်";
+
+    results.forEach(book => {
+      const card = document.createElement("article");
+      card.className = "category-article book-card";
+
+      const cover = document.createElement("div");
+      cover.className = "book-cover";
+      if (typeof book.coverImage === "string" && book.coverImage.trim()) {
+        const img = document.createElement("img");
+        img.src = book.coverImage;
+        img.alt = book.title + " book cover";
+        img.loading = "lazy";
+        img.onerror = () => {
+          cover.replaceChildren();
+          text(cover, "strong", "", "PDF");
+          text(cover, "span", "", "FIBER OPTIC HUB");
+        };
+        cover.appendChild(img);
+      } else {
+        text(cover, "strong", "", "PDF");
+        text(cover, "span", "", "FIBER OPTIC HUB");
+      }
+      card.appendChild(cover);
+
+      const info = document.createElement("div");
+      info.className = "book-info";
+      text(info, "h2", "", book.title);
+      if (book.author) text(info, "p", "", "Author: " + book.author);
+
+      const link = document.createElement("a");
+      link.className = "book-action";
+      link.textContent = "Read Book";
+      link.href = "https://t.me/" + BOT + "?start=book_" + book.id;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      info.appendChild(link);
+      card.appendChild(info);
+      list.appendChild(card);
+    });
+  }
+
+  search.addEventListener("input", render);
+
+  fetch("https://foh-telegram-pdf-bot.htaylinnaung-ep.workers.dev/api/books", {cache:"no-cache"})
+    .then(response => {
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      return response.json();
+    })
+    .then(data => {
+      const remoteBooks = data.books;
+      if (!Array.isArray(remoteBooks)) throw new Error("Invalid book list");
+      books = remoteBooks.filter(book =>
+        book && typeof book.title === "string" &&
+        Number.isInteger(book.id) && book.id > 0 &&
+        book.pdfLinked === true
+      ).sort((a,b) => b.id - a.id);
+      render();
+    })
+    .catch(error => {
+      console.error("Technical Books load error:", error);
+      status.textContent = "စာအုပ်စာရင်းကို ဖွင့်မရပါ။";
+      text(list, "p", "category-empty",
+        "Cloudflare Books API ကို စစ်ဆေးပါ။");
+    });
+
+  menuToggle.addEventListener("click", () => {
+    const open = mainNav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.textContent = open ? "✕" : "☰";
+  });
+
+  mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    mainNav.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  }));
+
+  window.addEventListener("scroll", () => {
+    topButton.hidden = window.scrollY < 300;
+  }, {passive:true});
+
+  topButton.addEventListener("click", () => {
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+})();
+</script>
+</body>
+</html>

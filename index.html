@@ -28,6 +28,7 @@
 
     <!-- CSS Link -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/technical-books.css">
 
     <title>Fiber Optic Hub - Learn Fiber Optic & FTTH Technology</title>
 
@@ -254,63 +255,6 @@
     </style>
 
 <style id="homepage-dynamic-sections">
-/* Compact Fiber Loss Calculator widget */
-.foh-tool-card-compact {
-    appearance: none;
-    box-sizing: border-box;
-    display: inline-flex !important;
-    flex-direction: row;
-    align-items: center;
-    justify-self: start;
-    align-self: start;
-    width: max-content !important;
-    max-width: 100%;
-    min-width: 0;
-    min-height: 0 !important;
-    height: auto !important;
-    gap: 7px;
-    padding: 5px 9px !important;
-    margin: 0 !important;
-    text-align: left;
-    color: inherit;
-    font: inherit;
-    line-height: 1.2;
-    cursor: pointer;
-}
-.foh-tool-card-compact .foh-tool-icon {
-    flex: 0 0 24px;
-    width: 24px;
-    height: 24px;
-    margin: 0 !important;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .9rem;
-    line-height: 1;
-}
-.foh-tool-card-compact .foh-tool-tag,
-.foh-tool-card-compact p,
-.foh-tool-card-compact .foh-tool-launch,
-.foh-tool-card-compact .foh-tool-card-arrow {
-    display: none !important;
-}
-.foh-tool-card-compact .foh-tool-card-title {
-    flex: 0 1 auto !important;
-    width: auto;
-    min-width: 0;
-    margin: 0 !important;
-    padding: 0;
-    white-space: nowrap;
-    font-size: .84rem;
-    font-weight: 600;
-    line-height: 1.2;
-}
-.foh-tool-card-compact:focus-visible {
-    outline: 2px solid #38bdf8;
-    outline-offset: 2px;
-}
-
 .youtube-shorts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
@@ -340,18 +284,10 @@
     line-height: 1.5;
 }
 #latestArticlesContainer {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
     margin-top: 18px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#latestArticlesContainer .latest-article-card {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
 }
 .latest-article-card {
     display: block;
@@ -505,252 +441,6 @@ body:not(.articles-page) .foh-tool-card input {
 }
 /* END FOH HOMEPAGE MOBILE SIDEBAR DRAWER FIX */
 
-
-/* Homepage CTA links: clear contrast and touch-friendly targets */
-.homepage-cta-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    border: 1px solid rgba(56,189,248,.48);
-    border-radius: 9px;
-    background: rgba(8,47,73,.62);
-    color: #7dd3fc !important;
-    font-weight: 700;
-    line-height: 1.6;
-    text-decoration: none;
-    transition: background .2s ease, border-color .2s ease, transform .2s ease;
-}
-.homepage-cta-link:hover,
-.homepage-cta-link:focus-visible {
-    background: rgba(8,145,178,.2);
-    border-color: #67e8f9;
-    color: #cffafe !important;
-    text-decoration: none;
-    transform: translateY(-1px);
-}
-
-/* Tool widget card */
-.foh-tool-card {
-    position: relative;
-    padding: 22px;
-    margin-top: 16px;
-    max-width: 420px;
-    border: 1px solid rgba(56,189,248,.34);
-    border-radius: 16px;
-    background: linear-gradient(145deg, #13243d, #0d172b);
-    box-shadow: 0 12px 28px rgba(0,0,0,.2);
-    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-.foh-tool-card:hover {
-    border-color: #38bdf8;
-    transform: translateY(-3px);
-    box-shadow: 0 16px 32px rgba(0,0,0,.28);
-}
-.foh-tool-icon {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    margin-bottom: 14px;
-    border-radius: 12px;
-    background: rgba(8,145,178,.2);
-    color: #67e8f9;
-    font-size: 28px;
-    font-weight: 800;
-}
-.foh-tool-tag {
-    display: inline-block;
-    color: #67e8f9;
-    font-size: .75rem;
-    font-weight: 800;
-    letter-spacing: .12em;
-}
-.foh-tool-card h3 {
-    margin: 8px 0;
-    color: #f1f5f9;
-}
-.foh-tool-card p,
-.foh-modal-panel > p {
-    color: #cbd5e1;
-    line-height: 1.7;
-}
-.foh-tool-launch,
-.foh-calculate-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    min-height: 46px;
-    padding: 12px 16px;
-    border: 1px solid #0891b2;
-    border-radius: 9px;
-    background: #075985;
-    color: #fff;
-    font: inherit;
-    font-weight: 750;
-    cursor: pointer;
-    transition: background .2s ease;
-}
-.foh-tool-launch:hover,
-.foh-calculate-button:hover {
-    background: #0369a1;
-}
-.foh-tool-launch:focus-visible,
-.foh-calculate-button:focus-visible,
-.foh-modal-close:focus-visible,
-.back-to-top:focus-visible {
-    outline: 3px solid #a5f3fc;
-    outline-offset: 3px;
-}
-
-/* Calculator modal */
-.foh-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 10020;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-    box-sizing: border-box;
-}
-.foh-modal.is-open {
-    display: flex;
-}
-.foh-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(2,6,23,.82);
-    backdrop-filter: blur(5px);
-}
-.foh-modal-panel {
-    position: relative;
-    z-index: 1;
-    width: min(100%, 520px);
-    max-height: min(88vh, 760px);
-    overflow-y: auto;
-    padding: 22px;
-    border: 1px solid rgba(56,189,248,.4);
-    border-radius: 16px;
-    background: #0f1b30;
-    color: #f1f5f9;
-    box-shadow: 0 24px 70px rgba(0,0,0,.5);
-}
-.foh-modal-heading {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-}
-.foh-modal-heading h3 {
-    margin: 7px 0;
-    font-size: 1.3rem;
-}
-.foh-modal-close {
-    flex: 0 0 auto;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    background: #17263d;
-    color: #e2e8f0;
-    font-size: 27px;
-    cursor: pointer;
-}
-.foh-modal-panel .calculator-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 18px;
-}
-.foh-modal-panel .calculator-form label {
-    color: #e2e8f0;
-    font-weight: 650;
-}
-.foh-modal-panel .calculator-form input {
-    width: 100%;
-    min-height: 46px;
-    padding: 12px;
-    box-sizing: border-box;
-    border: 1px solid #475569;
-    border-radius: 8px;
-    background: #071426;
-    color: #fff;
-    font: inherit;
-}
-.foh-modal-panel .calculator-form input:focus {
-    outline: 2px solid #38bdf8;
-    outline-offset: 1px;
-}
-.foh-modal-panel .calc-result {
-    min-height: 1.5em;
-    margin-top: 16px;
-    color: #67e8f9;
-    font-size: 1.15rem;
-    font-weight: 800;
-}
-.foh-tool-note {
-    margin-top: 14px;
-    color: #94a3b8;
-    font-size: .88rem;
-    line-height: 1.65;
-}
-body.foh-modal-open {
-    overflow: hidden;
-}
-@media (max-width: 480px) {
-    .foh-modal { padding: 10px; }
-    .foh-modal-panel { padding: 18px; }
-    .foh-tool-card { max-width: none; }
-}
-
-
-        /* Compact Published Articles sidebar list */
-        .published-articles-widget .learn-all-articles-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            max-height: 320px;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            scrollbar-width: thin;
-            scrollbar-color: #475569 #1e293b;
-        }
-
-        .published-articles-widget .learn-article-title {
-            display: flex;
-            align-items: flex-start;
-            column-gap: 8px;
-            color: #67e8f9;
-            font-size: 12px;
-            line-height: 1.5;
-            font-weight: 400;
-            text-decoration: underline;
-            text-decoration-color: rgba(103,232,249,0.55);
-            text-underline-offset: 3px;
-            padding: 5px 5px;
-            border-bottom: none;
-            border-radius: 5px;
-            overflow-wrap: anywhere;
-            transition: color 0.2s ease, background 0.2s ease;
-        }
-
-        .published-articles-widget .learn-article-title:hover,
-        .published-articles-widget .learn-article-title:focus-visible {
-            color: #38bdf8;
-            background: rgba(56,189,248,0.07);
-            outline: none;
-        }
-
-        .published-articles-widget .learn-list-empty,
-        .published-articles-widget .learn-list-loading {
-            color: #94a3b8;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
 </style>
 
 </head>
@@ -765,7 +455,7 @@ body.foh-modal-open {
 
         <nav class="main-nav" aria-label="Main Navigation" style="display: flex; gap: 1.5rem;">
             <a href="#top">Home</a>
-            <a href="categories/all-articles.html">Articles</a>
+            <a href="articles.html">Articles</a>
             <a href="#tools">Tools</a>
             <a href="#technical-books">Technical Books</a>
             <a href="#about">About</a>
@@ -881,33 +571,13 @@ body.foh-modal-open {
                         <li><a href="categories/splicing.html" class="category-item" data-category="Splicing" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔧 Splicing</span><span class="category-count"></span></a></li>
                         <li><a href="categories/otdr-and-opm.html" class="category-item" data-category="OTDR and OPM" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔬 OTDR and OPM</span><span class="category-count"></span></a></li>
                         <li><a href="categories/ftth.html" class="category-item" data-category="FTTH" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">📡 FTTH</span><span class="category-count"></span></a></li>
-                        <li><a href="categories/networking.html" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
+                        <li><a href="#" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
                         <li><a href="categories/all-articles.html" class="category-item active" style="color: #38bdf8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px; font-weight: bold;"><span class="category-name">✨ All</span><span class="category-count"></span></a></li>
                     </ul>
                 </div>
             </div>
 
 
-
-
-            <!-- PUBLISHED ARTICLES SIDEBAR WIDGET -->
-            <div class="sidebar-widget published-articles-widget" id="topics"
-                 style="background:#1e293b;padding:1rem;border-radius:12px;
-                        margin-bottom:1.5rem;border:1px solid rgba(255,255,255,0.08);">
-                <h3 style="font-size:15px;margin:0 0 0.75rem;
-                           padding-bottom:0.15rem;border-bottom:none;">
-                    📚 Published Articles
-                </h3>
-                <p class="learn-list-hint" style="font-size:11px; line-height:1.6; color:#94a3b8; margin:0 0 3px;">
-                    ခေါင်းစဉ်ကို နှိပ်ပြီး ဆောင်းပါးဖတ်ရှုနိုင်ပါသည်။
-                </p>
-                <nav id="learnAllArticlesList"
-                     class="learn-all-articles-list"
-                     aria-label="All published articles">
-                    <p class="learn-list-loading">ဆောင်းပါးစာရင်းကို ဖွင့်နေပါသည်...</p>
-                </nav>
-            </div>
-            <!-- END PUBLISHED ARTICLES SIDEBAR WIDGET -->
 
         </aside>
 <div class="homepage-main">
@@ -930,7 +600,7 @@ body.foh-modal-open {
                 <p>ဗီဒီယိုများကို ဖွင့်နေပါသည်...</p>
             </div>
             <p style="margin-top: 16px;">
-                <a class="homepage-cta-link" href="https://www.youtube.com/@FiberOpticHub/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts အားလုံး ကြည့်ရန် ↗</a>
+                <a href="https://www.youtube.com/@FiberOpticHub/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts အားလုံး ကြည့်ရန် ↗</a>
             </p>
         </div>
     </section>
@@ -942,32 +612,18 @@ body.foh-modal-open {
             <h2>Useful Calculating Tools</h2>
             <p class="info-section-intro">Fiber Optic လုပ်ငန်းအတွက် အသုံးဝင်သော တွက်ချက်ရေးကိရိယာများ။</p>
 
-            <button type="button" class="foh-tool-card foh-tool-card-compact" id="openLossCalculator">
-  <span class="foh-tool-icon" aria-hidden="true">∑</span>
-  <span class="foh-tool-card-title">Fiber Loss Calculator</span>
-
-</button>
-<div class="foh-modal" id="lossCalculatorModal" aria-hidden="true">
-                <div class="foh-modal-backdrop" data-close-loss-modal></div>
-                <section class="foh-modal-panel" role="dialog" aria-modal="true" aria-labelledby="lossModalTitle">
-                    <div class="foh-modal-heading">
-                        <div>
-                            <span class="foh-tool-tag">FIBER OPTIC TOOL</span>
-                            <h3 id="lossModalTitle">Fiber Loss Calculator</h3>
-                        </div>
-                        <button type="button" class="foh-modal-close" id="closeLossCalculator" aria-label="Close calculator">×</button>
-                    </div>
-                    <p>Fiber အရှည်နှင့် Fusion Splice အရေအတွက်ကို ထည့်ပါ။</p>
-                    <form id="lossCalcForm" class="calculator-form">
-                        <label for="fiberLength">Fiber Length (km)</label>
-                        <input type="number" id="fiberLength" min="0" step="0.1" value="1" required>
-                        <label for="spliceCount">Fusion Splice Count</label>
-                        <input type="number" id="spliceCount" min="0" step="1" value="0" required>
-                        <button type="submit" class="foh-calculate-button">Calculate Loss</button>
-                    </form>
-                    <div class="calc-result" id="calcResult" aria-live="polite"></div>
-                    <p class="foh-tool-note">ခန့်မှန်းတွက်ချက်မှုသာ ဖြစ်ပါသည်။ Fiber Loss = 0.3 dB/km၊ Splice Loss = 0.1 dB/splice ဟု သတ်မှတ်ထားသည်။ လက်တွေ့တန်ဖိုးသည် ပစ္စည်းနှင့် တိုင်းတာချက်အပေါ် မူတည်ပါသည်။</p>
-                </section>
+            <div class="article-card foh-tool-card" style="padding:20px; margin-top:16px;">
+                <h3>Fiber Loss Calculator</h3>
+                <p>Fiber အရှည်နှင့် Fusion Splice အရေအတွက်ကို ထည့်ပြီး ခန့်မှန်း Loss ကို တွက်ချက်ပါ။</p>
+                <form id="lossCalcForm" class="calculator-form" style="display:flex; flex-direction:column; gap:12px; max-width:480px;">
+                    <label for="fiberLength">Fiber Length (km)</label>
+                    <input type="number" id="fiberLength" min="0" step="0.1" value="1" required style="padding:12px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff;">
+                    <label for="spliceCount">Fusion Splice Count</label>
+                    <input type="number" id="spliceCount" min="0" step="1" value="0" required style="padding:12px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff;">
+                    <button type="submit" class="btn" style="padding:12px; background:#0284c7; color:#fff; border:0; border-radius:8px; cursor:pointer;">Calculate Loss</button>
+                </form>
+                <div class="calc-result" id="calcResult" aria-live="polite" style="margin-top:14px; font-weight:bold; color:#38bdf8;"></div>
+                <p style="font-size:.9rem; color:#94a3b8; margin-top:12px;">ခန့်မှန်းတွက်ချက်မှုသာ ဖြစ်ပါသည်။ ယခုတွက်ချက်မှုတွင် Fiber Loss = 0.3 dB/km၊ Splice Loss = 0.1 dB/splice ဟု သတ်မှတ်ထားသည်။ လက်တွေ့တန်ဖိုးသည် ပစ္စည်းနှင့် တိုင်းတာချက်အပေါ် မူတည်ပါသည်။</p>
             </div>
 
         </div>
@@ -982,7 +638,7 @@ body.foh-modal-open {
             <div id="latestArticlesContainer" class="article-grid">
                 <p>ဆောင်းပါးများကို ဖွင့်နေပါသည်...</p>
             </div>
-            <p style="margin-top: 16px;"><a class="homepage-cta-link" href="categories/all-articles.html">ဆောင်းပါးအားလုံး ဖတ်ရန် →</a></p>
+            <p style="margin-top: 16px;"><a href="articles.html">ဆောင်းပါးအားလုံး ဖတ်ရန် →</a></p>
         </div>
     </section>
 
@@ -992,6 +648,9 @@ body.foh-modal-open {
             <span class="section-label">TECHNICAL LIBRARY</span>
             <h2>Technical Books</h2>
             <p class="info-section-intro">Fiber Optics နည်းပညာစာအုပ်များကို အခန်းလိုက် လေ့လာနိုင်ရန် စီစဉ်နေပါသည်။</p>
+            <p id="fohBooksStatus" aria-live="polite">စာအုပ်စာရင်းကို ဖွင့်နေပါသည်...</p>
+            <div id="fohBooksGrid" class="foh-books-grid"></div>
+            <p><a class="foh-books-all-link" href="books.html">View All Books →</a></p>
         </div>
     </section>
 
@@ -1022,7 +681,17 @@ body.foh-modal-open {
 
     </div>
 
-
+    <!-- LEARN SECTION: ALL PUBLISHED ARTICLES -->
+    <section id="topics" class="info-section learn-all-section">
+        <div class="info-section-inner">
+            <span class="section-label">LEARN</span>
+            <h2>Published Articles</h2>
+            <p class="info-section-intro">တင်ပြီးထားသမျှ ဆောင်းပါးခေါင်းစဉ်တွေကို စုစည်းထားပါသည်။ ခေါင်းစဉ်နှိပ်၍ ဖတ်ရှုနိုင်ပါသည်။</p>
+            <nav id="learnAllArticlesList" class="learn-all-articles-list" aria-label="All published articles">
+                <p class="learn-list-loading">ဆောင်းပါးစာရင်းကို ဖွင့်နေပါသည်...</p>
+            </nav>
+        </div>
+    </section>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="info-section about-section">
@@ -1038,7 +707,7 @@ body.foh-modal-open {
                     <svg class="social-logo youtube-logo" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4" fill="currentColor"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg> YouTube Channel
                 </a>
             </div>
-
+            <a class="info-section-link" href="#top">အပေါ်သို့ ပြန်သွားရန် ↑</a>
         </div>
     </section>
 
@@ -1046,9 +715,6 @@ body.foh-modal-open {
 </div><!-- /.homepage-main -->
 </div><!-- /#homepageLayout -->
 <!-- 3. FOOTER -->
-    <button type="button" id="backToTopBtn" class="back-to-top"
-        aria-label="အပေါ်သို့ ပြန်သွားရန်" title="အပေါ်သို့ ပြန်သွားရန်">↑</button>
-
     <footer>
         <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px; justify-content: center; display: flex; align-items: center; gap: 6px;">
             <span aria-hidden="true">🌐</span> Fiber <span style="color: #38bdf8;">Optic Hub</span>
@@ -1261,34 +927,10 @@ body.foh-modal-open {
         }
     }
 
-    function scrollToAboutWhenReady() {
-        if (window.location.hash !== "#about") return;
-
-        const about = document.getElementById("about");
-        if (!about) return;
-
-        requestAnimationFrame(() => {
-            about.scrollIntoView({ behavior: "auto", block: "start" });
-        });
-    }
-
     function init() {
         initMobileMenu();
         loadLatestArticles();
-
-        // Scroll again after the asynchronous Shorts feed has settled.
-        window.addEventListener("hashchange", scrollToAboutWhenReady);
-        window.addEventListener("load", scrollToAboutWhenReady, { once: true });
-
-        loadShorts().then(() => {
-            if (window.location.hash === "#about") {
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(scrollToAboutWhenReady);
-                });
-            }
-        });
-
-        scrollToAboutWhenReady();
+        loadShorts();
     }
 
     if (document.readyState === "loading") {
@@ -1299,6 +941,7 @@ body.foh-modal-open {
 })();
 </script>
 
+    <script src="js/technical-books.js" defer></script>
 </body>
 
 </html>
