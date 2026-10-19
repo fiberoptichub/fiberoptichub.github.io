@@ -1,7 +1,7 @@
 ---
 title: "Index of Refraction (IOR): Understanding Refractive Index in Fiber Optics"
 date: "2026-10-04"
-category: "Fiber Optics"
+category: "Fiber Optic Basics"
 level: "Beginner"
 description: "Index of Refraction (IOR) သည် Light ၏ medium တစ်ခုအတွင်း ဖြတ်သန်းသွားလာမှုနှင့် Fiber Optic အတွင်း Light ၏ လမ်းကြောင်းကို နားလည်ရန် အရေးကြီးသော optical property တစ်ခုဖြစ်သည်။ ဤဆောင်းပါးတွင် IOR ၏ အဓိပ္ပာယ်၊ Snell's Law၊ Core နှင့် Cladding ၏ IOR ကွာခြားချက်နှင့် Fiber Optic တွင် ၎င်း၏ အရေးပါပုံကို ရှင်းလင်းထားပါသည်။"
 ---
