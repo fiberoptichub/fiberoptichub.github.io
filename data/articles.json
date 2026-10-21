@@ -1,5 +1,16 @@
 [
     {
+        "title": "SFP (Small Form-factor Pluggable) Transceiver",
+        "url": "articles/sfp.html",
+        "date": "2026-10-21",
+        "category": "Networking",
+        "level": "Beginner",
+        "summary": "SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။",
+        "description": "SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။",
+        "type": "article",
+        "readingTime": "6 min read"
+    },
+    {
         "title": "What is Computer Networking?",
         "url": "articles/computer-networking.html",
         "date": "2026-10-14",

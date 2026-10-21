@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- METADATA AUTOMATION -->
+    <meta content="SFP (Small Form-factor Pluggable) Transceiver" name="article-title"/>
+    <meta content="2026-10-21" name="article-date"/>
+    <meta content="Networking" name="article-category"/>
+    <meta content="Beginner" name="article-level"/>
+    <meta content="SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။" name="article-description"/>
+    <meta content="SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။" name="description"/>
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="SFP (Small Form-factor Pluggable) Transceiver | Fiber Optic Hub"/>
+    <meta property="og:description" content="SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။"/>
+    <meta property="og:url" content="https://fiberoptichub.github.io/articles/sfp.html"/>
+    <link rel="canonical" href="https://fiberoptichub.github.io/articles/sfp.html"/>
+    <meta property="og:image" content="https://fiberoptichub.github.io/images/sfp/sfp-transceiver.webp"/>
+    <meta property="og:site_name" content="Fiber Optic Hub"/>
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="SFP (Small Form-factor Pluggable) Transceiver | Fiber Optic Hub"/>
+    <meta name="twitter:description" content="SFP Transceiver ဆိုတာ ဘာလဲ၊ Electrical Signal နှင့် Light Signal ကို ဘယ်လိုပြောင်းပေးသလဲ၊ Singlemode နှင့် Multimode SFP ကွာခြားချက်နှင့် လက်တွေ့အသုံးပြုပုံကို ရှင်းပြထားသည်။"/>
+    <meta name="twitter:image" content="https://fiberoptichub.github.io/images/sfp/sfp-transceiver.webp"/>
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MTHL3RRGV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1MTHL3RRGV');
+    </script>
+
+    <!-- PAGE TITLE & STYLESHEET -->
+    <title>SFP (Small Form-factor Pluggable) Transceiver | Fiber Optic Hub</title>
+    <link href="../css/index.css" rel="stylesheet"/>
+
+    <!-- MATHJAX 3 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+</head>
+<body id="top">
+
+    <!-- READING PROGRESS BAR -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
+        <!-- HEADER NAVIGATION -->
+    <header class="site-header">
+        <a href="../index.html" class="logo">🌐 Fiber <span>Optic Hub</span></a>
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#topics">Learn</a>
+            <a href="../categories/all-articles.html">Articles</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+        <button type="button" class="menu" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index.html" onclick="closeMenu()">🏠 Home</a>
+        <a href="../index.html#topics" onclick="closeMenu()">📚 Learn</a>
+        <a href="../categories/all-articles.html" onclick="closeMenu()">📰 Articles</a>
+        <a href="../index.html#about" onclick="closeMenu()">ℹ️ About</a>
+    </div>
+
+
+    <!-- MAIN ARTICLE CONTAINER -->
+    <main class="article-page">
+        <!-- BACK BUTTON -->
+        <a class="back-btn" href="../index.html">← Back to Home</a>
+
+        <!-- TITLE & METADATA -->
+        <h1 class="article-page-title">SFP (Small Form-factor Pluggable) Transceiver</h1>
+        <p class="article-meta">Networking • Beginner • ⏱️ 6 min read<br/>Published: 2026-10-21</p>
+
+        <!-- PURE ARTICLE CONTENT INJECTION -->
+        <article class="article-content">
+            <h2>1. Introduction</h2>
+<p>Network Switch၊ Router နှင့် Media Converter ကဲ့သို့ ကိရိယာများတွင် Fiber Optic ကို ချိတ်ဆက်ရန် ပုံမှန်အားဖြင့် <strong>SFP</strong> ကို အသုံးပြုသည်။ SFP သည် လက်ဖဝါးထဲဆန့်လောက်သည့် အသေးစား Module တစ်ခုဖြစ်သော်လည်း Device ထဲမှ Electrical Signal ကို Fiber ပေါ်သွားနိုင်သော Light Signal အဖြစ် ပြောင်းပေးသည့် အရေးကြီးသော အလုပ်ကို လုပ်ဆောင်သည်။</p>
+<p><img alt="SFP Transceiver ၏ ပြင်ပပုံစံ" src="../images/sfp/sfp-transceiver.webp" /></p>
+<p>ဤဆောင်းပါးတွင် SFP ဆိုသည်မှာ ဘာလဲ၊ ဘယ်လိုအလုပ်လုပ်သလဲ၊ အမျိုးအစားများ ဘယ်လိုကွာခြားသလဲနှင့် လက်တွေ့တပ်ဆင်ရာတွင် သတိထားရမည့်အချက်များကို အဆင့်လိုက် ရှင်းပြမည်။</p>
+<h2>2. Definition</h2>
+<p><strong>SFP</strong> ၏ အပြည့်အစုံမှာ <strong>Small Form-factor Pluggable</strong> ဖြစ်သည်။ အဓိကအချက်များမှာ —</p>
+<ul>
+<li><strong>Transceiver:</strong> Transmitter (TX) နှင့် Receiver (RX) တို့ကို Module တစ်ခုတည်းတွင် ပေါင်းထားသည်။</li>
+<li><strong>Pluggable:</strong> Device ၏ SFP Port ထဲသို့ ထည့်ပြီး ပြန်ထုတ်နိုင်သည်။ Hot-pluggable ဖြစ်သောကြောင့် Device ကို ပိတ်စရာမလိုဘဲ အစားထိုးနိုင်သည်ဟု ယေဘုယျအားဖြင့် ဆိုနိုင်သည်။</li>
+<li><strong>Small Form-factor:</strong> အရွယ်အစားသေးငယ်သဖြင့် Switch တစ်လုံးတွင် Port အရေအတွက်များများ ထည့်နိုင်သည်။</li>
+</ul>
+<p>SFP ကို Module အဖြစ် ခွဲထားခြင်းကြောင့် Switch ကို မလဲဘဲ Fiber အမျိုးအစား၊ Wavelength နှင့် အကွာအဝေးကို လိုအပ်သလို ရွေးချယ်နိုင်သည်။</p>
+<blockquote>
+<p>မှတ်ချက် — SFP အမျိုးအစားများကို Multi-Source Agreement (MSA) ဟုခေါ်သော ထုတ်လုပ်သူများ သဘောတူစံနှုန်းများအရ ထုတ်လုပ်ကြသည်။ ထုတ်လုပ်သူအလိုက် Specification ကွာနိုင်သဖြင့် Datasheet ကို အမြဲစစ်ပါ။</p>
+</blockquote>
+<h2>3. How It Works</h2>
+<h3>3.1 Transmit (TX)</h3>
+<ol>
+<li>Switch ထဲမှ <strong>Electrical Signal</strong> သည် SFP ၏ Electrical Connector မှတစ်ဆင့် Module ထဲဝင်သည်။</li>
+<li>Module ထဲရှိ Driver Circuit က Signal ကို Laser သို့ ပို့သည်။</li>
+<li><strong>Laser</strong> သည် Electrical Signal အတိုင်း Light Signal အဖြစ် ပြောင်းလဲထုတ်လွှင့်သည်။</li>
+<li>Light Signal သည် Fiber ၏ Core ထဲသို့ ဝင်ပြီး Fiber လမ်းကြောင်းအတိုင်း သွားသည်။</li>
+</ol>
+<h3>3.2 Receive (RX)</h3>
+<ol>
+<li>Fiber မှ ဝင်လာသော Light Signal ကို <strong>Photodiode</strong> က လက်ခံသည်။</li>
+<li>Photodiode က Light Signal ကို အားနည်းသော Electrical Signal အဖြစ် ပြန်ပြောင်းသည်။</li>
+<li>Amplifier နှင့် အခြား Circuit များက Signal ကို ပြင်ဆင်ပြီး Switch သို့ ပြန်ပို့သည်။</li>
+</ol>
+<p><img alt="SFP ၏ TX နှင့် RX အလုပ်လုပ်ပုံ" src="../images/sfp/sfp-tx-rx.webp" /></p>
+<h3>3.3 Duplex Connection</h3>
+<p>SFP အများစုသည် <strong>LC Duplex</strong> Connector ကို သုံးသည်။ Fiber နှစ်ချောင်း (တစ်ချောင်း TX အတွက်၊ တစ်ချောင်း RX အတွက်) ရှိသည်။ ချိတ်ဆက်ရာတွင် တစ်ဖက်၏ <strong>TX သည် တစ်ဖက်၏ RX နှင့်</strong> ချိတ်ရမည်ဖြစ်သည်။ ဤချိတ်ဆက်မှု ပြောင်းပြန်ဖြစ်နေလျှင် Link မတက်နိုင်ပါ။</p>
+<h2>4. Components or Important Factors</h2>
+<h3>4.1 အတွင်းပိုင်း အစိတ်အပိုင်းများ</h3>
+<p><img alt="SFP Module ၏ အစိတ်အပိုင်းများ" src="../images/sfp/sfp-module-parts.webp" /></p>
+<table>
+<thead>
+<tr>
+<th>အစိတ်အပိုင်း</th>
+<th>လုပ်ဆောင်ချက်</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>TOSA</strong> (Transmitter Optical Sub-Assembly)</td>
+<td>Laser ပါဝင်ပြီး Electrical Signal ကို Light Signal အဖြစ် ပြောင်းသည်</td>
+</tr>
+<tr>
+<td><strong>ROSA</strong> (Receiver Optical Sub-Assembly)</td>
+<td>Photodiode ပါဝင်ပြီး Light Signal ကို Electrical Signal အဖြစ် ပြန်ပြောင်းသည်</td>
+</tr>
+<tr>
+<td><strong>PCB</strong></td>
+<td>Control နှင့် Signal Processing Circuit များ တပ်ဆင်ထားသည်</td>
+</tr>
+<tr>
+<td><strong>Housing</strong></td>
+<td>Module ကို ကာကွယ်ပေးပြီး Port ထဲတွင် တည်ငြိမ်စေသည်</td>
+</tr>
+<tr>
+<td><strong>Bail Latch</strong></td>
+<td>Module ကို Port ထဲတွင် ကျစ်ကျစ်လျစ်လျစ်ထားပြီး ထုတ်ရာတွင် အသုံးပြုသည်</td>
+</tr>
+<tr>
+<td><strong>Optical Interface (LC)</strong></td>
+<td>Patch Cord ချိတ်ဆက်သည့်နေရာ</td>
+</tr>
+<tr>
+<td><strong>Electrical Edge Connector</strong></td>
+<td>Switch ၏ SFP Port နှင့် ချိတ်ဆက်သည့် Contact များ</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Singlemode နှင့် Multimode SFP</h3>
+<p><img alt="Singlemode နှင့် Multimode SFP နှိုင်းယှဉ်ချက်" src="../images/sfp/singlemode-multimode-sfp.webp" /></p>
+<table>
+<thead>
+<tr>
+<th>အချက်</th>
+<th>Multimode SFP</th>
+<th>Singlemode SFP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>အသုံးပြုသော Fiber</td>
+<td>Multimode Fiber (ဥပမာ 50/125 µm)</td>
+<td>Singlemode Fiber (9/125 µm)</td>
+</tr>
+<tr>
+<td>ပုံမှန် Wavelength</td>
+<td>850 nm</td>
+<td>1310 nm သို့မဟုတ် 1550 nm</td>
+</tr>
+<tr>
+<td>အကွာအဝေး</td>
+<td>အတိုမှ အလတ် (Building သို့မဟုတ် Campus အတွင်း)</td>
+<td>အလတ်မှ အဝေး (Kilometer ပေါင်းများစွာ)</td>
+</tr>
+</tbody>
+</table>
+<p>ဥပမာအနေဖြင့် Gigabit Ethernet တွင် 1000BASE-SX (850 nm၊ Multimode) သည် Fiber အမျိုးအစားပေါ်မူတည်၍ ၂၂၀ m မှ ၅၅၀ m အထိ၊ 1000BASE-LX10 (1310 nm၊ Singlemode) သည် ၁၀ km အထိ အသုံးပြုနိုင်ရန် IEEE 802.3 တွင် သတ်မှတ်ထားသည်။ ထို့ထက်ပိုဝေးသော ထုတ်ကုန်များ (ဥပမာ 1550 nm အသုံးပြုသော Long-reach Module) သည် ထုတ်လုပ်သူ Specification ပေါ်မူတည်သည်။</p>
+<blockquote>
+<p>အရေးကြီး — SFP အမျိုးအစားနှင့် Fiber အမျိုးအစား ကိုက်ညီရမည်။ ၎င်းအပြင် Link တစ်ခု၏ နှစ်ဖက်စလုံးရှိ SFP များသည် Speed၊ Wavelength နှင့် စံနှုန်း တူညီရမည်။</p>
+</blockquote>
+<h3>4.3 SFP Family</h3>
+<table>
+<thead>
+<tr>
+<th>အမျိုးအစား</th>
+<th>ပုံမှန် Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>SFP</td>
+<td>1 Gbps (Gigabit Ethernet) အထိ</td>
+</tr>
+<tr>
+<td>SFP+</td>
+<td>10 Gbps</td>
+</tr>
+<tr>
+<td>SFP28</td>
+<td>25 Gbps</td>
+</tr>
+</tbody>
+</table>
+<p>Form Factor ပုံစံတူသော်လည်း Speed မတူသောကြောင့် Switch Port က ထောက်ပံ့သော Speed ကို စစ်ဆေးပြီးမှ ဝယ်ယူရမည်။</p>
+<h3>4.4 BiDi SFP</h3>
+<p><strong>BiDi (Bidirectional) SFP</strong> သည် Fiber တစ်ချောင်းတည်းပေါ်တွင် TX နှင့် RX အတွက် Wavelength နှစ်မျိုးကွဲကို အသုံးပြုသည်။ BiDi Module များကို Wavelength တွဲများအတိုင်း (ဥပမာ တစ်ဖက်တွင် 1310 nm TX၊ တစ်ဖက်တွင် 1550 nm TX) ထုတ်လုပ်သဖြင့် Link တစ်ခု၏ နှစ်ဖက်တွင် တွဲဖက်ကိုက်ညီသော Module များကို သုံးရမည်။</p>
+<h2>5. Technical Explanation</h2>
+<h3>5.1 Digital Diagnostics Monitoring (DDM/DOM)</h3>
+<p>SFP အများအပြားတွင် Module ၏ အခြေအနေကို Switch မှ ဖတ်နိုင်သော DDM (သို့မဟုတ် DOM) လုပ်ဆောင်ချက် ပါဝင်သည်။ ပုံမှန်အားဖြင့် အောက်ပါတန်ဖိုးများကို ကြည့်နိုင်သည် —</p>
+<ul>
+<li>Module Temperature</li>
+<li>Supply Voltage</li>
+<li>TX Bias Current</li>
+<li>TX Optical Power (dBm)</li>
+<li>RX Optical Power (dBm)</li>
+</ul>
+<p>ဤတန်ဖိုးများသည် Link troubleshooting လုပ်ရာတွင် အသုံးဝင်သည်။ ဥပမာ RX Power အလွန်နိမ့်နေလျှင် Fiber Loss များခြင်း၊ Connector ညစ်ပေခြင်း သို့မဟုတ် Fiber ကွေးခြင်းကဲ့သို့ ပြဿနာများကို သံသယရှိနိုင်သည်။ DDM ထောက်ပံ့မှုသည် Module နှင့် Device အပေါ်မူတည်သည်။</p>
+<h3>5.2 Optical Power Specifications</h3>
+<p>SFP Datasheet တွင် Optical Power နှင့်ဆိုင်သော အောက်ပါတန်ဖိုးများကို ကြည့်ရမည်။ Optical Power ကို ပုံမှန်အားဖြင့် <strong>dBm</strong> (1 mW နှင့် နှိုင်းယှဉ်သော Power Level) ဖြင့် ဖော်ပြသည်။</p>
+<table>
+<thead>
+<tr>
+<th>Specification</th>
+<th>အဓိပ္ပာယ်</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td><strong>TX Power</strong></td>
+<td>SFP မှ Fiber ထဲသို့ ထုတ်လွှတ်သော Optical Power</td>
+</tr>
+<tr>
+<td><strong>RX Sensitivity</strong></td>
+<td>Receiver လက်ခံနိုင်သော အနိမ့်ဆုံး Optical Power</td>
+</tr>
+<tr>
+<td><strong>RX Overload</strong></td>
+<td>Receiver လက်ခံနိုင်သော အမြင့်ဆုံး Optical Power</td>
+</tr>
+</tbody>
+</table>
+<p>Link တစ်ခု အလုပ်လုပ်ရန် RX သို့ ရောက်သော Light Signal ၏ Power သည် RX Sensitivity နှင့် RX Overload ကြားတွင် ရှိရမည်။</p>
+<ul>
+<li><strong>နိမ့်လွန်းလျှင်:</strong> Fiber Loss၊ Connector Loss၊ Splice Loss များပြီး Signal အားနည်း၍ Link မတည်ငြိမ်ခြင်း သို့မဟုတ် မတက်ခြင်း ဖြစ်နိုင်သည်။</li>
+<li><strong>မြင့်လွန်းလျှင်:</strong> အကွာအဝေးတိုပြီး TX Power မြင့်သော Module ကို သုံးပါက Receiver Overload ဖြစ်နိုင်သည်။ ထိုသို့ဖြစ်လျှင် Datasheet ကိုစစ်ပြီး သင့်လျော်သော Module ရွေးခြင်း သို့မဟုတ် Optical Attenuator သုံးခြင်းတို့ကို စဉ်းစားရမည်။</li>
+</ul>
+<p>Fiber Loss နှင့် Connector Loss များကို ထည့်သွင်းစဉ်းစားပြီး Link တစ်ခုလုံး၏ Power လုံလောက်မှုကို တွက်ချက်ခြင်းကို <strong>Link Budget</strong> ဟုခေါ်သည်။ Link Budget ကို သီးခြားဆောင်းပါးတွင် အသေးစိတ်ရှင်းပြမည်ဖြစ်သည်။</p>
+<!-- Link Budget Article ရှိလာလျှင် အထက်ပိုဒ်၏ နောက်တွင် Internal Link ကို ဤနေရာတွင် ထည့်ပါ -->
+
+<h2>6. Practical Applications</h2>
+<ul>
+<li>Switch များကြား Uplink ချိတ်ဆက်ခြင်း</li>
+<li>Building တစ်ခုနှင့် တစ်ခုကြား Backbone Link</li>
+<li>Data Center အတွင်း Server နှင့် Switch ချိတ်ဆက်ခြင်း</li>
+<li>FTTH Network ၏ Aggregation နှင့် OLT ဘက်ရှိ Uplink များ</li>
+<li>Router နှင့် Media Converter များတွင် Fiber Port တပ်ဆင်ခြင်း</li>
+</ul>
+<h3>6.1 Switch တွင် တပ်ဆင်ပုံ</h3>
+<p><img alt="Switch ၏ SFP Port တွင် SFP တပ်ဆင်ပုံ" src="../images/sfp/sfp-switch-connection.webp" /></p>
+<ol>
+<li>Switch ၏ SFP Port နှင့် Module ၏ Speed၊ အမျိုးအစား ကိုက်ညီမှုကို စစ်ပါ။</li>
+<li>SFP ကို Port ထဲသို့ ကလစ်ကနဲ ကျသည်အထိ ဖြည်းညင်းစွာ တွန်းထည့်ပါ။</li>
+<li>Optical Port ၏ Dust Cap ကို ဖယ်ပါ။</li>
+<li>Connector ကို သန့်ရှင်းကြောင်း စစ်ပြီးမှ LC Duplex Patch Cord ကို ချိတ်ပါ။</li>
+<li>တစ်ဖက်၏ TX သည် တစ်ဖက်၏ RX နှင့် ချိတ်ကြောင်း သေချာပါစေ။</li>
+<li>Port LED နှင့် Switch ၏ Interface Status ကို စစ်ပါ။</li>
+</ol>
+<blockquote>
+<p>Safety Warning — SFP Laser များမှ ထွက်သော Light သည် မျက်လုံးနှင့် မမြင်ရသော Infrared ဖြစ်နိုင်ပြီး မျက်လုံးကို ထိခိုက်စေနိုင်သည်။ Module သို့မဟုတ် Fiber အဆုံးကို မျက်လုံးနှင့် တိုက်ရိုက် မကြည့်ပါနှင့်။ မသုံးသည့်အခါ Dust Cap ပြန်ဖုံးပါ။</p>
+</blockquote>
+<h2>7. Common Mistakes</h2>
+<ul>
+<li><strong>Fiber အမျိုးအစား မကိုက်ခြင်း:</strong> Singlemode SFP ကို Multimode Fiber နှင့် (သို့မဟုတ် ပြောင်းပြန်) သုံးခြင်း။</li>
+<li><strong>Wavelength မကိုက်ခြင်း:</strong> Link နှစ်ဖက်တွင် မတူသော Wavelength/စံနှုန်း Module သုံးခြင်း။ BiDi ကို တွဲဖက်မကိုက်ဘဲ သုံးခြင်း။</li>
+<li><strong>TX/RX ပြောင်းပြန်ချိတ်ခြင်း:</strong> Patch Cord ၏ Polarity မှားခြင်း။</li>
+<li><strong>Connector မသန့်ရှင်းခြင်း:</strong> ဖုန်မှုန့်သည် Loss များစေရန် အဖြစ်များသော အကြောင်းရင်းတစ်ခုဖြစ်သည်။</li>
+<li><strong>Fiber ကို အလွန်ကွေးခြင်း:</strong> Bend Loss ဖြစ်စေသည်။</li>
+<li><strong>Speed ကို မစစ်ခြင်း:</strong> SFP နှင့် SFP+ တို့ ပုံစံတူသော်လည်း Speed မတူပါ။</li>
+<li><strong>RX Overload ကို မစဉ်းစားခြင်း:</strong> အကွာအဝေးတိုသော Link တွင် TX Power မြင့်သော Module ကို Datasheet မစစ်ဘဲ သုံးခြင်း။</li>
+<li><strong>Compatibility ကို မစစ်ခြင်း:</strong> ထုတ်လုပ်သူအချို့၏ Device များသည် Module ကို Compatibility စစ်ဆေးနိုင်သဖြင့် Device ၏ Documentation ကို ကြည့်ပါ။</li>
+<li><strong>DDM ကို မကြည့်ခြင်း:</strong> ရရှိနိုင်သော Diagnostic အချက်အလက်ကို အသုံးမချခြင်း။</li>
+</ul>
+<h2>8. Key Takeaways</h2>
+<ul>
+<li>SFP သည် Electrical Signal နှင့် Light Signal ကို အပြန်အလှန်ပြောင်းပေးသော Hot-pluggable Transceiver Module ဖြစ်သည်။</li>
+<li>အတွင်းတွင် TOSA (Laser) နှင့် ROSA (Photodiode) တို့ ပါဝင်သည်။</li>
+<li>Singlemode နှင့် Multimode SFP သည် Fiber၊ Wavelength နှင့် အကွာအဝေး ကွာခြားသဖြင့် ကိုက်ညီအောင် ရွေးရမည်။</li>
+<li>Link တစ်ခု၏ နှစ်ဖက်စလုံးတွင် Speed၊ Wavelength နှင့် စံနှုန်း ကိုက်ညီရမည်။</li>
+<li>TX Power၊ RX Sensitivity နှင့် RX Overload ကို Datasheet တွင် စစ်ပြီး RX သို့ ရောက်သော Power သည် ထိုနှစ်ခုကြားတွင် ရှိရမည်။</li>
+<li>Laser Safety နှင့် Connector သန့်ရှင်းမှုကို အမြဲ ဂရုစိုက်ပါ။</li>
+</ul>
+        </article>
+    </main>
+
+    <!-- RELATED ARTICLES SECTION (Card အပြင်ဘက် သီးသန့် ကာဗာဖြင့်) -->
+    <div class="article-related" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #fff;">ဆက်လက်လေ့လာရန်</h3>
+        <div id="relatedArticlesContainer" class="articles-grid"></div>
+    </div>
+
+    <!-- ARTICLE NAVIGATION BUTTONS -->
+    <div class="article-nav" style="max-width: 900px; margin: 1.5rem auto; padding: 0 1rem;">
+        <a class="nav-btn" href="#">← Previous Article</a>
+        <a class="nav-btn" href="computer-networking.html">Next Article →</a>
+    </div>
+
+    <!-- SOCIAL SHARE SECTION -->
+    <div class="social-share-container">
+        <span>📌 ဤဆောင်းပါးကို သူငယ်ချင်းများထံ မျှဝေရန်:</span>
+        <div class="share-buttons-group">
+            <a class="share-btn fb" href="#" id="shareFacebook" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a class="share-btn tg" href="#" id="shareTelegram" target="_blank">
+                <svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.622-.168.9-.5 1.201-.82 1.23-.697.064-1.228-.46-1.903-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.12.098.153.228.166.331.011.093.024.304.007.469z"></path>
+                </svg>
+                <span>Telegram</span>
+            </a>
+        </div>
+    </div>
+
+        <!-- COMMENTS SECTION -->
+    <section class="section" id="comments">
+        <div class="section-heading">
+            <span class="section-label">COMMUNITY</span>
+            <h2>Comments & Discussions</h2>
+            <p>ဆောင်းပါးနှင့် ပတ်သက်သည့် မေးခွန်းများနှင့် မှတ်ချက်များကို အောက်တွင် မေးမြန်းနိုင်ပါသည်။</p>
+        </div>
+        <div id="commentsContainer" style="max-width: 800px; margin: 0 auto; padding: 0 1rem;">
+            <!-- Utterances Comment Script ကို ဤနေရာတွင် တိုက်ရိုက်ထည့်ပါ -->
+            <script src="https://utteranc.es/client.js"
+                    repo="fiberoptichub/fiberoptichub.github.io"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+
+
+    <!-- SCRIPT & FOOTER -->
+    <script src="../js/index.js"></script>
+    <footer>
+        <div class="logo" style="font-size: 1.1rem; margin-bottom: 8px;">🌐 Fiber <span>Optic Hub</span></div>
+        <p>© 2026 Fiber Optic Hub. All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Learn • Practice • Share</p>
+    </footer>
+  
+  <!-- Back to Top Button -->
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    ⬆
+</button>
+
+</body>
+</html>
