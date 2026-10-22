@@ -255,6 +255,27 @@
     </style>
 
 <style id="homepage-dynamic-sections">
+/* Homepage section action links */
+.homepage-action-link {
+    display: inline-block;
+    color: #e0f2fe;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 14px;
+    border: 1px solid #0891b2;
+    border-radius: 8px;
+    background: #10243b;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.homepage-action-link:hover,
+.homepage-action-link:focus-visible {
+    color: #ffffff;
+    background: #075985;
+    border-color: #38bdf8;
+    text-decoration: underline;
+}
+
 .youtube-shorts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
@@ -284,19 +305,43 @@
     line-height: 1.5;
 }
 #latestArticlesContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     margin-top: 18px;
 }
 .latest-article-card {
     display: block;
-    padding: 18px;
-    border-radius: 12px;
-    border: 1px solid rgba(56,189,248,.22);
-    background: #111c32;
+    padding: 18px 12px;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(56,189,248,.22);
+    background: transparent;
     color: #e2e8f0;
     text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+.latest-article-card:first-child {
+    border-top: 1px solid rgba(56,189,248,.22);
+}
+.latest-article-card h3 {
+    color: #38bdf8;
+    margin: 0 0 8px;
+    font-size: 1.08rem;
+    line-height: 1.5;
+}
+.latest-article-card p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin: 0 0 10px;
+}
+.latest-article-meta {
+    color: #94a3b8;
+    font-size: .82rem;
+}
+.latest-article-card:hover {
+    background: rgba(56,189,248,.05);
+    border-color: #38bdf8;
 }
 .latest-article-card h3 { color: #38bdf8; margin-top: 0; }
 .latest-article-card p { color: #cbd5e1; line-height: 1.6; }
@@ -571,7 +616,7 @@ body:not(.articles-page) .foh-tool-card input {
                         <li><a href="categories/splicing.html" class="category-item" data-category="Splicing" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔧 Splicing</span><span class="category-count"></span></a></li>
                         <li><a href="categories/otdr-and-opm.html" class="category-item" data-category="OTDR and OPM" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🔬 OTDR and OPM</span><span class="category-count"></span></a></li>
                         <li><a href="categories/ftth.html" class="category-item" data-category="FTTH" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">📡 FTTH</span><span class="category-count"></span></a></li>
-                        <li><a href="#" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
+                        <li><a href="categories/networking.html" class="category-item" data-category="Networking" style="color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px;"><span class="category-name">🌐 Networking</span><span class="category-count"></span></a></li>
                         <li><a href="categories/all-articles.html" class="category-item active" style="color: #38bdf8; text-decoration: none; display: block; padding: 0.4rem 0.6rem; border-radius: 6px; font-weight: bold;"><span class="category-name">✨ All</span><span class="category-count"></span></a></li>
                     </ul>
                 </div>
@@ -600,34 +645,128 @@ body:not(.articles-page) .foh-tool-card input {
                 <p>ဗီဒီယိုများကို ဖွင့်နေပါသည်...</p>
             </div>
             <p style="margin-top: 16px;">
-                <a href="https://www.youtube.com/@FiberOpticHub/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts အားလုံး ကြည့်ရန် ↗</a>
+                <a class="homepage-action-link" href="https://www.youtube.com/@FiberOpticHub/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts အားလုံး ကြည့်ရန် ↗</a>
             </p>
         </div>
     </section>
 
     <!-- HOMEPAGE: CALCULATING TOOLS -->
-    <section id="tools" class="info-section" style="padding: 28px 16px; background: #0b132b;">
-        <div class="info-section-inner" style="max-width: 1200px; margin: auto;">
+    <section id="tools" class="foh-tools-section">
+        <div class="foh-tools-inner">
             <span class="section-label">FIBER OPTIC TOOLS</span>
             <h2>Useful Calculating Tools</h2>
             <p class="info-section-intro">Fiber Optic လုပ်ငန်းအတွက် အသုံးဝင်သော တွက်ချက်ရေးကိရိယာများ။</p>
 
-            <div class="article-card foh-tool-card" style="padding:20px; margin-top:16px;">
-                <h3>Fiber Loss Calculator</h3>
-                <p>Fiber အရှည်နှင့် Fusion Splice အရေအတွက်ကို ထည့်ပြီး ခန့်မှန်း Loss ကို တွက်ချက်ပါ။</p>
-                <form id="lossCalcForm" class="calculator-form" style="display:flex; flex-direction:column; gap:12px; max-width:480px;">
-                    <label for="fiberLength">Fiber Length (km)</label>
-                    <input type="number" id="fiberLength" min="0" step="0.1" value="1" required style="padding:12px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff;">
-                    <label for="spliceCount">Fusion Splice Count</label>
-                    <input type="number" id="spliceCount" min="0" step="1" value="0" required style="padding:12px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff;">
-                    <button type="submit" class="btn" style="padding:12px; background:#0284c7; color:#fff; border:0; border-radius:8px; cursor:pointer;">Calculate Loss</button>
-                </form>
-                <div class="calc-result" id="calcResult" aria-live="polite" style="margin-top:14px; font-weight:bold; color:#38bdf8;"></div>
-                <p style="font-size:.9rem; color:#94a3b8; margin-top:12px;">ခန့်မှန်းတွက်ချက်မှုသာ ဖြစ်ပါသည်။ ယခုတွက်ချက်မှုတွင် Fiber Loss = 0.3 dB/km၊ Splice Loss = 0.1 dB/splice ဟု သတ်မှတ်ထားသည်။ လက်တွေ့တန်ဖိုးသည် ပစ္စည်းနှင့် တိုင်းတာချက်အပေါ် မူတည်ပါသည်။</p>
-            </div>
+            <div class="foh-tools-grid">
+                <article class="foh-tool-card">
+                    <span class="foh-tool-icon" aria-hidden="true">dB</span>
+                    <span class="foh-tool-tag">LOSS ESTIMATION</span>
+                    <h3>Fiber Loss Budget Calculator</h3>
+                    <p>Fiber၊ Fusion Splice နဲ့ Connector Mated Pair တို့ရဲ့ ခန့်မှန်း Loss ကို တွက်ချက်ပါ။</p>
+                    <button type="button" class="foh-tool-open" id="openLossCalculator">
+                        <span>Open Calculator</span><span aria-hidden="true">↗</span>
+                    </button>
+                </article>
 
+                <article class="foh-tool-card">
+                    <span class="foh-tool-icon" aria-hidden="true">mW</span>
+                    <span class="foh-tool-tag">POWER CONVERSION</span>
+                    <h3>dBm ↔ mW Converter</h3>
+                    <p>Optical power တန်ဖိုးတွေကို dBm နဲ့ mW အကြား ပြောင်းလဲတွက်ချက်ရန်။</p>
+                    <span class="foh-tool-status">Coming Soon</span>
+                </article>
+
+                <article class="foh-tool-card">
+                    <span class="foh-tool-icon" aria-hidden="true">%</span>
+                    <span class="foh-tool-tag">SIGNAL CONVERSION</span>
+                    <h3>dB ↔ Loss Percentage</h3>
+                    <p>dB loss နဲ့ optical power loss percentage တို့ရဲ့ ဆက်စပ်မှုကို တွက်ချက်ရန်။</p>
+                    <span class="foh-tool-status">Coming Soon</span>
+                </article>
+
+                <article class="foh-tool-card">
+                    <span class="foh-tool-icon" aria-hidden="true">1:N</span>
+                    <span class="foh-tool-tag">PASSIVE OPTICAL NETWORK</span>
+                    <h3>PON Splitter Loss</h3>
+                    <p>Splitter ratio နဲ့ insertion loss ကို အခြေခံပြီး ခန့်မှန်းတွက်ချက်ရန်။</p>
+                    <span class="foh-tool-status">Coming Soon</span>
+                </article>
+            </div>
         </div>
     </section>
+
+    <!-- FIBER LOSS BUDGET CALCULATOR MODAL -->
+    <div class="foh-modal" id="lossCalculatorModal" aria-hidden="true">
+        <div class="foh-modal-backdrop" data-close-loss-modal></div>
+        <section class="foh-modal-panel" role="dialog" aria-modal="true"
+            aria-labelledby="lossCalculatorTitle" aria-describedby="lossCalculatorDescription">
+            <div class="foh-modal-header">
+                <div>
+                    <span class="foh-tool-tag">FIBER OPTIC TOOLS</span>
+                    <h2 id="lossCalculatorTitle">Fiber Loss Budget Calculator</h2>
+                    <p id="lossCalculatorDescription">Link ထဲရှိ component များ၏ ခန့်မှန်း loss ကို တွက်ချက်ပါ။</p>
+                </div>
+                <button type="button" class="foh-modal-close" id="closeLossCalculator"
+                    aria-label="Close calculator">&times;</button>
+            </div>
+
+
+<form id="lossCalcForm">
+  <div class="foh-form-grid">
+    <div class="foh-field">
+      <label for="fiberLength">Fiber Length (km)</label>
+      <input type="number" id="fiberLength" min="0" max="100000" step="any" value="10" required>
+    </div>
+    <div class="foh-field">
+      <label for="fiberWavelength">Wavelength</label>
+      <select id="fiberWavelength">
+        <option value="850">850 nm — Multimode example</option>
+        <option value="1310" selected>1310 nm — Singlemode example</option>
+        <option value="1550">1550 nm — Singlemode example</option>
+      </select>
+    </div>
+    <div class="foh-field">
+      <label for="fiberAttenuation">Fiber Attenuation (dB/km)</label>
+      <input type="number" id="fiberAttenuation" min="0" max="100" step="any" value="0.35" required>
+    </div>
+    <div class="foh-field">
+      <label for="spliceCount">Fusion Splice Count</label>
+      <input type="number" id="spliceCount" min="0" max="100000" step="1" value="10" required>
+    </div>
+    <div class="foh-field">
+      <label for="spliceLoss">Loss per Splice (dB)</label>
+      <input type="number" id="spliceLoss" min="0" max="100" step="any" value="0.1" required>
+    </div>
+    <div class="foh-field">
+      <label for="connectionCount">Connector Mated Pair Count</label>
+      <input type="number" id="connectionCount" min="0" max="100000" step="1" value="2" required>
+    </div>
+    <div class="foh-field">
+      <label for="connectionLoss">Loss per Mated Pair (dB)</label>
+      <input type="number" id="connectionLoss" min="0" max="100" step="any" value="0.3" required>
+    </div>
+  </div>
+  <button type="submit" class="foh-calculate-button">Calculate Link Loss</button>
+</form>
+
+            <div class="foh-result-panel" id="calcResult" aria-live="polite" aria-atomic="true">
+                <span class="foh-result-label">ESTIMATED TOTAL LINK LOSS</span>
+                <output id="totalLossOutput">5.60 dB</output>
+                <div class="foh-loss-breakdown">
+                    <div><span>Fiber Loss</span><strong id="fiberLossOutput">4.00 dB</strong></div>
+                    <div><span>Fusion Splice Loss</span><strong id="spliceLossOutput">1.00 dB</strong></div>
+                    <div><span>Connector Mated Pair Loss</span><strong id="connectionLossOutput">0.60 dB</strong></div>
+                </div>
+            </div>
+
+            <p class="foh-calculator-note">
+                ဤတန်ဖိုးများသည် စတင်အသုံးပြုရန် ဥပမာတန်ဖိုးများသာ ဖြစ်သည်။
+                အမှန်တကယ် Fiber attenuation နှင့် component loss များသည် wavelength၊
+                ပစ္စည်း datasheet၊ installation quality နဲ့ လက်တွေ့တိုင်းတာချက်အပေါ် မူတည်သည်။
+
+            </p>
+        </section>
+    </div>
 
     <!-- HOMEPAGE: LATEST ARTICLES -->
     <section id="latest-articles" class="info-section" style="padding: 28px 16px; background: #0b132b;">
@@ -635,10 +774,10 @@ body:not(.articles-page) .foh-tool-card input {
             <span class="section-label">RECENT UPDATES</span>
             <h2>Latest Articles</h2>
             <p class="info-section-intro">နောက်ဆုံးတင်ထားသော ဆောင်းပါး ၃ ပုဒ်။</p>
-            <div id="latestArticlesContainer" class="article-grid">
+            <div id="latestArticlesContainer">
                 <p>ဆောင်းပါးများကို ဖွင့်နေပါသည်...</p>
             </div>
-            <p style="margin-top: 16px;"><a href="articles.html">ဆောင်းပါးအားလုံး ဖတ်ရန် →</a></p>
+            <p style="margin-top: 16px;"><a class="homepage-action-link" href="articles.html">ဆောင်းပါးအားလုံး ဖတ်ရန် →</a></p>
         </div>
     </section>
 

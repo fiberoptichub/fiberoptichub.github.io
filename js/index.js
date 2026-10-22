@@ -11,34 +11,119 @@ mobileNav.style.display = isExpanded ? 'none' : 'flex';
 });
 }
 
-// Loss Calculator Logic
+// Fiber Loss Budget Calculator and modal controls.
 const calcForm = document.getElementById('lossCalcForm');
+const lossModal = document.getElementById('lossCalculatorModal');
+const openLossCalculator = document.getElementById('openLossCalculator');
+const closeLossCalculator = document.getElementById('closeLossCalculator');
+
+function calculateFiberLoss() {
+    if (!calcForm) return false;
+
+    const lengthInput = document.getElementById('fiberLength');
+    const attenuationInput = document.getElementById('fiberAttenuation');
+    const splicesInput = document.getElementById('spliceCount');
+    const spliceLossInput = document.getElementById('spliceLoss');
+    const connectionsInput = document.getElementById('connectionCount');
+    const connectionLossInput = document.getElementById('connectionLoss');
+
+    const fiberOutput = document.getElementById('fiberLossOutput');
+    const spliceOutput = document.getElementById('spliceLossOutput');
+    const connectionOutput = document.getElementById('connectionLossOutput');
+    const totalOutput = document.getElementById('totalLossOutput');
+
+    const inputs = [
+        lengthInput,
+        attenuationInput,
+        splicesInput,
+        spliceLossInput,
+        connectionsInput,
+        connectionLossInput
+    ];
+
+    if (
+        inputs.some(input => !input || !input.checkValidity()) ||
+        !fiberOutput || !spliceOutput || !connectionOutput || !totalOutput
+    ) {
+        return false;
+    }
+
+    const length = Number(lengthInput.value);
+    const attenuation = Number(attenuationInput.value);
+    const splices = Number(splicesInput.value);
+    const lossPerSplice = Number(spliceLossInput.value);
+    const connections = Number(connectionsInput.value);
+    const lossPerConnection = Number(connectionLossInput.value);
+
+    if (
+        ![length, attenuation, splices, lossPerSplice, connections, lossPerConnection]
+            .every(Number.isFinite)
+    ) {
+        return false;
+    }
+
+    const fiberLoss = length * attenuation;
+    const spliceLossTotal = splices * lossPerSplice;
+    const connectionLossTotal = connections * lossPerConnection;
+    const totalLoss = fiberLoss + spliceLossTotal + connectionLossTotal;
+
+    fiberOutput.textContent = `${fiberLoss.toFixed(2)} dB`;
+    spliceOutput.textContent = `${spliceLossTotal.toFixed(2)} dB`;
+    connectionOutput.textContent = `${connectionLossTotal.toFixed(2)} dB`;
+    totalOutput.textContent = `${totalLoss.toFixed(2)} dB`;
+
+    return true;
+}
+
 if (calcForm) {
-    calcForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const length = parseFloat(document.getElementById('fiberLength').value) || 0;
-        const splices = parseInt(document.getElementById('spliceCount').value) || 0;
-        const totalLoss = (length * 0.3) + (splices * 0.1);
-        const resultDiv = document.getElementById('calcResult');
-        if (resultDiv) {
-            resultDiv.textContent = `Estimated Loss: ${totalLoss.toFixed(2)} dB`;
-        }
+    calcForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!calcForm.reportValidity()) return;
+        calculateFiberLoss();
+    });
+
+    calcForm.querySelectorAll('input').forEach((input) => {
+        input.addEventListener('input', () => {
+            if (calcForm.checkValidity()) {
+                calculateFiberLoss();
+            }
+        });
     });
 }
 
 
 
-// Fiber Loss Calculator modal controls.
-const lossModal = document.getElementById('lossCalculatorModal');
-const openLossCalculator = document.getElementById('openLossCalculator');
-const closeLossCalculator = document.getElementById('closeLossCalculator');
+// Built-in wavelength examples; attenuation remains editable.
+const wavelengthSelect = document.getElementById('fiberWavelength');
+const attenuationInput = document.getElementById('fiberAttenuation');
+
+const fiberAttenuationDefaults = {
+    '850': 3.0,
+    '1310': 0.35,
+    '1550': 0.22
+};
+
+if (wavelengthSelect && attenuationInput) {
+    wavelengthSelect.addEventListener('change', () => {
+        const value = fiberAttenuationDefaults[wavelengthSelect.value];
+        if (Number.isFinite(value)) {
+            attenuationInput.value = String(value);
+            if (calcForm && calcForm.checkValidity()) calculateFiberLoss();
+        }
+    });
+}
 
 function closeLossModal() {
     if (!lossModal) return;
+
     lossModal.classList.remove('is-open');
     lossModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('foh-modal-open');
-    if (openLossCalculator) openLossCalculator.focus();
+
+    if (openLossCalculator) {
+        openLossCalculator.focus();
+    }
 }
 
 if (lossModal && openLossCalculator && closeLossCalculator) {
@@ -46,8 +131,10 @@ if (lossModal && openLossCalculator && closeLossCalculator) {
         lossModal.classList.add('is-open');
         lossModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('foh-modal-open');
+
+        calculateFiberLoss();
         const lengthInput = document.getElementById('fiberLength');
-        if (lengthInput) lengthInput.focus();
+        if (lengthInput) lengthInput.focus({ preventScroll: true });
     });
 
     closeLossCalculator.addEventListener('click', closeLossModal);
